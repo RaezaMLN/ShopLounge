@@ -14,12 +14,12 @@ const productReducer = (state = productState, action) =>{
                 error: null,
             });
         
-            case types.GET_PRODUCT_SUCCESS:
-            
-            return Object.assign({}, state,{
-                loading: false,
-                list:action.listProduct
-            });
+        case types.GET_PRODUCT_SUCCESS:
+        
+        return Object.assign({}, state,{
+            loading: false,
+            list:action.listProduct
+        });
 
         case types.GET_PRODUCT_FAILED:
             return Object.assign({}, state,{
