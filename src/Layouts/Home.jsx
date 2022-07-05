@@ -1,14 +1,29 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import sofa from "../img/sofa.png";
+import lamp from "../img/lamp.png";
 
 export default function Home() {
   return (
     <div>
-      <div className="container-fluid">
-        <p className="lato">Home</p>
-        <p className="josefin">Home</p>
-      </div>
+      <Container fluid>
+        <Row className="clr1">
+          <Col xs={3} className="d-flex flex-column align-items-end">
+            <img src={lamp} alt="" className="w-75" />
+          </Col>
+          <Col xs={4} className="d-flex flex-column align-items-start justify-content-center">
+            <p className="fs-5 clr2 lato fw-bold">Best Furniture For Your Castle....</p>
+            <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
+            <p className="fs-5 lato">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
+            <Button>
+              <p className="fs-4 josefin">Shop Now</p>
+            </Button>
+          </Col>
+          <Col xs={5}>
+            <img src={sofa} alt="" className="w-75 py-3" />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

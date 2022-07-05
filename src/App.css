@@ -8,6 +8,12 @@
 .josefin {
   font-family: "Josefin Sans", sans-serif;
 }
+.clr1 {
+  background-color: #f2f0ff;
+}
+.clr2 {
+  color: #fb2e86;
+}
 
 .App {
   text-align: center;
