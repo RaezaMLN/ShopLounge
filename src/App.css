@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+.josefin {
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -28,7 +39,6 @@
   color: #61dafb;
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,12 +48,12 @@
   }
 }
 
-.bg-pink{
-  background-color: #FB2E86;
+.bg-pink {
+  background-color: #fb2e86;
 }
 
-.color-pink{
-  color: #FB2E86;
+.color-pink {
+  color: #fb2e86;
 }
 
 .loaderIcon {
@@ -53,9 +63,9 @@
 }
 @keyframes spin {
   from {
-      transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
   }
   to {
-      transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);
   }
 }

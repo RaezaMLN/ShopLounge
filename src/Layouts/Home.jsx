@@ -5,7 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Home() {
   return (
     <div>
-      <div className="container-fluid"></div>
+      <div className="container-fluid">
+        <p className="lato">Home</p>
+        <p className="josefin">Home</p>
+      </div>
     </div>
   );
 }
