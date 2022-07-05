@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Pages
 // import Login from "./Login";
 import Home from "./Home";
+import ShoppingCart from "./ShoppingCart"
 
 export default function Navigator() {
   return (
@@ -11,6 +12,7 @@ export default function Navigator() {
       <Router>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="shopping-cart" exact element={<ShoppingCart />} />
         </Routes>
       </Router>
     </div>
