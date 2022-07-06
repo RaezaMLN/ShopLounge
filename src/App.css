@@ -8,6 +8,10 @@
 .josefin {
   font-family: "Josefin Sans", sans-serif;
 }
+.clr0 {
+  background-color: #f6f7fb;
+}
+
 .clr1 {
   background-color: #f2f0ff;
 }
@@ -16,6 +20,9 @@
 }
 .clr3 {
   background-color: #e5e5e5;
+}
+.clr4 {
+  color: #1a0b5b;
 }
 .clr2bg {
   background-color: #fb2e86;
