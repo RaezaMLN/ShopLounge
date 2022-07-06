@@ -1,12 +1,14 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-
-function CustumButton({ btnVariant, btnStyle, btnClass, btnTitle }) {
+import "../../src/App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+function Button({ btnVariant, btnStyle, btnClass, btnTitle }) {
   return (
     <div>
-      <Button variant={btnVariant} style={btnStyle} className={btnClass}>{btnTitle}</Button>
+      <button variant={btnVariant} style={btnStyle} className={btnClass}>
+        {btnTitle}
+      </button>
     </div>
   );
 }
 
-export default CustumButton;
+export default Button;
