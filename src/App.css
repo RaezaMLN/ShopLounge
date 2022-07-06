@@ -1,3 +1,40 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+.josefin {
+  font-family: "Josefin Sans", sans-serif;
+}
+.clr0 {
+  background-color: #f6f7fb;
+}
+.clr1 {
+  background-color: #f2f0ff;
+}
+.clr2 {
+  color: #fb2e86;
+}
+.clr3 {
+  background-color: #e5e5e5;
+}
+.clr4 {
+  color: #1a0b5b;
+}
+.clr4-1 {
+  color: #8a8fb9;
+}
+
+.clr2bg {
+  background-color: #fb2e86;
+}
+
+.txtmin {
+  font-size: 10px;
+}
+
 .App {
   text-align: center;
 }
@@ -28,7 +65,6 @@
   color: #61dafb;
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,12 +74,12 @@
   }
 }
 
-.bg-pink{
-  background-color: #FB2E86;
+.bg-pink {
+  background-color: #fb2e86;
 }
 
-.color-pink{
-  color: #FB2E86;
+.color-pink {
+  color: #fb2e86;
 }
 
 .loaderIcon {
@@ -53,9 +89,9 @@
 }
 @keyframes spin {
   from {
-      transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
   }
   to {
-      transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);
   }
 }
