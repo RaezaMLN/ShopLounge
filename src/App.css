@@ -1,3 +1,66 @@
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+.josefin {
+  font-family: "Josefin Sans", sans-serif;
+}
+.clr0 {
+  /* Ghost White */
+  background-color: #f6f7fb;
+}
+.clr1 {
+  /* Ghost White */
+  background-color: #f2f0ff;
+}
+.clr2 {
+  /* Wild Strawberry */
+  color: #fb2e86;
+}
+.clr3 {
+  /*Whisper */
+  background-color: #e5e5e5;
+}
+.clr4 {
+  /* Midnight Blue */
+  color: #1a0b5b;
+}
+.clr4-1 {
+  /* Wild Blue Yonder */
+  color: #8a8fb9;
+}
+
+.color-white{
+  color: white;
+}
+
+.color-wildBlueYonder{
+  color:#8A8FB9;
+}
+
+.bg-butterCup{
+  background-color: #DE9034;
+}
+
+.bg-wildStrawberry{
+  background-color: #EC42A2;
+}
+
+.bg-lightSlateBlue{
+  background-color: #8568FF;
+}
+
+.clr2bg {
+  background-color: #fb2e86;
+}
+
+.txtmin {
+  font-size: 10px;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +98,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* .bg-pink {
+  background-color: #fb2e86;
+}
+
+.color-pink {
+  color: #fb2e86;
+} */
+
+.loaderIcon {
+  margin-right: 7px;
+  top: 2px;
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+#shape1, #shape2, #shape3 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: solid 1px black;
 }
