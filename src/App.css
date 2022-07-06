@@ -31,6 +31,10 @@
   background-color: #fb2e86;
 }
 
+.txtmin {
+  font-size: 10px;
+}
+
 .App {
   text-align: center;
 }
