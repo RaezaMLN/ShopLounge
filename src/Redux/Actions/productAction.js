@@ -1,8 +1,8 @@
 import * as type from '../Types/productType'
 
-import {mainApi as api} from '../../Lib/api'
+import {mainApi as api} from '../../Lib/Api'
 
-export const getAllProduct = () =>{
+export const getProduct = () =>{
     return async (dispatch) =>{
         dispatch({type:type.PRODUCT_REQUEST})
         api.get("/products").then((response)=>{

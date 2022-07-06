@@ -7,6 +7,7 @@ import Home from "./Home";
 import ShoppingCart from "./ShoppingCart";
 import ShopeGrid from "./ShopGrid";
 import Header from "../Components/Header";
+import Footer from "../Components/Footer"
 
 export default function Navigator() {
   return (
@@ -18,6 +19,7 @@ export default function Navigator() {
           <Route path="shopping-cart" exact element={<ShoppingCart />} />
           <Route path="shope-grid" exact element={<ShopeGrid />} />
         </Routes>
+        <Footer/>
       </Router>
     </div>
   );
