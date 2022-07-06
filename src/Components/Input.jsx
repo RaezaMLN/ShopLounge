@@ -1,9 +1,10 @@
 import React from "react";
+import {Form} from 'react-bootstrap'
 
-function Input({ inpValue, inpClass, inpType, inpName, to }) {
+function Input({ inpValue, inpClass, inpType, inpName, inpPlaceholder, to }) {
   return (
     <div>
-      <input type={inpType} className={inpClass} name={inpName} value={inpValue}></input>
+      <Form.Control type={inpType} className={inpClass} name={inpName} value={inpValue} placeholder={inpPlaceholder} />
     </div>
   );
 }
