@@ -6,7 +6,7 @@ export default function GreyContainer({ titlePage }) {
       <div className="container">
         <h1 className="josefin">{titlePage}</h1>
         <span className="lato">
-          Home . Pages . <span className="color-pink">{titlePage}</span>
+          Home . Pages . <span className="Wild-Strawberry">{titlePage}</span>
         </span>
       </div>
     </div>
