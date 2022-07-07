@@ -1,9 +1,8 @@
 import React from "react";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Card } from "react-bootstrap";
+import { MdViewModule, MdViewList } from "react-icons/md";
 
-
-
-export default function ShopGrid(){
+export default function ShopHeader(){
     return(
         <Row>
             <Col sm="4">
@@ -17,7 +16,7 @@ export default function ShopGrid(){
             <Col sm="8">
                 <Form className="d-flex gap-5 justify-content-end" >
                     <Form.Group className="d-flex gap-2" >
-                        <Form.Label >Per Page:</Form.Label>
+                        <Form.Label>Per Page:</Form.Label>
                         <Form.Control type="number" style={{width:"100px"}}/>
                     </Form.Group>
                     

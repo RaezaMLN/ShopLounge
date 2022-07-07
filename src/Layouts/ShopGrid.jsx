@@ -2,14 +2,13 @@ import React, { useState, useEffect} from "react";
 import { useSelector , useDispatch} from 'react-redux';
 
 
-import { Card, Tab, ListGroup } from "react-bootstrap";
-import { MdViewModule, MdViewList } from "react-icons/md";
+import { Card, Row, Col } from "react-bootstrap";
 
 
 import GreyContainer from "../Components/GreyContainer";
 import {getProduct} from "../Redux/Actions/productAction"
 import sponsor from "../img/sponsor.png";
-import {ShopHeader} from "../Components/ShopHeader"
+import ShopHeader from "../Components/ShopHeader"
 
 export default function ShopGrid() {
     const dispatch = useDispatch()
@@ -31,7 +30,7 @@ export default function ShopGrid() {
     <div>
         <GreyContainer titlePage={"Shope Grid Default"}/>
 
-        <div className="container" >
+        <div className="container my-5" >
             <ShopHeader/>
             <div className='d-flex flex-wrap gap-5 my-5' >
                 {
@@ -39,7 +38,7 @@ export default function ShopGrid() {
                     products.length > 0 &&
                     products.map((item, index)=>{
                         return(
-                            <Card style={{ width: '340px', border:"none"}} >
+                            <Card style={{ width: '270px', border:"none"}} >
                                 <Card.Img variant="top" src={item.category.image} />
                                 <Card.Body>
                                     <Card.Title className='text-center'>{item.title}</Card.Title>
@@ -57,7 +56,7 @@ export default function ShopGrid() {
             </div>
         </div>
 
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-md-center my-5">
             <Col md="auto">
             <img src={sponsor} />
             </Col>

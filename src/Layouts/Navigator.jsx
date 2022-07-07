@@ -8,6 +8,7 @@ import ShoppingCart from "./ShoppingCart";
 import ShopGrid from "./ShopGrid";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer"
+import ShopList from "./ShopList";
 
 export default function Navigator() {
   return (
@@ -18,6 +19,9 @@ export default function Navigator() {
           <Route path="/" exact element={<Home />} />
           <Route path="shopping-cart" exact element={<ShoppingCart />} />
           <Route path="shop-grid" exact element={<ShopGrid />} />
+
+
+          <Route path="shop-list" exact element={<ShopList />} />
         </Routes>
         <Footer/>
       </Router>
