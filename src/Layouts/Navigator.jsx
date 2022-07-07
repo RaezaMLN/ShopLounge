@@ -7,7 +7,9 @@ import Home from "./Home";
 import ShoppingCart from "./ShoppingCart";
 import ShopeGrid from "./ShopGrid";
 import Header from "../Components/Header";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
+import OrderCompleted from "./OrderCompleted";
+import Login from "./Login";
 
 export default function Navigator() {
   return (
@@ -18,8 +20,10 @@ export default function Navigator() {
           <Route path="/" exact element={<Home />} />
           <Route path="shopping-cart" exact element={<ShoppingCart />} />
           <Route path="shope-grid" exact element={<ShopeGrid />} />
+          <Route path="order-completed" exact element={<OrderCompleted />} />
+          <Route path="login" exact element={<Login />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
