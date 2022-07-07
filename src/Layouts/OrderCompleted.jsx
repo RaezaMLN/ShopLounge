@@ -1,10 +1,11 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import wallClock from "../../src/img/wallClock.png";
 import note from "../../src/img/note.png";
 import check from "../../src/img/check.png";
+import sponsor from "../../src/img/sponsor.png";
 
 export default function OrderCompleted() {
   return (
@@ -34,6 +35,13 @@ export default function OrderCompleted() {
       <br />
       <br />
       <br />
+      <Row className="justify-content-md-center my-5">
+        <Col xs lg="2"></Col>
+        <Col md="auto">
+          <img src={sponsor} />
+        </Col>
+        <Col xs lg="2"></Col>
+      </Row>
       <br />
       <br />
     </Container>
