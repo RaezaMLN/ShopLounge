@@ -2,15 +2,16 @@ import React, { useState, useEffect} from "react";
 import { useSelector , useDispatch} from 'react-redux';
 
 
-import { Card, Form, Row, Col, Tab, ListGroup } from "react-bootstrap";
+import { Card, Tab, ListGroup } from "react-bootstrap";
 import { MdViewModule, MdViewList } from "react-icons/md";
 
 
 import GreyContainer from "../Components/GreyContainer";
 import {getProduct} from "../Redux/Actions/productAction"
 import sponsor from "../img/sponsor.png";
-import Carousel, {CarouselItem} from "../Components/Carousel";
-export default function ShopeGrid() {
+import {ShopHeader} from "../Components/ShopHeader"
+
+export default function ShopGrid() {
     const dispatch = useDispatch()
     const product = useSelector(state => state.product);
     const [products, setProducts] = useState() 
@@ -31,43 +32,7 @@ export default function ShopeGrid() {
         <GreyContainer titlePage={"Shope Grid Default"}/>
 
         <div className="container" >
-            <Row>
-                <Col sm="4">
-                    <Card style={{ border:"none"}}>
-                        <Card.Body className="p-0">
-                            <Card.Title>Ecommerce Acceories & Fashion item </Card.Title>
-                            <Card.Subtitle><small className="text-muted">About 9,620 results (0.62 seconds)</small></Card.Subtitle>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm="8">
-                    <Form className="d-flex gap-5 justify-content-end" >
-                        <Form.Group className="d-flex gap-2" >
-                            <Form.Label >Per Page:</Form.Label>
-                            <Form.Control type="number" style={{width:"100px"}}/>
-                        </Form.Group>
-                       
-                        <Form.Group className="d-flex gap-2"  >
-                            <Form.Label style={{width:"85px"}}>Sort By:</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                                <option>Best Match</option>
-                                <option value="1">By ...</option>
-                                <option value="2">By ...</option>
-                            </Form.Select>
-                        </Form.Group>
-                        
-                        <Form.Group className="d-flex gap-2" >
-                            <Form.Label >
-                                View:
-                                <MdViewModule/>
-                                <MdViewList/>
-                            </Form.Label>
-                            <Form.Control type="text" placeholder="" style={{width:"100px"}}/>
-                        </Form.Group>
-                    </Form>
-                </Col>
-            </Row>
-
+            <ShopHeader/>
             <div className='d-flex flex-wrap gap-5 my-5' >
                 {
                     products &&

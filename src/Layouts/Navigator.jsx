@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Login from "./Login";
 import Home from "./Home";
 import ShoppingCart from "./ShoppingCart";
-import ShopeGrid from "./ShopGrid";
+import ShopGrid from "./ShopGrid";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer"
 
@@ -17,7 +17,7 @@ export default function Navigator() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="shopping-cart" exact element={<ShoppingCart />} />
-          <Route path="shope-grid" exact element={<ShopeGrid />} />
+          <Route path="shop-grid" exact element={<ShopGrid />} />
         </Routes>
         <Footer/>
       </Router>
