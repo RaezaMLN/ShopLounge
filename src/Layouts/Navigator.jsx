@@ -9,6 +9,7 @@ import ShopGrid from "./ShopGrid";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer"
 import ShopList from "./ShopList";
+import DetailList from "./DetailList";
 
 export default function Navigator() {
   return (
@@ -22,6 +23,8 @@ export default function Navigator() {
 
 
           <Route path="shop-list" exact element={<ShopList />} />
+          <Route path="detail-list" exact element={<DetailList />} />
+          
         </Routes>
         <Footer/>
       </Router>
