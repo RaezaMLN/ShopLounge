@@ -12,7 +12,8 @@ import OrderCompleted from "./OrderCompleted";
 import Login from "./Login";
 import ShopList from "./ShopList";
 import DetailList from "./DetailList"
-
+import Regist from "./Regist";
+import About from "./About";
 
 export default function Navigator() {
   return (
@@ -27,7 +28,8 @@ export default function Navigator() {
           <Route path="login" exact element={<Login />} />
           <Route path="shop-list" exact element={<ShopList />} />
           <Route path="detail-list" exact element={<DetailList />} />
-
+          <Route path="regist" exact element={<Regist />} />
+          <Route path="about" exact element={<About />} />
         </Routes>
         <Footer />
       </Router>
