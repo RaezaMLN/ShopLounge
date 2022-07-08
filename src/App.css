@@ -57,6 +57,10 @@
   background-color: #fb2e86;
 }
 
+.bg-ghost-white{
+  background-color: #F4F4FC;
+}
+
 .txtmin {
   font-size: 10px;
 }
