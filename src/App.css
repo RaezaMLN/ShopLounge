@@ -8,49 +8,45 @@
 .josefin {
   font-family: "Josefin Sans", sans-serif;
 }
-.clr0 {
-  /* Ghost White */
+
+.Ghost White {
   background-color: #f6f7fb;
 }
-.clr1 {
-  /* Ghost White */
-  background-color: #f2f0ff;
-}
-.clr2 {
-  /* Wild Strawberry */
+
+.Wild-Strawberry {
   color: #fb2e86;
 }
-.clr3 {
+.Whisper {
   /*Whisper */
   background-color: #e5e5e5;
 }
-.clr4 {
-  /* Midnight Blue */
+.Midnight-Blue {
+  /* Midnight-Blue */
   color: #1a0b5b;
 }
-.clr4-1 {
-  /* Wild Blue Yonder */
+.Wild-Blue-Yonder {
+  /* Wild-Blue-Yonder */
   color: #8a8fb9;
 }
 
-.color-white{
+.color-white {
   color: white;
 }
 
-.color-wildBlueYonder{
-  color:#8A8FB9;
+.color-wildBlueYonder {
+  color: #8a8fb9;
 }
 
-.bg-butterCup{
-  background-color: #DE9034;
+.bg-butterCup {
+  background-color: #de9034;
 }
 
-.bg-wildStrawberry{
-  background-color: #EC42A2;
+.bg-wildStrawberry {
+  background-color: #ec42a2;
 }
 
-.bg-lightSlateBlue{
-  background-color: #8568FF;
+.bg-lightSlateBlue {
+  background-color: #8568ff;
 }
 
 .clr2bg {
@@ -122,7 +118,9 @@
   }
 }
 
-#shape1, #shape2, #shape3 {
+#shape1,
+#shape2,
+#shape3 {
   width: 10px;
   height: 10px;
   border-radius: 50%;

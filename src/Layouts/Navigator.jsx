@@ -7,9 +7,12 @@ import Home from "./Home";
 import ShoppingCart from "./ShoppingCart";
 import ShopGrid from "./ShopGrid";
 import Header from "../Components/Header";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
+import OrderCompleted from "./OrderCompleted";
+import Login from "./Login";
 import ShopList from "./ShopList";
-import DetailList from "./DetailList";
+import DetailList from "./DetailList"
+
 
 export default function Navigator() {
   return (
@@ -20,13 +23,13 @@ export default function Navigator() {
           <Route path="/" exact element={<Home />} />
           <Route path="shopping-cart" exact element={<ShoppingCart />} />
           <Route path="shop-grid" exact element={<ShopGrid />} />
-
-
+          <Route path="order-completed" exact element={<OrderCompleted />} />
+          <Route path="login" exact element={<Login />} />
           <Route path="shop-list" exact element={<ShopList />} />
           <Route path="detail-list" exact element={<DetailList />} />
-          
+
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
