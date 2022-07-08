@@ -10,6 +10,8 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import OrderCompleted from "./OrderCompleted";
 import Login from "./Login";
+import Regist from "./Regist";
+import About from "./About";
 
 export default function Navigator() {
   return (
@@ -22,6 +24,8 @@ export default function Navigator() {
           <Route path="shope-grid" exact element={<ShopeGrid />} />
           <Route path="order-completed" exact element={<OrderCompleted />} />
           <Route path="login" exact element={<Login />} />
+          <Route path="regist" exact element={<Regist />} />
+          <Route path="about" exact element={<About />} />
         </Routes>
         <Footer />
       </Router>

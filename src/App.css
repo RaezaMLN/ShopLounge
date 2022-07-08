@@ -9,7 +9,7 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.Ghost White {
+.Ghost-White {
   background-color: #f6f7fb;
 }
 
@@ -27,6 +27,10 @@
 .Wild-Blue-Yonder {
   /* Wild-Blue-Yonder */
   color: #8a8fb9;
+}
+.soft-Blue-Yonder {
+  /* Wild-Blue-Yonder */
+  background-color: #f8f8fd;
 }
 
 .color-white {

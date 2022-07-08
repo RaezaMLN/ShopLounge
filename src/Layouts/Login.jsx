@@ -12,7 +12,7 @@ export default function Login() {
       <br />
       <div>
         <Form className="d-flex flex-column align-items-center">
-          <Form.Label className="fs-3 text-dark fw-bold josefin">Login</Form.Label>
+          <Form.Label className="fs-2 text-dark fw-bold josefin">Login</Form.Label>
           <Form.Label className="fs-5 Wild-Blue-Yonder lato mb-3">Please login using account detail bellow.</Form.Label>
 
           <Form.Group className="mb-3 w-25" controlId="formBasicEmail">
