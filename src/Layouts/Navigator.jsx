@@ -11,9 +11,10 @@ import Footer from "../Components/Footer";
 import OrderCompleted from "./OrderCompleted";
 import Login from "./Login";
 import ShopList from "./ShopList";
-import DetailList from "./DetailList"
+import DetailList from "./DetailList";
 import Regist from "./Regist";
 import About from "./About";
+import SingleBlog from "./SingleBlog";
 
 export default function Navigator() {
   return (
@@ -30,6 +31,7 @@ export default function Navigator() {
           <Route path="detail-list" exact element={<DetailList />} />
           <Route path="regist" exact element={<Regist />} />
           <Route path="about" exact element={<About />} />
+          <Route path="singleBlog" exact element={<SingleBlog />} />
         </Routes>
         <Footer />
       </Router>
