@@ -69,7 +69,7 @@ export default function ProductDetail() {
                                 <div className="d-flex gap-4">
                                     <h5>Share</h5>
                                     <div style={{width:"30px", height:"30px", background:"#151875", color:"white"}} className="rounded-circle text-center"><RiFacebookFill /></div>
-                                    <div style={{width:"30px", height:"30px", background:"#FB2E86", color:"white"}} className="rounded-circle text-center">                                    <RiInstagramFill/></div>
+                                    <div style={{width:"30px", height:"30px", background:"#FB2E86", color:"white"}} className="rounded-circle text-center"><RiInstagramFill/></div>
                                     <div style={{width:"30px", height:"30px", background:"#151875", color:"white"}} className="rounded-circle text-center"><RiTwitterFill /></div>
                                 </div>
                             </Card.Body>
