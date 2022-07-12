@@ -1,12 +1,13 @@
 import React from "react";
 import "../../src/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import { Button } from "react-bootstrap";
 function Button({ btnVariant, btnStyle, btnClass, btnTitle }) {
   return (
     <div>
-      <button variant={btnVariant} style={btnStyle} className={btnClass}>
+      <Button variant={btnVariant} style={btnStyle} className={btnClass}>
         {btnTitle}
-      </button>
+      </Button>
     </div>
   );
 }

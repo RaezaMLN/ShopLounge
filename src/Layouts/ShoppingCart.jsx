@@ -65,15 +65,6 @@ export default function ShoppingCart(){
                                 <Button variant="primary" type="submit" style={{width:"100%"}}>Proceed To Checkout</Button>
                             </Form>
                         </div>
-                        <div >
-                            <h5 className="text-center">Calculate Shopping</h5>
-                            <Form className='p-4 bg-ghost-white rounded'>
-                                <Form.Control plaintext placeholder='Bangladesh' className="border-bottom my-3"/>
-                                <Form.Control plaintext placeholder='Mirpur Dhaka - 1200' className="border-bottom my-3" />
-                                <Form.Control plaintext placeholder='Postal Code' className="border-bottom my-3 " />
-                                <Button variant="primary" type="submit" className="my-3">Calculate Shiping</Button>
-                            </Form>
-                        </div>
                     </div>
                 </Col>
             </Row>

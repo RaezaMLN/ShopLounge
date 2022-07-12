@@ -11,7 +11,7 @@ import room3 from "../img/room3.png";
 import { Description, Additional, Review, Video } from "../Components/Sonnet"
 
 
-export default function ShopGrid() {
+export default function ProductDetail() {
     
 
 
