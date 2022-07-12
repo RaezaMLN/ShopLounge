@@ -2,7 +2,8 @@ import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
-// import { BsFacebook } from "react-icons/bs";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 // images
 import icon1 from "../img/Vector.png";
@@ -134,19 +135,31 @@ export default function SingleBlog() {
               sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet,
               consectetur adipiscing elit. Velit dapibus est, nunc,{" "}
             </p>
+            <Row className="my-5">
+              <Col></Col>
+              <Col className="d-flex justify-content-center">
+                <img src={sm} alt="" />
+              </Col>
+              <Col></Col>
+            </Row>
 
-            <img src={sm} alt="" />
-            <div className="d-flex">
-              <div>
-                <p>previous post</p>
+            <div className="d-flex justify-content-between my-5" style={{ backgroundColor: "#F7F8FB" }}>
+              <div className="d-flex align-items-center lato color-wildBlueYonder">
+                <AiOutlineArrowLeft />
+                <h5 style={{ fontSize: "16.15px" }} className="mt-1">
+                  previous post
+                </h5>
               </div>
-              <div>
-                <p>next post</p>
+              <div className="d-flex align-items-center lato color-wildBlueYonder">
+                <h5 style={{ fontSize: "16.15px" }} className="mt-1">
+                  next post
+                </h5>
+                <AiOutlineArrowRight />
               </div>
             </div>
           </div>
           <Row>
-            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3 mb-5">
+            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3 mb-5 my-5 w-75">
               <img src={sapien} alt="" className="me-3" />
               <div>
                 <div className="d-flex">
@@ -160,7 +173,7 @@ export default function SingleBlog() {
             <Col></Col>
           </Row>
           <Row>
-            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3">
+            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3 w-75">
               <img src={conva} alt="" className="me-3" />
               <div>
                 <div className="d-flex">
@@ -178,10 +191,10 @@ export default function SingleBlog() {
           <br />
           <br />
 
-          <Form className="w-50">
+          <Form className="w-75">
             <Form.Group className="mb-5 d-flex" controlId="formBasicTextt">
-              <Form.Control type="text" placeholder="First name (optional)" className="color-wildBlueYonder lato me-3" />
-              <Form.Control type="text" placeholder="Last name" className="color-wildBlueYonder lato" />
+              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato me-3" />
+              <Form.Control type="text" placeholder="Write your email*" className="color-wildBlueYonder lato" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={3} placeholder="Write your comment*" className="py-5" />
