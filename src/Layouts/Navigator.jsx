@@ -16,6 +16,9 @@ import Regist from "./Regist";
 import About from "./About";
 import NotFound from "./NotFound";
 import SingleBlog from "./SingleBlog"
+import Regist from "./Regist";
+import About from "./About";
+import Faq from "./Faq";
 
 export default function Navigator() {
   return (
@@ -33,8 +36,10 @@ export default function Navigator() {
           <Route path="regist" exact element={<Regist />} />
           <Route path="about" exact element={<About />} />
           <Route path="not-found" exact element={<NotFound />} />
-          <Route path="single-blog" exact element={<SingleBlog />} />
+          {/* <Route path="single-blog" exact element={<SingleBlog />} /> */}
           
+          <Route path="singleBlog" exact element={<SingleBlog />} />
+          <Route path="faq" exact element={<Faq />} />
         </Routes>
         <Footer />
       </Router>

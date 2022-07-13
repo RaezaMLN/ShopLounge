@@ -53,6 +53,10 @@
   background-color: #8568ff;
 }
 
+.lightSlateBlue {
+  color: #3f509e;
+}
+
 .clr2bg {
   background-color: #fb2e86;
 }
@@ -103,7 +107,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .loaderIcon {
   margin-right: 7px;
