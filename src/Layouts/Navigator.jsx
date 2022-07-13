@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //Pages
-// import Login from "./Login";
 import Home from "./Home";
 import ShoppingCart from "./ShoppingCart";
 import ShopGrid from "./ShopGrid";
@@ -15,9 +14,7 @@ import ProductDetail from "./ProductDetail"
 import Regist from "./Regist";
 import About from "./About";
 import NotFound from "./NotFound";
-import SingleBlog from "./SingleBlog"
-import Regist from "./Regist";
-import About from "./About";
+import SingleBlog from "./SingleBlog";
 import Faq from "./Faq";
 
 export default function Navigator() {
