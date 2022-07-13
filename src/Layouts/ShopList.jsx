@@ -30,7 +30,7 @@ export default function ShopGrid() {
 
   return (
     <div>
-        <GreyContainer titlePage={"Shope Grid Default"}/>
+        <GreyContainer titlePage={"Shop List"}/>
 
         <div className="container my-5" >
             <ShopHeader/>

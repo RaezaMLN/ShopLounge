@@ -11,10 +11,13 @@ import Footer from "../Components/Footer";
 import OrderCompleted from "./OrderCompleted";
 import Login from "./Login";
 import ShopList from "./ShopList";
-import DetailList from "./DetailList";
+import ProductDetail from "./ProductDetail"
 import Regist from "./Regist";
 import About from "./About";
-import SingleBlog from "./SingleBlog";
+import NotFound from "./NotFound";
+import SingleBlog from "./SingleBlog"
+import Regist from "./Regist";
+import About from "./About";
 import Faq from "./Faq";
 
 export default function Navigator() {
@@ -29,9 +32,12 @@ export default function Navigator() {
           <Route path="order-completed" exact element={<OrderCompleted />} />
           <Route path="login" exact element={<Login />} />
           <Route path="shop-list" exact element={<ShopList />} />
-          <Route path="detail-list" exact element={<DetailList />} />
+          <Route path="product-detail" exact element={<ProductDetail />} />
           <Route path="regist" exact element={<Regist />} />
           <Route path="about" exact element={<About />} />
+          <Route path="not-found" exact element={<NotFound />} />
+          {/* <Route path="single-blog" exact element={<SingleBlog />} /> */}
+          
           <Route path="singleBlog" exact element={<SingleBlog />} />
           <Route path="faq" exact element={<Faq />} />
         </Routes>

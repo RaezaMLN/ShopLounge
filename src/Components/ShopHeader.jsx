@@ -35,7 +35,6 @@ export default function ShopHeader(){
                             <MdViewModule/>
                             <MdViewList/>
                         </Form.Label>
-                        <Form.Control type="text" placeholder="" style={{width:"100px"}}/>
                     </Form.Group>
                 </Form>
             </Col>

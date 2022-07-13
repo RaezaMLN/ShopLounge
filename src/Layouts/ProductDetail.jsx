@@ -11,14 +11,14 @@ import room3 from "../img/room3.png";
 import { Description, Additional, Review, Video } from "../Components/Sonnet"
 
 
-export default function ShopGrid() {
+export default function ProductDetail() {
     
 
 
 
   return (
     <div>
-        <GreyContainer titlePage={"Shope Grid Default"}/>
+        <GreyContainer titlePage={"Product Details"}/>
 
         <div className="container my-5" >
             <div >
@@ -69,7 +69,7 @@ export default function ShopGrid() {
                                 <div className="d-flex gap-4">
                                     <h5>Share</h5>
                                     <div style={{width:"30px", height:"30px", background:"#151875", color:"white"}} className="rounded-circle text-center"><RiFacebookFill /></div>
-                                    <div style={{width:"30px", height:"30px", background:"#FB2E86", color:"white"}} className="rounded-circle text-center">                                    <RiInstagramFill/></div>
+                                    <div style={{width:"30px", height:"30px", background:"#FB2E86", color:"white"}} className="rounded-circle text-center"><RiInstagramFill/></div>
                                     <div style={{width:"30px", height:"30px", background:"#151875", color:"white"}} className="rounded-circle text-center"><RiTwitterFill /></div>
                                 </div>
                             </Card.Body>
