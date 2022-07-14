@@ -2,13 +2,16 @@ import React, { useState, useEffect} from "react";
 import { useSelector , useDispatch} from 'react-redux';
 
 
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, OverlayTrigger } from "react-bootstrap";
 
 
 import GreyContainer from "../Components/GreyContainer";
 import {getProduct} from "../Redux/Actions/productAction"
 import sponsor from "../img/sponsor.png";
 import ShopHeader from "../Components/ShopHeader"
+import { MdDeleteForever } from "react-icons/md";
+import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
+
 
 export default function ShopGrid() {
     const dispatch = useDispatch()
@@ -17,6 +20,7 @@ export default function ShopGrid() {
     useEffect(()=>{
         dispatch(getProduct());
     },[])
+
     useEffect(()=>{
         const filterProduct = product.list.filter((item, index )=>index<12)
         setProducts(filterProduct)
@@ -39,7 +43,18 @@ export default function ShopGrid() {
                     products.map((item, index)=>{
                         return(
                             <Card style={{ width: '270px', border:"none"}} >
-                                <Card.Img variant="top" src={item.category.image} />
+                                
+                                <div className="container-image">
+                                    <Card.Img variant="top" src={item.category.image}/>
+                                    <div className="overlay ">
+                                        <div className="overlay-icon position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle"/></div>
+                                        <div className="overlay-icon position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
+                                        <div className="overlay-icon position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
+                                    </div>
+                                </div> 
+                                
+                                
+                                
                                 <Card.Body>
                                     <Card.Title className='text-center'>{item.title}</Card.Title>
                                     <div className="d-flex justify-content-center gap-1 ">
@@ -47,7 +62,7 @@ export default function ShopGrid() {
                                         <div id="shape2" className="bg-wildStrawberry"></div>
                                         <div id="shape3" className="bg-lightSlateBlue"></div>
                                     </div>
-                                    <Card.Text className="text-center">${Math.round((62/100)*(Number(item.price)))}<span className="clr2 mx-3"> ${item.price}</span></Card.Text>
+                                    <Card.Text className="text-center">${Math.round((62/100)*(Number(item.price)))}<del className="Wild-Strawberry mx-3"> ${item.price}</del></Card.Text>
                                 </Card.Body>
                             </Card>
                         );
