@@ -1,6 +1,6 @@
-/* @import url("https://fonts.googleapis.com"); */
-/* @import url("https://fonts.gstatic.com"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap"); */
+@import url("https://fonts.googleapis.com");
+@import url("https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
 
 .lato {
   font-family: "Lato", sans-serif;
@@ -128,5 +128,43 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: solid 1px black;
 }
+
+.container-image{
+  position: relative;
+}
+
+.overlay{
+  position:absolute;
+  display:none;
+  flex-direction: column;
+  gap: 10px;
+  bottom: 20px;
+  left: 20px;
+}
+
+.container-image:hover .overlay {
+  display: flex;
+}
+
+.overlay-icon{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 0px;
+  left: 0px;
+  
+}
+
+.overlay-icon:hover{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  left: 0px;
+  
+}
+
+

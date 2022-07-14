@@ -8,8 +8,8 @@ import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
 
 import GreyContainer from "../Components/GreyContainer";
 import {getProduct} from "../Redux/Actions/productAction"
-import sponsor from "../img/sponsor.png";
 import ShopHeader from "../Components/ShopHeader"
+import Brand from "../Components/Brand"
 
 
 export default function ShopGrid() {
@@ -82,12 +82,7 @@ export default function ShopGrid() {
                 }
             </div>
         </div>
-
-        <Row className="justify-content-md-center my-5">
-            <Col md="auto">
-            <img src={sponsor} />
-            </Col>
-        </Row>
+        <Brand/>
     </div>
   );
 }
