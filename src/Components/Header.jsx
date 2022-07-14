@@ -57,6 +57,7 @@ export default function Header(){
                     <Nav.Link href="#action2">Blog</Nav.Link>
                     <Nav.Link href="#action2">Shop</Nav.Link>
                     <Nav.Link href="#action2">Contact</Nav.Link>
+                    
                     </Nav>
 
                     <Form className="d-flex me-5">
