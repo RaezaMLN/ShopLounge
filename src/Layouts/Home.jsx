@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col, Card, Carousel } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import Carousel from "../Components/Carousel";
 import Button from "../Components/Button";
 import sqrsofa from "../img/square-sofa.png";
 import sofa from "../img/sofa.png";
@@ -25,7 +25,24 @@ import room3 from "../img/room3.png";
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
 
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProduct } from "../Redux/Actions/productAction";
+
 export default function Home() {
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product);
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+  useEffect(() => {
+    const filterProduct = product.list.filter((item, index) => index < 12);
+    setProducts(filterProduct);
+  }, [product]);
+
+  // console.log("see product", products);
+
   return (
     <div>
       {/* Banner */}
@@ -57,10 +74,16 @@ export default function Home() {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Card style={{ width: "18rem" }} className="border border-0">
-              {/* Carousel  */}
-              <Carousel>
+          <Col className="d-flex flex-wrap">
+            {products &&
+              products.length > 0 &&
+              products.map((item, index) => {
+                console.log("this itemm", item);
+                return <Carousel listImage={item.images} title={item.title} price={item.price} />;
+              })}
+            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
+            {/* Carousel  */}
+            {/* <Carousel>
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
@@ -70,14 +93,15 @@ export default function Home() {
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
                 </Carousel.Item>
-              </Carousel>
-              <Card.Body className="text-center">
+              </Carousel> */}
+
+            {/* <Card.Body className="text-center">
                 <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
                 <Card.Text className="Midnight-Blue lato fw-semibold">Code - Y523201</Card.Text>
                 <Card.Text className="Midnight-Blue lato fw-semibold">$42.00</Card.Text>
               </Card.Body>
               <Card.Body></Card.Body>
-            </Card>
+            </Card> */}
           </Col>
         </Row>
 
@@ -111,9 +135,9 @@ export default function Home() {
         </div>
         <Row className="my-5">
           <Col xs={4}>
-            <Card style={{ width: "18rem" }} className="border border-0">
-              {/* Carousel  */}
-              <Carousel>
+            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
+            {/* Carousel  */}
+            {/* <Carousel>
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
@@ -131,8 +155,8 @@ export default function Home() {
                   <Card.Text className="lato fw-semibold Wild-Strawberry">$62.00</Card.Text>
                 </div>
               </Card.Body>
-              <Card.Body></Card.Body>
-            </Card>
+              <Card.Body></Card.Body> */}
+            {/* </Card> */}
           </Col>
         </Row>
 
@@ -216,9 +240,9 @@ export default function Home() {
         </Row>
         <Row className="my-5">
           <Col xs={3}>
-            <Card style={{ width: "18rem" }} className="border border-0">
-              {/* Carousel  */}
-              <Carousel>
+            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
+            {/* Carousel  */}
+            {/* <Carousel>
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
@@ -228,8 +252,8 @@ export default function Home() {
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
                 </Carousel.Item>
-              </Carousel>
-              <Card.Body className="text-center d-flex flex-column align-items-center">
+              </Carousel> */}
+            {/* <Card.Body className="text-center d-flex flex-column align-items-center">
                 <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
                 <div className="d-flex">
                   <Card.Text className="Midnight-Blue lato fw-semibold me-2 Midnight-Blue">$42.00</Card.Text>
@@ -237,7 +261,7 @@ export default function Home() {
                 </div>
               </Card.Body>
               <Card.Body></Card.Body>
-            </Card>
+            </Card> */}
           </Col>
         </Row>
         <div className="d-flex flex-row justify-content-evenly">
@@ -342,9 +366,9 @@ export default function Home() {
         </Row>
         <Row>
           <Col xs={3}>
-            <Card style={{ width: "18rem" }} className="border border-0">
-              {/* Carousel  */}
-              <Carousel>
+            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
+            {/* Carousel  */}
+            {/* <Carousel>
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={lcw1} alt="First slide" />
                 </Carousel.Item>
@@ -354,13 +378,13 @@ export default function Home() {
                 <Carousel.Item>
                   <img className="d-block w-100 Ghost-White" src={lcw3} alt="Third slide" />
                 </Carousel.Item>
-              </Carousel>
-              <Card.Body className="text-center">
-                <Card.Title className="Wild-Strawberry josefin fw-bold">Mini LCW chair</Card.Title>
-                <Card.Text className="Midnight-Blue lato fw-semibold">$56.00</Card.Text>
-              </Card.Body>
-              <Card.Body></Card.Body>
-            </Card>
+            //   </Carousel> */}
+            {/* //   <Card.Body className="text-center">
+            //     <Card.Title className="Wild-Strawberry josefin fw-bold">Mini LCW chair</Card.Title>
+            //     <Card.Text className="Midnight-Blue lato fw-semibold">$56.00</Card.Text>
+            //   </Card.Body>
+            //   <Card.Body></Card.Body>
+            // </Card> */}
           </Col>
         </Row>
       </Container>
