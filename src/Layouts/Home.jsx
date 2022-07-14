@@ -30,14 +30,14 @@ export default function Home() {
     <div>
       {/* Banner */}
       <Container fluid>
-        <Row className="clr1">
+        <Row className="Whisper">
           <Col xs={3} className="d-flex flex-column align-items-end">
             <img src={lamp} alt="" className="w-75" />
           </Col>
           <Col xs={4} className="d-flex flex-column align-items-start justify-content-center">
-            <p className="fs-5 clr2 lato fw-bold">Best Furniture For Your Castle....</p>
+            <p className="fs-5 Wild-Strawberry lato fw-bold">Best Furniture For Your Castle....</p>
             <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
-            <p className="fs-5 lato clr4-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
+            <p className="fs-5 lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
             <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
           </Col>
           <Col xs={5}>
@@ -47,13 +47,13 @@ export default function Home() {
       </Container>
 
       {/* Feature Product */}
-      <Container fluid className="clr3">
+      <Container fluid className="soft-Blue-Yonder">
         <Row></Row>
       </Container>
       <Container>
         <Row className="my-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">Featured Products</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Featured Products</h1>
           </Col>
         </Row>
         <Row>
@@ -62,19 +62,19 @@ export default function Home() {
               {/* Carousel  */}
               <Carousel>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="First slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Second slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Third slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
                 </Carousel.Item>
               </Carousel>
               <Card.Body className="text-center">
-                <Card.Title className="clr2 josefin fw-bold">Cantilever chair</Card.Title>
-                <Card.Text className="clr4 lato fw-semibold">Code - Y523201</Card.Text>
-                <Card.Text className="clr4 lato fw-semibold">$42.00</Card.Text>
+                <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
+                <Card.Text className="Midnight-Blue lato fw-semibold">Code - Y523201</Card.Text>
+                <Card.Text className="Midnight-Blue lato fw-semibold">$42.00</Card.Text>
               </Card.Body>
               <Card.Body></Card.Body>
             </Card>
@@ -84,27 +84,27 @@ export default function Home() {
         {/* Latest Product  */}
         <Row className="mt-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">Latest Products</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Latest Products</h1>
           </Col>
         </Row>
         <div className="d-flex align-items-center justify-content-center">
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               New Arrival
             </a>
           </div>
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Best Seller
             </a>
           </div>
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Featured
             </a>
           </div>
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Special Offer
             </a>
           </div>
@@ -115,20 +115,20 @@ export default function Home() {
               {/* Carousel  */}
               <Carousel>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="First slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Second slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Third slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
                 </Carousel.Item>
               </Carousel>
               <Card.Body className="text-center d-flex justify-content-around">
-                <Card.Title className="clr2 josefin fw-bold me-5">Cantilever chair</Card.Title>
+                <Card.Title className="Wild-Strawberry josefin fw-bold me-5">Cantilever chair</Card.Title>
                 <div className="d-flex">
-                  <Card.Text className="clr4 lato fw-semibold me-1">$42.00</Card.Text>
-                  <Card.Text className="lato fw-semibold clr2">$62.00</Card.Text>
+                  <Card.Text className="Midnight-Blue lato fw-semibold me-1">$42.00</Card.Text>
+                  <Card.Text className="lato fw-semibold Wild-Strawberry">$62.00</Card.Text>
                 </div>
               </Card.Body>
               <Card.Body></Card.Body>
@@ -139,7 +139,7 @@ export default function Home() {
         {/* What ShopLounge Offer! */}
         <Row className="my-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">What ShopLounge Offer!</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">What ShopLounge Offer!</h1>
           </Col>
         </Row>
         <div className="d-flex  justify-content-center my-5">
@@ -147,8 +147,8 @@ export default function Home() {
             <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
               <Card.Img variant="top" className="w-25" src={delivery} />
               <Card.Body className="d-flex flex-column align-items-center">
-                <Card.Title className="josefin clr4 ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato clr4-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
+                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -156,8 +156,8 @@ export default function Home() {
             <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
               <Card.Img variant="top" className="w-25" src={cashback} />
               <Card.Body className="d-flex flex-column align-items-center">
-                <Card.Title className="josefin clr4 ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato clr4-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
+                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -165,8 +165,8 @@ export default function Home() {
             <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
               <Card.Img variant="top" className="w-25" src={quality} />
               <Card.Body className="d-flex flex-column align-items-center">
-                <Card.Title className="josefin clr4 ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato clr4-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
+                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -174,8 +174,8 @@ export default function Home() {
             <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
               <Card.Img variant="top" className="w-25" src={support} />
               <Card.Body className="d-flex flex-column align-items-center">
-                <Card.Title className="josefin clr4 ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato clr4-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
+                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -183,22 +183,22 @@ export default function Home() {
       </Container>
 
       {/* Second banner */}
-      <Container fluid className="my-5 d-flex align-items-center justify-content-center clr1">
+      <Container fluid className="my-5 d-flex align-items-center justify-content-center Whisper">
         <div>
           <img src={sqrsofa} alt="" />
         </div>
         <div>
-          <p className="fs-1 fw-bold clr4 text-wrap">
+          <p className="fs-1 fw-bold Midnight-Blue text-wrap">
             Unique Features Of leatest & <br /> Trending Poducts
           </p>
-          <ul className="fs-5 clr4-1 my-4">
+          <ul className="fs-5 Midnight-Blue-1 my-4">
             <li>All frames constructed with hardwood solids and laminates</li>
             <li>Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails</li>
             <li>Arms, backs and seats are structurally reinforced</li>
           </ul>
           <div className="d-flex">
             <Button btnClass={"btn text-light josefin me-5 fs-4"} btnTitle={"Add To Cart"} btnStyle={{ backgroundColor: "#fb2e86" }} />
-            <div className="d-flex flex-column josefin clr4">
+            <div className="d-flex flex-column josefin Midnight-Blue">
               <h5>B&B Italian Sofa</h5>
               <h5>$32.00</h5>
             </div>
@@ -211,7 +211,7 @@ export default function Home() {
       <Container>
         <Row className="my-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">Trending Products</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Trending Products</h1>
           </Col>
         </Row>
         <Row className="my-5">
@@ -220,20 +220,20 @@ export default function Home() {
               {/* Carousel  */}
               <Carousel>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="First slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Second slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={sofa} alt="Third slide" />
+                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
                 </Carousel.Item>
               </Carousel>
               <Card.Body className="text-center d-flex flex-column align-items-center">
-                <Card.Title className="clr2 josefin fw-bold">Cantilever chair</Card.Title>
+                <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
                 <div className="d-flex">
-                  <Card.Text className="clr4 lato fw-semibold me-2 clr4">$42.00</Card.Text>
-                  <Card.Text className="lato fw-semibold clr4-1">$62.00</Card.Text>
+                  <Card.Text className="Midnight-Blue lato fw-semibold me-2 Midnight-Blue">$42.00</Card.Text>
+                  <Card.Text className="lato fw-semibold Midnight-Blue-1">$62.00</Card.Text>
                 </div>
               </Card.Body>
               <Card.Body></Card.Body>
@@ -242,20 +242,20 @@ export default function Home() {
         </Row>
         <div className="d-flex flex-row justify-content-evenly">
           <div className="d-flex flex-column me-3">
-            <h5 className="fs-4 fw-bold clr4 josefin">23% off in all products</h5>
-            <a href="#" className="clr2 lato fs-5 fw-bold">
+            <h5 className="fs-4 fw-bold Midnight-Blue josefin">23% off in all products</h5>
+            <a href="#" className="Wild-Strawberry lato fs-5 fw-bold">
               Shop Now
             </a>
             <img src={clock} />
           </div>
-          <div className="d-flex flex-column clr0">
-            <h5 className="fs-4 fw-bold clr4 josefin">23% off in all products</h5>
-            <a href="#" className="clr2 lato fs-5 fw-bold">
+          <div className="d-flex flex-column Ghost-White">
+            <h5 className="fs-4 fw-bold Midnight-Blue josefin">23% off in all products</h5>
+            <a href="#" className="Wild-Strawberry lato fs-5 fw-bold">
               View Collection
             </a>
             <img src={sit} />
           </div>
-          <div className="d-flex flex-column justify-content-start josefin fs-5 clr4">
+          <div className="d-flex flex-column justify-content-start josefin fs-5 Midnight-Blue">
             <div>
               <div className="d-flex">
                 <img src={chair1} alt="" className="me-3" />
@@ -289,22 +289,22 @@ export default function Home() {
         {/* Discount Item  */}
         <Row className="mt-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">Discount Item</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Discount Item</h1>
           </Col>
         </Row>
         <div className="d-flex align-items-center justify-content-center">
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Wood Chair
             </a>
           </div>
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Plastic Chair
             </a>
           </div>
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none clr4">
+            <a href="#" className="text-decoration-none Midnight-Blue">
               Sofa Collection
             </a>
           </div>
@@ -312,12 +312,12 @@ export default function Home() {
 
         <div className="my-5 d-flex align-items-center">
           <div>
-            <h1 className="fs-2 josefin fw-bold clr4">20% Discount Of All Products</h1>
-            <h4 className="fs-4 clr2 josefin">Eams Sofa Compact</h4>
-            <h5 className="lato clr4-1 lato lh-lg">
+            <h1 className="fs-2 josefin fw-bold Midnight-Blue">20% Discount Of All Products</h1>
+            <h4 className="fs-4 Wild-Strawberry josefin">Eams Sofa Compact</h4>
+            <h5 className="lato Midnight-Blue-1 lato lh-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget <br /> feugiat habitasse nec, bibendum condimentum.
             </h5>
-            <div className="d-flex lato clr4-1 lh-lg mb-4">
+            <div className="d-flex lato Midnight-Blue-1 lh-lg mb-4">
               <div>
                 <li>Material expose like metals</li>
                 <li>Simple neutral colours.</li>
@@ -337,7 +337,7 @@ export default function Home() {
         {/* Top Categories  */}
         <Row className="mt-5">
           <Col>
-            <h1 className="fs-2 fw-bold clr4 text-center josefin">Top Categories</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Top Categories</h1>
           </Col>
         </Row>
         <Row>
@@ -346,18 +346,18 @@ export default function Home() {
               {/* Carousel  */}
               <Carousel>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={lcw1} alt="First slide" />
+                  <img className="d-block w-100 Ghost-White" src={lcw1} alt="First slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={lcw2} alt="Second slide" />
+                  <img className="d-block w-100 Ghost-White" src={lcw2} alt="Second slide" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block w-100 clr0" src={lcw3} alt="Third slide" />
+                  <img className="d-block w-100 Ghost-White" src={lcw3} alt="Third slide" />
                 </Carousel.Item>
               </Carousel>
               <Card.Body className="text-center">
-                <Card.Title className="clr2 josefin fw-bold">Mini LCW chair</Card.Title>
-                <Card.Text className="clr4 lato fw-semibold">$56.00</Card.Text>
+                <Card.Title className="Wild-Strawberry josefin fw-bold">Mini LCW chair</Card.Title>
+                <Card.Text className="Midnight-Blue lato fw-semibold">$56.00</Card.Text>
               </Card.Body>
               <Card.Body></Card.Body>
             </Card>
@@ -369,7 +369,7 @@ export default function Home() {
         <Card className="text-center josefin">
           <Card.Img src={banner} alt="Card image" />
           <Card.ImgOverlay className="d-flex flex-column justify-content-center">
-            <Card.Title className="fs-2 fw-bold clr4">
+            <Card.Title className="fs-2 fw-bold Midnight-Blue">
               Get Leatest Update By Subscribe <br /> 0ur Newslater
             </Card.Title>
             <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
@@ -388,7 +388,7 @@ export default function Home() {
 
       <Row className="my-5">
         <Col>
-          <h1 className="fs-2 fw-bold clr4 text-center josefin">Leatest Blog</h1>
+          <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Leatest Blog</h1>
         </Col>
       </Row>
       <div className="d-flex  justify-content-center my-5">
@@ -406,11 +406,11 @@ export default function Home() {
               </div>
             </div>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="josefin clr4" style={{ fontSize: "18px" }}>
+              <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato clr4-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
-              <Card.Text className="clr4">
+              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className="Midnight-Blue">
                 <a href="#" className="lato">
                   Read More
                 </a>
@@ -432,11 +432,11 @@ export default function Home() {
               </div>
             </div>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="josefin clr4" style={{ fontSize: "18px" }}>
+              <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato clr4-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
-              <Card.Text className="clr4">
+              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className="Midnight-Blue">
                 <a href="#" className="lato">
                   Read More
                 </a>
@@ -458,11 +458,11 @@ export default function Home() {
               </div>
             </div>
             <Card.Body className="d-flex flex-column">
-              <Card.Title className="josefin clr4" style={{ fontSize: "18px" }}>
+              <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato clr4-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
-              <Card.Text className="clr4">
+              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className="Midnight-Blue">
                 <a href="#" className="lato">
                   Read More
                 </a>
