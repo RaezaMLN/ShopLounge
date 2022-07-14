@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com");
 @import url("https://fonts.gstatic.com");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
+.cardBody:hover {
+  background-color: #1a0b5b;
+}
 
 .lato {
   font-family: "Lato", sans-serif;
@@ -61,8 +64,8 @@
   background-color: #fb2e86;
 }
 
-.bg-ghost-white{
-  background-color: #F4F4FC;
+.bg-ghost-white {
+  background-color: #f4f4fc;
 }
 
 .txtmin {
@@ -130,13 +133,13 @@
   border-radius: 50%;
 }
 
-.container-image{
+.container-image {
   position: relative;
 }
 
-.overlay{
-  position:absolute;
-  display:none;
+.overlay {
+  position: absolute;
+  display: none;
   flex-direction: column;
   gap: 10px;
   bottom: 20px;
@@ -147,24 +150,20 @@
   display: flex;
 }
 
-.overlay-icon{
+.overlay-icon {
   width: 25px;
   height: 25px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0);
   bottom: 0px;
   left: 0px;
-  
 }
 
-.overlay-icon:hover{
+.overlay-icon:hover {
   width: 25px;
   height: 25px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   bottom: 0px;
   left: 0px;
-  
 }
-
-
