@@ -25,7 +25,7 @@ function Redirect() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loginData = localStorage.getItem("loginData");
+    const loginData = localStorage.getItem("token");
     // const userData = localStorage.getItem("userData");
 
     console.log(location.pathname, "cek");

@@ -2,6 +2,11 @@
 @import url("https://fonts.gstatic.com");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
 
+.txthoverpink {
+  color: #fb2e86;
+  text-decoration: underline;
+}
+
 .texthover:hover {
   background-color: #fb2e86;
 }
@@ -29,6 +34,16 @@
 }
 .josefin {
   font-family: "Josefin Sans", sans-serif;
+}
+
+.pink-page {
+  background-color: #febad7;
+  width: 25px;
+  height: 8px;
+}
+.pageHover:hover {
+  background-color: #fb2e86;
+  width: 33px;
 }
 
 .Ghost-White {
