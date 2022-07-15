@@ -5,7 +5,7 @@ import Button from "../Components/Button";
 import chair1 from "../../src/img/chair1.png";
 import shirt from "../../src/img/shirt.png";
 
-export default function Regist() {
+export default function Shipping() {
   return (
     <Container>
       <Row className="my-5">

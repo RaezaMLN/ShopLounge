@@ -1,8 +1,32 @@
 @import url("https://fonts.googleapis.com");
 @import url("https://fonts.gstatic.com");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
+
+.txthoverpink {
+  color: #fb2e86;
+  text-decoration: underline;
+}
+
+.texthover:hover {
+  background-color: #fb2e86;
+}
+.texthover:hover .texthvr {
+  color: #ffffff;
+}
+
 .cardBody:hover {
-  background-color: #1a0b5b;
+  background-color: #2f1ac4;
+}
+.cardBody:hover .cardText {
+  color: #ffffff;
+}
+
+.cardBody:hover .cardButton {
+  background-color: #ffeac1;
+}
+
+.yellowHover:hover {
+  background-color: #ffeac1;
 }
 
 .lato {
@@ -10,6 +34,16 @@
 }
 .josefin {
   font-family: "Josefin Sans", sans-serif;
+}
+
+.pink-page {
+  background-color: #febad7;
+  width: 25px;
+  height: 8px;
+}
+.pageHover:hover {
+  background-color: #fb2e86;
+  width: 33px;
 }
 
 .Ghost-White {
@@ -26,6 +60,10 @@
 .Midnight-Blue {
   /* Midnight-Blue */
   color: #1a0b5b;
+}
+
+.Bg-Midnight-Blue {
+  background-color: #1a0b5b;
 }
 .Wild-Blue-Yonder {
   /* Wild-Blue-Yonder */
