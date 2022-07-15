@@ -18,6 +18,7 @@ import NotFound from "./NotFound";
 import SingleBlog from "./SingleBlog";
 import Faq from "./Faq";
 import ContactUs from "./ContactUs";
+import BlogPage from "./BlogPage";
 
 function Redirect() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function Redirect() {
         location.pathname !== "/about" &&
         location.pathname !== "/not-found" &&
         location.pathname !== "/singleBlog" &&
+        location.pathname !== "/blogPage" &&
         location.pathname !== "/faq" &&
         location.pathname !== "/contact-us"
       ) {
@@ -70,6 +72,7 @@ function Redirect() {
       <Route path="about" exact element={<About />} />
       <Route path="not-found" exact element={<NotFound />} />
       <Route path="singleBlog" exact element={<SingleBlog />} />
+      <Route path="blogPage" exact element={<BlogPage />} />
       <Route path="faq" exact element={<Faq />} />
       <Route path="contact-us" exact element={<ContactUs />} />
     </Routes>
