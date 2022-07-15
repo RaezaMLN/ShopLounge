@@ -18,7 +18,7 @@ export default function Login() {
   // useEffect(() => {
   //   dispatch(login());
   // }, []);
-
+  const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,8 +51,15 @@ export default function Login() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     dispatch(login(userData));
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
   };
 
   console.log("user", user);
@@ -62,7 +69,7 @@ export default function Login() {
       <br />
       <br />
       <div>
-        <Form className="d-flex flex-column align-items-center">
+        <Form noValidate validated={validated} className="d-flex flex-column align-items-center">
           <Form.Label className="text-dark fw-bold josefin" style={{ fontSize: "32px" }}>
             Login
           </Form.Label>
@@ -71,11 +78,11 @@ export default function Login() {
           </Form.Label>
 
           <Form.Group className="mb-3 w-25" controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="Enter email" name="email" value={userData.email || ""} onChange={handleChange} className="fs-5 Wild-Blue-Yonder lato" />
+            <Form.Control type="email" placeholder="Enter email" name="email" value={userData.email || ""} onChange={handleChange} className="fs-5 Wild-Blue-Yonder lato" required />
           </Form.Group>
 
           <Form.Group className="mb-3 w-25" controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" name="password" value={userData.password || ""} onChange={handleChange} className="fs-5 Wild-Blue-Yonder lato" />
+            <Form.Control type="password" placeholder="Password" name="password" value={userData.password || ""} onChange={handleChange} className="fs-5 Wild-Blue-Yonder lato" required />
           </Form.Group>
 
           <a href="#" className="text-decoration-none Wild-Blue-Yonder lato mb-3 " style={{ fontSize: "17px", margin: "0px 200px 0px 0px" }}>

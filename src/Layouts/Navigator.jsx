@@ -12,7 +12,7 @@ import OrderCompleted from "./OrderCompleted";
 import Login from "./Login";
 import ShopList from "./ShopList";
 import ProductDetail from "./ProductDetail";
-import Regist from "./Regist";
+import Shipping from "./Shipping";
 import About from "./About";
 import NotFound from "./NotFound";
 import SingleBlog from "./SingleBlog";
@@ -31,7 +31,7 @@ function Redirect() {
     if (!loginData) {
       if (
         location.pathname !== "/login" &&
-        location.pathname !== "/regist" &&
+        location.pathname !== "/shipping" &&
         location.pathname !== "/" &&
         location.pathname !== "/about" &&
         location.pathname !== "/not-found" &&
@@ -66,7 +66,7 @@ function Redirect() {
       <Route path="login" exact element={<Login />} />
       <Route path="shop-list" exact element={<ShopList />} />
       <Route path="product-detail" exact element={<ProductDetail />} />
-      <Route path="regist" exact element={<Regist />} />
+      <Route path="shipping" exact element={<Shipping />} />
       <Route path="about" exact element={<About />} />
       <Route path="not-found" exact element={<NotFound />} />
       <Route path="singleBlog" exact element={<SingleBlog />} />
