@@ -2,7 +2,18 @@
 @import url("https://fonts.gstatic.com");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&display=swap");
 .cardBody:hover {
-  background-color: #1a0b5b;
+  background-color: #2f1ac4;
+}
+.cardBody:hover .cardText {
+  color: #ffffff;
+}
+
+.cardBody:hover .cardButton {
+  background-color: #ffeac1;
+}
+
+.yellowHover:hover {
+  background-color: #ffeac1;
 }
 
 .lato {
@@ -26,6 +37,10 @@
 .Midnight-Blue {
   /* Midnight-Blue */
   color: #1a0b5b;
+}
+
+.Bg-Midnight-Blue {
+  background-color: #1a0b5b;
 }
 .Wild-Blue-Yonder {
   /* Wild-Blue-Yonder */
