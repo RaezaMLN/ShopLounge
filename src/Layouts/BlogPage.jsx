@@ -9,16 +9,11 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
 import blog1 from "../img/blog1.png";
-import blog2 from "../img/blog2.png";
-import blog3 from "../img/blog3.png";
-import bloga from "../img/bloga.png";
-import blogb from "../img/blogb.png";
-import blogc from "../img/blogc.png";
-import blogd from "../img/blogd.png";
-import rate from "../img/rate.png";
+import blogx from "../img/blogx.png";
+import blogy from "../img/blogy.png";
+
 import sm from "../img/sm.png";
-import sapien from "../img/sapien.png";
-import conva from "../img/conva.png";
+
 import sponsor from "../img/sponsor.png";
 import post1 from "../img/post1.png";
 import post2 from "../img/post2.png";
@@ -34,176 +29,99 @@ import { FiSearch } from "react-icons/fi";
 export default function BlogPage() {
   return (
     <Container fluid>
-      <GreyContainer titlePage={"Single Blog"} />
+      <GreyContainer titlePage={"Blog Page"} />
       <Container className="d-flex">
         {/* Main Content  */}
         <div className="w-75 me-5">
           <img src={blog1} alt="" />
-          <div className="d-flex me-3">
-            <img src={icon1} />
-            <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
-          </div>
-          <div className="d-flex">
-            <img src={icon2} />
-            <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
+          <div className="d-flex my-3">
+            <div className="d-flex me-3">
+              <img src={icon1} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
+            </div>
+            <div className="d-flex">
+              <img src={icon2} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
+            </div>
           </div>
 
-          <h3>Mauris at orci non vulputate diam tincidunt nec.</h3>
-          <p>
+          <h3 className="josefin fw-bold Midnight-Blue" style={{ fontSize: "30px" }}>
+            Mauris at orci non vulputate diam tincidunt nec.
+          </h3>
+          <p className="color-wildBlueYonder lato my-3" style={{ fontSize: "16px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum
             at.
           </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Velit dapibus est, nunc,{" "}
-          </p>
+          <a href="#" className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
+            Read More
+          </a>
+          <br />
+          <br />
+          {/* second content  */}
 
-          <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo dictum sapien, amet, consequat toamk risusu”</p>
-
-          <div>
-            <img src={blog2} alt="" />
-            <img src={blog3} alt="" />
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Velit dapibus est, nunc,{" "}
-          </p>
-          <div>
-            <div className="d-flex flex-row">
-              <div>
-                <img src={bloga} alt="" />
-                <div>
-                  <p className="josefin fw-bold fs-3 my-3">Quam sed</p>
-                  <div className="d-flex align-items-center">
-                    <p className="josefin Midnight-Blue">$32.00</p>
-                    <p className="mx-3 Wild-Strawberry josefin">
-                      <del>$56.00</del>
-                    </p>
-                    <img src={rate} alt="" className="w-25 mb-3" />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img src={blogb} alt="" />
-                <div>
-                  <p className="josefin fw-bold fs-3 my-3">Tristique sed</p>
-                  <div className="d-flex align-items-center">
-                    <p className="josefin Midnight-Blue">$32.00</p>
-                    <p className="mx-3 Wild-Strawberry josefin">
-                      <del>$56.00</del>
-                    </p>
-                    <img src={rate} alt="" className="w-25 mb-3" />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img src={blogc} alt="" />
-                <div>
-                  <p className="josefin fw-bold fs-3 my-3">A etiam</p>
-                  <div className="d-flex align-items-center">
-                    <p className="josefin Midnight-Blue">$32.00</p>
-                    <p className="mx-3 Wild-Strawberry josefin">
-                      <del>$56.00</del>
-                    </p>
-                    <img src={rate} alt="" className="w-25 mb-3" />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img src={blogd} alt="" />
-                <div>
-                  <p className="josefin fw-bold fs-3 my-3">Mi nisi</p>
-                  <div className="d-flex align-items-center">
-                    <p className="josefin Midnight-Blue">$32.00</p>
-                    <p className="mx-3 Wild-Strawberry josefin">
-                      <del>$56.00</del>
-                    </p>
-                    <img src={rate} alt="" className="w-25 mb-3" />
-                  </div>
-                </div>
-              </div>
+          <img src={blogx} alt="" />
+          <div className="d-flex my-3">
+            <div className="d-flex me-3">
+              <img src={icon1} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Velit dapibus est, nunc,{" "}
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Velit dapibus est, nunc,{" "}
-            </p>
-            <Row className="my-5">
-              <Col></Col>
-              <Col className="d-flex justify-content-center">
-                <img src={sm} alt="" />
-              </Col>
-              <Col></Col>
-            </Row>
-
-            <div className="d-flex justify-content-between my-5" style={{ backgroundColor: "#F7F8FB" }}>
-              <div className="d-flex align-items-center lato color-wildBlueYonder">
-                <AiOutlineArrowLeft />
-                <h5 style={{ fontSize: "16.15px" }} className="mt-1">
-                  previous post
-                </h5>
-              </div>
-              <div className="d-flex align-items-center lato color-wildBlueYonder">
-                <h5 style={{ fontSize: "16.15px" }} className="mt-1">
-                  next post
-                </h5>
-                <AiOutlineArrowRight />
-              </div>
+            <div className="d-flex">
+              <img src={icon2} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
             </div>
           </div>
-          <Row>
-            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3 mb-5 my-5 w-75">
-              <img src={sapien} alt="" className="me-3" />
-              <div>
-                <div className="d-flex">
-                  <h5 className="me-5 fs-5">Sapien ac</h5>
-                  <p>Jan 09 2020</p>
-                </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
-              </div>
-            </Col>
-            <Col></Col>
-          </Row>
-          <Row>
-            <Col xs={7} className="border border-5 rounded-3 shadow-lg d-flex align-items-center p-3 w-75">
-              <img src={conva} alt="" className="me-3" />
-              <div>
-                <div className="d-flex">
-                  <h5 className="me-5 fs-5">Augue conva</h5>
-                  <p>Aug 18 2020</p>
-                </div>
+          <h3 className="josefin fw-bold Midnight-Blue" style={{ fontSize: "30px" }}>
+            Aenean vitae in aliquam ultrices lectus. Etiam.
+          </h3>
+          <p className="color-wildBlueYonder lato my-3" style={{ fontSize: "16px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum
+            at.
+          </p>
+          <a href="#" className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
+            Read More
+          </a>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At in vitae rutrum vulputate consectetur.</p>
-              </div>
-            </Col>
-            <Col></Col>
-          </Row>
-          <br />
-          <br />
-          <br />
-          <br />
+          {/* Third Content  */}
+          <img src={blogy} alt="" />
+          <div className="d-flex my-3">
+            <div className="d-flex me-3">
+              <img src={icon1} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
+            </div>
+            <div className="d-flex">
+              <img src={icon2} className="mx-3" />
+              <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
+            </div>
+          </div>
 
-          <Form className="w-75">
-            <Form.Group className="mb-5 d-flex" controlId="formBasicTextt">
-              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato me-3" />
-              <Form.Control type="text" placeholder="Write your email*" className="color-wildBlueYonder lato" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} placeholder="Write your comment*" className="py-5" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Save my name, email, and website in this browser for the next time I comment." />
-            </Form.Group>
-            <Button btnClass={"btn text-light josefin my-5 w-100"} btnTitle={"Continue Shopping"} btnStyle={{ backgroundColor: "#fb2e86" }} />
-          </Form>
+          <h3 className="josefin fw-bold Midnight-Blue" style={{ fontSize: "30px" }}>
+            Sit nam congue feugiat nisl, mauris amet nisi.
+          </h3>
+          <p className="color-wildBlueYonder lato my-3" style={{ fontSize: "16px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum
+            at.
+          </p>
+          <a href="#" className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
+            Read More
+          </a>
+          <br />
+          <br />
+          <br />
+          <div className="d-flex flex-row justify-content-center mb-5">
+            <div className="border border-1 text-secondary lato px-3 mx-3 texthover lightSlateBlue " style={{ fontSize: "16px", cursor: "pointer" }}>
+              <span className="texthvr ">1</span>
+            </div>
+            <div className="border border-1 text-secondary lato px-3 mx-3 texthover lightSlateBlue " style={{ fontSize: "16px", cursor: "pointer" }}>
+              <span className="texthvr ">2</span>
+            </div>
+            <div className="border border-1 text-secondary lato px-3 mx-3 texthover lightSlateBlue " style={{ fontSize: "16px", cursor: "pointer" }}>
+              <span className="texthvr ">3</span>
+            </div>
+            <div className="border border-1 text-secondary lato px-3 mx-3 texthover lightSlateBlue " style={{ fontSize: "16px", cursor: "pointer" }}>
+              <span className="texthvr ">4</span>
+            </div>
+          </div>
         </div>
 
         {/* Side  */}
@@ -414,6 +332,7 @@ export default function BlogPage() {
           </div>
         </div>
       </Container>
+
       <Container className="d-flex flex-column align-items-center">
         <img src={sponsor} alt="" />
       </Container>
