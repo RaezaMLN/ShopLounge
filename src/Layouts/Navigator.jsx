@@ -32,10 +32,9 @@ function Redirect() {
     if (!loginData) {
       if (
         location.pathname !== "/login" &&
-        location.pathname !== "/shipping" &&
         location.pathname !== "/" &&
         location.pathname !== "/about" &&
-        location.pathname !== "/not-found" &&
+        location.pathname !== "/*" &&
         location.pathname !== "/singleBlog" &&
         location.pathname !== "/blogPage" &&
         location.pathname !== "/faq" &&
@@ -70,7 +69,7 @@ function Redirect() {
       <Route path="product-detail" exact element={<ProductDetail />} />
       <Route path="shipping" exact element={<Shipping />} />
       <Route path="about" exact element={<About />} />
-      <Route path="not-found" exact element={<NotFound />} />
+      <Route path="*" exact element={<NotFound />} />
       <Route path="singleBlog" exact element={<SingleBlog />} />
       <Route path="blogPage" exact element={<BlogPage />} />
       <Route path="faq" exact element={<Faq />} />

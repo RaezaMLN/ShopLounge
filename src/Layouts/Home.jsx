@@ -38,7 +38,7 @@ export default function Home() {
     dispatch(getProduct());
   }, []);
   useEffect(() => {
-    const filterProduct = product.list.filter((item, index) => index < 16);
+    const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
   }, [product]);
 
@@ -79,7 +79,6 @@ export default function Home() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  console.log("item images", item.images);
                   return <Carousel listImage={item.images} title={item.title} price={item.price} />;
                 })}
           </Col>

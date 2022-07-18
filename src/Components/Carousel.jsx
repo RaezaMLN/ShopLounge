@@ -1,17 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 
-const Carousel = ({ listImage, title, price, changeBackground }) => {
+const Carousel = ({ listImage, title, price }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
-  const [textColor, setTextColor] = useState();
+
   console.log("image", listImage);
   console.log("title", title);
+
+  useEffect(() => {
+    const updateImage = listImage;
+    if (updateImage) {
+      setShowImage(listImage[0]);
+    }
+  }, [listImage]);
 
   return (
     <Card style={{ width: "18rem" }} className="m-3 border border-5">
       <Card.Img variant="top" src={showImage} />
-      <Card.Body className="d-flex flex-column align-items-center justify-content-evenly cardBody" onMouseOver={() => setTextColor("text-light")}>
+      <Card.Body className="d-flex flex-column align-items-center justify-content-evenly cardBody">
         <Card.Title className="lato fw-bold Wild-Strawberry" style={{ fontSize: "18px" }}>
           {title}
         </Card.Title>
