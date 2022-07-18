@@ -30,7 +30,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../Redux/Actions/productAction";
 
 export default function Home() {
-  const [showPage, setShowPage] = useState(1 < 4);
+  const [showPage, setShowPage] = useState([4, 0]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
@@ -38,7 +38,7 @@ export default function Home() {
     dispatch(getProduct());
   }, []);
   useEffect(() => {
-    const filterProduct = product.list.filter((item, index) => index < 12);
+    const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
   }, [product]);
 
@@ -77,17 +77,17 @@ export default function Home() {
             {products &&
               products.length > 0 &&
               products
-                .filter((item, index) => index < 4)
+                .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
                   return <Carousel listImage={item.images} title={item.title} price={item.price} />;
                 })}
           </Col>
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(1 < 4)}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(4 < 8)}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(8 < 12)}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(12 < 16)}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
           </div>
         </Row>
 
