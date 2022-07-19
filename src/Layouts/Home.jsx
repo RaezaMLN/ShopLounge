@@ -30,6 +30,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../Redux/Actions/productAction";
 
 export default function Home() {
+  const [showPage, setShowPage] = useState([4, 0]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
@@ -37,11 +38,9 @@ export default function Home() {
     dispatch(getProduct());
   }, []);
   useEffect(() => {
-    const filterProduct = product.list.filter((item, index) => index < 12);
+    const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
   }, [product]);
-
-  // console.log("see product", products);
 
   return (
     <div>
@@ -77,43 +76,30 @@ export default function Home() {
           <Col className="d-flex flex-wrap">
             {products &&
               products.length > 0 &&
-              products.map((item, index) => {
-                console.log("this itemm", item);
-                return <Carousel listImage={item.images} title={item.title} price={item.price} />;
-              })}
-            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
-            {/* Carousel  */}
-            {/* <Carousel>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
-                </Carousel.Item>
-              </Carousel> */}
-
-            {/* <Card.Body className="text-center">
-                <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
-                <Card.Text className="Midnight-Blue lato fw-semibold">Code - Y523201</Card.Text>
-                <Card.Text className="Midnight-Blue lato fw-semibold">$42.00</Card.Text>
-              </Card.Body>
-              <Card.Body></Card.Body>
-            </Card> */}
+              products
+                .filter((item, index) => index < showPage[0] && index >= showPage[1])
+                .map((item, index) => {
+                  return <Carousel listImage={item.images} title={item.title} price={item.price} />;
+                })}
           </Col>
+
+          <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
+          </div>
         </Row>
 
         {/* Latest Product  */}
         <Row className="mt-5">
           <Col>
-            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Latest Products</h1>
+            <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Leatest Products</h1>
           </Col>
         </Row>
-        <div className="d-flex align-items-center justify-content-center">
+        <div className="d-flex align-items-center justify-content-center mb-5">
           <div className="mx-3 fs-5 lato">
-            <a href="#" className="text-decoration-none Midnight-Blue">
+            <a href="#" className="text-decoration-none Midnight-Blue txthoverpink">
               New Arrival
             </a>
           </div>
@@ -133,31 +119,30 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <Row className="my-5">
-          <Col xs={4}>
-            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
-            {/* Carousel  */}
-            {/* <Carousel>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
-                </Carousel.Item>
-              </Carousel>
-              <Card.Body className="text-center d-flex justify-content-around">
-                <Card.Title className="Wild-Strawberry josefin fw-bold me-5">Cantilever chair</Card.Title>
-                <div className="d-flex">
-                  <Card.Text className="Midnight-Blue lato fw-semibold me-1">$42.00</Card.Text>
-                  <Card.Text className="lato fw-semibold Wild-Strawberry">$62.00</Card.Text>
-                </div>
-              </Card.Body>
-              <Card.Body></Card.Body> */}
-            {/* </Card> */}
-          </Col>
+        <Row className="ms-2">
+          {products &&
+            products.length > 0 &&
+            products
+              .filter((item, index) => index < 6)
+              .map((item, index) => {
+                console.log("item baru", item);
+                return (
+                  <Col xs={4} className="mb-5">
+                    <Card style={{ width: "23rem" }} className="border border-0">
+                      <Card.Img variant="top" src={item.images[2]} />
+                      <Card.Body className="d-flex">
+                        <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
+                        <div className="d-flex">
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2">${item.price}</Card.Text>
+                          <Card.Text className="lato fw-semibold Wild-Strawberry">
+                            <del>$62.00</del>
+                          </Card.Text>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
         </Row>
 
         {/* What ShopLounge Offer! */}
@@ -168,7 +153,7 @@ export default function Home() {
         </Row>
         <div className="d-flex  justify-content-center my-5">
           <div>
-            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
+            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0 shadow-sm mx-3">
               <Card.Img variant="top" className="w-25" src={delivery} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
@@ -177,7 +162,7 @@ export default function Home() {
             </Card>
           </div>
           <div>
-            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
+            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0 shadow-sm mx-3">
               <Card.Img variant="top" className="w-25" src={cashback} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
@@ -186,7 +171,7 @@ export default function Home() {
             </Card>
           </div>
           <div>
-            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
+            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0 shadow-sm mx-3">
               <Card.Img variant="top" className="w-25" src={quality} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
@@ -195,7 +180,7 @@ export default function Home() {
             </Card>
           </div>
           <div>
-            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0">
+            <Card style={{ width: "18rem" }} className="d-flex flex-column align-items-center border-0  shadow-sm mx-3">
               <Card.Img variant="top" className="w-25" src={support} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
@@ -205,7 +190,7 @@ export default function Home() {
           </div>
         </div>
       </Container>
-
+      <br />
       {/* Second banner */}
       <Container fluid className="my-5 d-flex align-items-center justify-content-center Whisper">
         <div>
@@ -239,76 +224,68 @@ export default function Home() {
           </Col>
         </Row>
         <Row className="my-5">
-          <Col xs={3}>
-            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
-            {/* Carousel  */}
-            {/* <Carousel>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="First slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Second slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={sofa} alt="Third slide" />
-                </Carousel.Item>
-              </Carousel> */}
-            {/* <Card.Body className="text-center d-flex flex-column align-items-center">
-                <Card.Title className="Wild-Strawberry josefin fw-bold">Cantilever chair</Card.Title>
-                <div className="d-flex">
-                  <Card.Text className="Midnight-Blue lato fw-semibold me-2 Midnight-Blue">$42.00</Card.Text>
-                  <Card.Text className="lato fw-semibold Midnight-Blue-1">$62.00</Card.Text>
-                </div>
-              </Card.Body>
-              <Card.Body></Card.Body>
-            </Card> */}
-          </Col>
+          {products &&
+            products.length > 0 &&
+            products
+              .filter((item, index) => index < 4)
+              .map((item, index) => {
+                console.log("item baru", item);
+                return (
+                  <Col xs={3}>
+                    <Card style={{ width: "18rem" }} className="border border-0">
+                      <Card.Img variant="top" src={item.images[1]} />
+                      <Card.Body className="text-center d-flex flex-column align-items-center">
+                        <Card.Title className="Wild-Strawberry josefin fw-bold">{item.title}</Card.Title>
+                        <div className="d-flex">
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${item.price}</Card.Text>
+                          <Card.Text className="lato fw-semibold color-wildBlueYonder">
+                            <del>$62.00</del>
+                          </Card.Text>
+                        </div>
+                      </Card.Body>
+                      <Card.Body></Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
         </Row>
-        <div className="d-flex flex-row justify-content-evenly">
-          <div className="d-flex flex-column me-3">
+        <Row className="d-flex flex-row justify-content-evenly">
+          <Col xs={4} className="d-flex flex-column me-3" style={{ backgroundColor: "#FFF6FB" }}>
             <h5 className="fs-4 fw-bold Midnight-Blue josefin">23% off in all products</h5>
             <a href="#" className="Wild-Strawberry lato fs-5 fw-bold">
               Shop Now
             </a>
             <img src={clock} />
-          </div>
-          <div className="d-flex flex-column Ghost-White">
+          </Col>
+          <Col xs={4} className="d-flex flex-column Ghost-White ">
             <h5 className="fs-4 fw-bold Midnight-Blue josefin">23% off in all products</h5>
             <a href="#" className="Wild-Strawberry lato fs-5 fw-bold">
               View Collection
             </a>
             <img src={sit} />
-          </div>
-          <div className="d-flex flex-column justify-content-start josefin fs-5 Midnight-Blue">
+          </Col>
+          <Col xs={4} className="d-flex flex-column justify-content-start josefin fs-5 Midnight-Blue w-25">
             <div>
-              <div className="d-flex">
-                <img src={chair1} alt="" className="me-3" />
-                <div>
-                  <h5>Executive Seat chair</h5>
-                  <h5>$32.00</h5>
-                </div>
-              </div>
+              {products &&
+                products.length > 0 &&
+                products
+                  .filter((item, index) => index < 3)
+                  .map((item, index) => {
+                    return (
+                      <div className="d-flex">
+                        <img src={item.images[0]} alt="" className="me-3 w-50 mb-3" />
+                        <div>
+                          <h5 className="text-wrap" style={{ fontSize: "16px" }}>
+                            {item.title}
+                          </h5>
+                          <h5 style={{ fontSize: "12px" }}>${item.price}</h5>
+                        </div>
+                      </div>
+                    );
+                  })}
             </div>
-            <div className="my-3">
-              <div className="d-flex">
-                <img src={chair2} alt="" className="me-3" />
-                <div>
-                  <h5>Executive Seat chair</h5>
-                  <h5>$32.00</h5>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="d-flex">
-                <img src={chair3} alt="" className="me-3" />
-                <div>
-                  <h5>Executive Seat chair</h5>
-                  <h5>$32.00</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
         <br />
         {/* Discount Item  */}
         <Row className="mt-5">
