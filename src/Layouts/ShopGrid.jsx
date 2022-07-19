@@ -81,7 +81,7 @@ export default function ShopGrid() {
             </Form>
           </Col>
         </Row>
-        <Row>
+        <Row className="my-5">
           <Col className="d-flex flex-wrap justify-content-between">
             {products &&
               products.length > 0 &&
