@@ -82,7 +82,7 @@ export default function ShopGrid() {
           </Col>
         </Row>
         <Row>
-          <Col className="d-flex flex-wrap">
+          <Col className="d-flex flex-wrap justify-content-between">
             {products &&
               products.length > 0 &&
               products
