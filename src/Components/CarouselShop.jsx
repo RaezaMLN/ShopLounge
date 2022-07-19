@@ -15,7 +15,7 @@ const CarouselShop = ({ listImage, title, price, changeBackground }) => {
   }, [listImage]);
 
   return (
-    <Card className="me-5 my-3" style={{ width: "270px", border: "none" }}>
+    <Card className="my-3" style={{ width: "270px", border: "none" }}>
       <div className="container-image">
         <Card.Img variant="top" src={showImage} />
         <div className="overlay ">
