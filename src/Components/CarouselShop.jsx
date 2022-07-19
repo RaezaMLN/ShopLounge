@@ -6,7 +6,6 @@ import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
 const CarouselShop = ({ listImage, title, price, changeBackground }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
   console.log("image", listImage);
-  console.log("title", title);
 
   return (
     <Card style={{ width: '270px', border:"none"}} >    
