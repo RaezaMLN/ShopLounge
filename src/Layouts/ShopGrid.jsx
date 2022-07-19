@@ -1,16 +1,15 @@
 import React, { useState, useEffect} from "react";
 import { useSelector , useDispatch} from 'react-redux';
-
-
-import { Card, Row, Col, OverlayTrigger } from "react-bootstrap";
+import { Card, Row, Col, Form } from "react-bootstrap";
 
 
 import GreyContainer from "../Components/GreyContainer";
 import {getProduct} from "../Redux/Actions/productAction"
+import CarouselShop from "../Components/CarouselShop";
 import sponsor from "../img/sponsor.png";
 import ShopHeader from "../Components/ShopHeader"
-import { MdDeleteForever } from "react-icons/md";
-import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
+import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
+
 
 
 export default function ShopGrid() {
@@ -22,7 +21,7 @@ export default function ShopGrid() {
     },[])
 
     useEffect(()=>{
-        const filterProduct = product.list.filter((item, index )=>index<12)
+        const filterProduct = product.list.filter((item, index )=>index<36)
         setProducts(filterProduct)
     },[product])
     
@@ -33,6 +32,41 @@ export default function ShopGrid() {
   return (
     <div>
         <GreyContainer titlePage={"Shope Grid Default"}/>
+        <Row>
+            <Col sm="4">
+                <Card style={{ border:"none"}}>
+                    <Card.Body className="p-0">
+                        <Card.Title>Ecommerce Acceories & Fashion item </Card.Title>
+                        <Card.Subtitle><small className="text-muted">About 9,620 results (0.62 seconds)</small></Card.Subtitle>
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col sm="8">
+                <Form className="d-flex gap-5 justify-content-end" >
+                    <Form.Group className="d-flex gap-2" >
+                        <Form.Label>Per Page:</Form.Label>
+                        <Form.Control type="number" style={{width:"100px"}}/>
+                    </Form.Group>
+                    
+                    <Form.Group className="d-flex gap-2"  >
+                        <Form.Label style={{width:"85px"}}>Sort By:</Form.Label>
+                        <Form.Select aria-label="Default select example">
+                            <option>Best Match</option>
+                            <option value="1">By ...</option>
+                            <option value="2">By ...</option>
+                        </Form.Select>
+                    </Form.Group>
+                    
+                    <Form.Group className="d-flex gap-2" >
+                        <Form.Label >
+                            View:
+                            <MdViewModule/>
+                            <MdViewList/>
+                        </Form.Label>
+                    </Form.Group>
+                </Form>
+            </Col>
+        </Row>
 
         <div className="container my-5" >
             <ShopHeader/>
@@ -41,31 +75,7 @@ export default function ShopGrid() {
                     products &&
                     products.length > 0 &&
                     products.map((item, index)=>{
-                        return(
-                            <Card style={{ width: '270px', border:"none"}} >
-                                
-                                <div className="container-image">
-                                    <Card.Img variant="top" src={item.category.image}/>
-                                    <div className="overlay ">
-                                        <div className="overlay-icon position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle"/></div>
-                                        <div className="overlay-icon position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
-                                        <div className="overlay-icon position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
-                                    </div>
-                                </div> 
-                                
-                                
-                                
-                                <Card.Body>
-                                    <Card.Title className='text-center'>{item.title}</Card.Title>
-                                    <div className="d-flex justify-content-center gap-1 ">
-                                        <div id="shape1" className="bg-butterCup"></div>
-                                        <div id="shape2" className="bg-wildStrawberry"></div>
-                                        <div id="shape3" className="bg-lightSlateBlue"></div>
-                                    </div>
-                                    <Card.Text className="text-center">${Math.round((62/100)*(Number(item.price)))}<del className="Wild-Strawberry mx-3"> ${item.price}</del></Card.Text>
-                                </Card.Body>
-                            </Card>
-                        );
+                        return <CarouselShop listImage={item.images} title={item.title} price={item.price} />;
                     })
                 }
             </div>

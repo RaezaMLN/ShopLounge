@@ -33,7 +33,7 @@ export default function Navigator() {
           <Route path="product-detail" exact element={<ProductDetail />} />
           <Route path="regist" exact element={<Regist />} />
           <Route path="about" exact element={<About />} />
-          <Route path="not-found" exact element={<NotFound />} />
+          <Route path="*" exact element={<NotFound />} />
           <Route path="singleBlog" exact element={<SingleBlog />} />
           <Route path="faq" exact element={<Faq />} />
           <Route path="contact-us" exact element={<ContactUs />} />
