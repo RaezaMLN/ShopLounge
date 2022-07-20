@@ -125,7 +125,6 @@ export default function Home() {
             products
               .filter((item, index) => index < 6)
               .map((item, index) => {
-                console.log("item baru", item);
                 return (
                   <Col xs={4} className="mb-5">
                     <Card style={{ width: "23rem" }} className="border border-0">
@@ -229,7 +228,6 @@ export default function Home() {
             products
               .filter((item, index) => index < 4)
               .map((item, index) => {
-                console.log("item baru", item);
                 return (
                   <Col xs={3}>
                     <Card style={{ width: "18rem" }} className="border border-0">

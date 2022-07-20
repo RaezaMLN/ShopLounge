@@ -11,10 +11,10 @@ const CarouselShop = ({ listImage, title, price, changeBackground }) => {
     <Card style={{ width: '270px', border:"none"}} >    
         <div className="container-image">
             <Card.Img variant="top" src={showImage}/>
-            <div className="overlay ">
-                <div className="overlay-icon position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle"/></div>
-                <div className="overlay-icon position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
-                <div className="overlay-icon position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
+            <div className="overlay overlay-shop ">
+                <div className="overlay-icon-shop position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle"/></div>
+                <div className="overlay-icon-shop position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
+                <div className="overlay-icon-shop position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
             </div>
         </div> 
         <Card.Body>

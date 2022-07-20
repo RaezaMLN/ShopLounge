@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
+import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
+
 
 const Carousel = ({ listImage, title, price }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
 
-  console.log("image", listImage);
-  console.log("title", title);
-
+  
   useEffect(() => {
     const updateImage = listImage;
     if (updateImage) {
@@ -17,7 +17,14 @@ const Carousel = ({ listImage, title, price }) => {
 
   return (
     <Card style={{ width: "18rem" }} className="m-3 border border-5">
-      <Card.Img variant="top" src={showImage} />
+      <div className="container-image">
+        <Card.Img variant="top" src={showImage} />
+        <div className="overlay overlay-home">
+          <div className="overlay-icon-home position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle"/></div>
+          <div className="overlay-icon-home position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
+          <div className="overlay-icon-home position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
+        </div>
+      </div>
       <Card.Body className="d-flex flex-column align-items-center justify-content-evenly cardBody">
         <Card.Title className="lato fw-bold Wild-Strawberry" style={{ fontSize: "18px" }}>
           {title}
