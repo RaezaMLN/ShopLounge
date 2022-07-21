@@ -10,6 +10,7 @@ import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 
 export default function ShopGrid() {
   const [showPage, setShowPage] = useState([12, 0]);
+  const [productList, setProductList] = useState([]);
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
@@ -37,8 +38,39 @@ export default function ShopGrid() {
     }
     e.preventDefault();
 
-    console.log("Filter Value", e.target.value);
+    // console.log("Filter Value", e.target.value);
   }
+
+  // const [activePage, setaActivePage] = useState(1);
+  // const [items, setItems] = useState([]);
+
+  // useEffect(() => {
+  //   if (products) {
+  //     let holdItems = [];
+  //     for (let number = 1; number <= Math.ceil(products.length / 12); number++) {
+  //       holdItems.push(
+  //         <div
+  //           key={number}
+  //           active={number === activePage}
+  //           style={{
+  //             backgroundColor: "white",
+  //             padding: "5px",
+  //           }}
+  //           onClick={(e) => {
+  //             setaActivePage(number);
+  //             const recentData = products;
+  //             const filterData = recentData.slice(10 * (number - 1), 10 * number);
+  //             setProductList(filterData);
+  //           }}
+  //         >
+  //           {number}
+  //         </div>
+  //       );
+  //     }
+  //     setItems(holdItems);
+  //   }
+  //   // console.log("product", product.list);
+  // }, [products, items]);
 
   return (
     <div>
@@ -92,6 +124,9 @@ export default function ShopGrid() {
                 })}
           </Col>
         </Row>
+        {/* <Row>
+          <div style={{ display: "flex", gap: "10px" }}>{items}</div>
+        </Row> */}
       </div>
 
       <Row className="justify-content-md-center my-5">
