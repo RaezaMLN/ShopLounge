@@ -2,19 +2,20 @@ import * as types from "../Types/cartType";
 
 const cartState = {
   //   numberCart: 0,
-  cart: [],
-  //   products: [],
+  // cart: [],
+  cartProducts: [],
 };
 
 const cartReducer = (state = cartState, { type, payload }) => {
+  // console.log("see payload", payload)
   switch (type) {
     case types.ADD_CART:
       return Object.assign({}, state, {
-        cart: [...state.cart, payload],
+        cartProducts: [...state.cartProducts, payload],
       });
     case types.DELETE_CART:
       return Object.assign({}, state, {
-        cart: state.cart.filter((item) => item.id !== payload.id),
+        list: state.list.filter((item) => item.id !== payload.id),
       });
     // case types.ADJUST_QUANTITY:
     //     return{

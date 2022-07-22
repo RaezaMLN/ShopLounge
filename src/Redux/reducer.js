@@ -10,7 +10,5 @@ const rootReducers = combineReducers({
   product: productReducer,
 });
 
-console.log("see cart", rootReducers.cart);
-
 //export its as default
 export default rootReducers;
