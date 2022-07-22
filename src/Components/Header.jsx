@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Offcanvas, Form, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Link } from "react-router-dom";
 // import {AiOutlineSearch} from 'react-icons/ai'
 import { ImSpinner2, ImSearch } from 'react-icons/im'
 import { BsCart2 } from 'react-icons/bs'
@@ -29,7 +30,7 @@ export default function Header(){
     return (
         <Navbar key="lg" expand="lg" >
           <Container fluid className="container">
-            <Navbar.Brand href="/">Hekto</Navbar.Brand>
+            <Navbar.Brand><Link to={"/"} style={{textDecoration:"none", color:"black"}}>Hekto</Link> </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-lg`}
@@ -98,7 +99,8 @@ export default function Header(){
                     }    
                     </div>
                     <div className="d-flex mx-4 justify-content-center  align-items-center gap-1">
-                        <BsCart2 />
+                      <Link to={"/shopping-cart"} style={{textDecoration:"none", color:"black"}}><BsCart2 /></Link> 
+                      
                     </div>
 
                 </Offcanvas.Body>

@@ -28,6 +28,7 @@ import icon2 from "../img/calend.png";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../Redux/Actions/productAction";
+import { AddCart } from "../Redux/Actions/cartAction";
 
 export default function Home() {
   const [showPage, setShowPage] = useState([4, 0]);
@@ -41,6 +42,11 @@ export default function Home() {
     const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
   }, [product]);
+
+  const handleClickCart = (item)=>{
+    // console.log("see item click", item)
+    dispatch(AddCart(item))
+  }
 
   return (
     <div>
@@ -79,7 +85,7 @@ export default function Home() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  return <Carousel listImage={item.images} title={item.title} price={item.price} />;
+                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart= {()=>handleClickCart(item)}/>;
                 })}
           </Col>
 

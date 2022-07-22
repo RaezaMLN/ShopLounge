@@ -1,9 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
+import { useSelector, useDispatch } from "react-redux";
 
 import GreyContainer from '../Components/GreyContainer';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { AddCart } from "../Redux/Actions/cartAction";
+
 
 export default function ShoppingCart(){
+    // const dispatch = useDispatch();
+    const cartProducts = useSelector((state) => state.cart);
+    const [cartList, setCartList]=useState()
+    console.log("see state shopping",cartProducts)
+
+    console.log("see panjang shopping",cartProducts.length)
+
+    // useEffect(()=>{
+    //     setCartList(cartProducts)
+    // },[])
+
+    // console.log("see cartList",cartList)
+    // console.log("see panjang cartList",cartList.length)
+
     
     
     return(
@@ -24,29 +41,28 @@ export default function ShoppingCart(){
                                 </tr>
                             </thead>
                             <tbody>
-                            {/* {
-                                ListCart.map((item,key)=>{
+                            {
+                                cartProducts &&
+                                cartProducts.length >0 &&
+                                cartProducts.map((item,key)=>{
+                                    console.log("see item",item) 
                                     return(
                                         <tr key={key}>    
-                                        <td><i className="badge badge-danger" onClick={()=>DeleteCart(key)}>X</i></td>
-                                        <td>{item.name}</td>
-                                        <td><img src={item.image} style={{width:'100px',height:'80px'}}/></td>
-                                        <td>{item.price} $</td>
-                                        <td>
-                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>DecreaseQuantity(key)}>-</span>
-                                                <span className="btn btn-info">{item.quantity}</span>
-                                                <span className="btn btn-primary" style={{margin:'2px'}} onClick={()=>IncreaseQuantity(key)}>+</span>
-                                        </td>
-                                        <td>{ TotalPrice(item.price,item.quantity)} $</td>
+                                        {/* <td><i className="badge badge-danger" >X</i></td> */}
+                                        <td><img src={item.images} style={{width:'100px',height:'80px'}}/></td>
+                                        <td>{item.title}</td>
+                                        <td>${item.price} </td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     )
                                 })
                                     
                             }
                             <tr>
-                                <td colSpan="5">Total Carts</td>
-                                <td>{Number(TotalCart).toLocaleString('en-US')} $</td>
-                            </tr> */}
+                                {/* <td colSpan="5">Total Carts</td>
+                                <td>{Number(TotalCart).toLocaleString('en-US')} $</td> */}
+                            </tr>
                             </tbody>
                         
                         </table>
