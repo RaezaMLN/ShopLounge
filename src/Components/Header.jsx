@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Offcanvas, Form, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 // import {AiOutlineSearch} from 'react-icons/ai'
 import { ImSpinner2, ImSearch } from 'react-icons/im'
 import { BsCart2 } from 'react-icons/bs'
@@ -13,7 +15,6 @@ export default function Header(){
         return new Promise((resolve) => setTimeout(resolve, 2000));
     }
       
-    
     const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -27,8 +28,11 @@ export default function Header(){
     
     const loginData = localStorage.getItem("token");
 
+    const listCart = useSelector((state) => state.cart.cartProducts);
+
+
     return (
-        <Navbar key="lg" expand="lg" >
+        <Navbar key="lg" expand="lg" className="sticky-top" >
           <Container fluid className="container">
             <Navbar.Brand><Link to={"/"} style={{textDecoration:"none", color:"black"}}>Hekto</Link> </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
@@ -100,7 +104,7 @@ export default function Header(){
                     </div>
                     <div className="d-flex mx-4 justify-content-center  align-items-center gap-1">
                       <Link to={"/shopping-cart"} style={{textDecoration:"none", color:"black"}}><BsCart2 /></Link> 
-                      
+                      <div>{listCart.length}</div>
                     </div>
 
                 </Offcanvas.Body>
