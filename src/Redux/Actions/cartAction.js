@@ -7,30 +7,29 @@ import * as types from "../Types/cartType";
 //     }
 // }
 
-export function AddCart(itemId){
-    return {
-        type: types.ADD_CART,
-        payload:{
-            id:itemId
-        }
+export const AddCart = (item)=>{
+    return (dispatch)=> {
+        // console.log("see item",item)
+        dispatch({type: types.ADD_CART, payload: item});
+
     }
 }
 
-export function DeleteCart(itemId){
-    return{
-        type: types.DELETE_CART,
-        payload:{
-            id: itemId
-        }
-    }
-}
+// export function DeleteCart(itemId){
+//     return{
+//         type: types.DELETE_CART,
+//         payload:{
+//             id: itemId
+//         }
+//     }
+// }
 
-export function AdjustQuantity(itemId, value){
-    return{
-        type: types.ADJUST_QUANTITY,
-        payload: {
-            id: itemId,
-            qty: value
-        }
-    }
-}
+// export function AdjustQuantity(itemId, value){
+//     return{
+//         type: types.ADJUST_QUANTITY,
+//         payload: {
+//             id: itemId,
+//             qty: value
+//         }
+//     }
+// }
