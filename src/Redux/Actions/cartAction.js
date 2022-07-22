@@ -7,13 +7,12 @@ import * as types from "../Types/cartType";
 //     }
 // }
 
-export const AddCart = (item)=>{
-    return (dispatch)=> {
-        // console.log("see item",item)
-        dispatch({type: types.ADD_CART, payload: item});
-
-    }
-}
+export const AddCart = (item) => {
+  return (dispatch) => {
+    // console.log("see item",item)
+    dispatch({ type: types.ADD_CART, payload: item });
+  };
+};
 
 // export function DeleteCart(itemId){
 //     return{
