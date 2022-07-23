@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { RiStarFill, RiStarHalfFill, RiStarLine } from "react-icons/ri";
@@ -18,12 +19,15 @@ export default function ShopList() {
   useEffect(() => {
     dispatch(getProduct());
   }, []);
+
   useEffect(() => {
-    const filterProduct = product.list.filter((item, index) => index < 22);
-    setProducts(filterProduct);
+    if (product.list && product.list.length > 0) {
+      const filterProduct = product.list.filter((item, index) => index < 37);
+      setProducts(filterProduct);
+    }
   }, [product]);
 
-  console.log("see product", products);
+  // console.log("show Page", showPage);
 
   function handleChange(e) {
     const filterValue = e.target.value;
@@ -39,8 +43,41 @@ export default function ShopList() {
     }
     e.preventDefault();
 
-    console.log("Filter Value", e.target.value);
+    // console.log("Filter Value", e.target.value);
   }
+
+  const allproduct = useSelector((state) => state.product.list);
+
+  const [activePage, setaActivePage] = useState(1);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    if (allproduct) {
+      let holdItems = [];
+      for (let number = 1; number <= Math.ceil(allproduct.length / 7); number++) {
+        holdItems.push(
+          <div
+            className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
+            key={number}
+            active={number === activePage}
+            style={{
+              cursor: "pointer",
+            }}
+            onClick={(e) => {
+              setaActivePage(number);
+              const recentData = allproduct;
+              const filterData = recentData.slice(7 * (number - 1), 7 * number);
+              setProducts(filterData);
+            }}
+          >
+            <span className="texthvr">{number}</span>
+          </div>
+        );
+      }
+      setItems(holdItems);
+    }
+    // console.log("product", product.list);
+  }, [allproduct, items]);
 
   return (
     <div>
@@ -77,8 +114,12 @@ export default function ShopList() {
               <Form.Group className="d-flex gap-2">
                 <Form.Label>
                   View:
-                  <MdViewModule />
-                  <MdViewList />
+                  <Link to={"/shop-grid"}>
+                    <MdViewModule />
+                  </Link>
+                  <Link to={"/shop-list"}>
+                    <MdViewList />
+                  </Link>
                 </Form.Label>
               </Form.Group>
             </Form>
@@ -90,6 +131,7 @@ export default function ShopList() {
             products
               .filter((item, index) => index < showPage[0] && index >= showPage[1])
               .map((item, index) => {
+                console.log("products", products);
                 return (
                   <Card className="my-5 p-4">
                     <Row>
@@ -131,6 +173,13 @@ export default function ShopList() {
               })}
         </div>
       </div>
+      <Row>
+        <Col>
+          <Row>
+            <div className="d-flex gap-3 justify-content-center">{items}</div>
+          </Row>
+        </Col>
+      </Row>
       <Brand />
     </div>
   );
