@@ -33,7 +33,7 @@ export default function Header() {
   const listCart = useSelector((state) => state.cart.cartProducts);
 
   return (
-    <Navbar key="lg" expand="lg">
+    <Navbar key="lg" expand="lg" className="sticky-top bg-light">
       <Container fluid className="container">
         <Navbar.Brand>
           <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
@@ -63,7 +63,7 @@ export default function Header() {
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/faq">FAQ</Nav.Link>
             </Nav>
-            
+
             <Form className="d-flex me-5">
               <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
               {
@@ -100,6 +100,7 @@ export default function Header() {
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>
                 <BsCart2 />
               </Link>
+              <div>{listCart.length}</div>
             </div>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

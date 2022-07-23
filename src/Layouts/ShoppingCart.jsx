@@ -10,6 +10,7 @@ import Input from "../Components/Input";
 export default function ShoppingCart() {
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
+
   const formatter = new Intl.NumberFormat('en-UK', {
     style: 'currency',
     currency: 'GBP',
@@ -37,9 +38,9 @@ export default function ShoppingCart() {
         <Col lg="8">
           <div className="row">
             <div className="col-md-12">
-              <table className="table">
+              <table className="table ">
                 <thead>
-                  <tr>
+                  <tr >
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -67,7 +68,7 @@ export default function ShoppingCart() {
                           </td>
                           
                           <td>${item.price} </td>
-                          <td><Input inpType="number"  pattern="[0-9]+" style={{width: "50px" }} /></td>
+                          <td><Input inpType="number"  pattern="[0-9]+" /></td>
                           <td>{formatter.format(item.price)} </td>
                         </tr>
                       );
@@ -86,11 +87,11 @@ export default function ShoppingCart() {
               <Form className="p-4 bg-ghost-white rounded" style={{width:"371px"}}>
                 <div className="border-bottom my-3 px-1 d-flex justify-content-between">
                   <div>Subtotals:</div>
-                  <div>{countTotal}</div>
+                  <div>{formatter.format(countTotal)}</div>
                 </div>
                 <div className="border-bottom my-3 px-1 d-flex justify-content-between ">
                   <div>Totals:</div>
-                  <div>{countTotal + (countTotal*(15/100))}</div>
+                  <div>{formatter.format(countTotal + (countTotal*(15/100)))}</div>
                 </div>
                 {/* <Form.Control plaintext readOnly defaultValue={"Subtotals:" + countTotal}  className="border-bottom my-3" /> */}
                 {/* <Form.Control plaintext readOnly defaultValue="Totals:" className="border-bottom" /> */}
