@@ -15,7 +15,7 @@ export default function ShopGrid() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState([]);
-  console.log("product", product);
+  // console.log("product", product);
 
   useEffect(() => {
     dispatch(getProduct());
@@ -55,11 +55,11 @@ export default function ShopGrid() {
       for (let number = 1; number <= Math.ceil(allproduct.length / 12); number++) {
         holdItems.push(
           <div
+            className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
             key={number}
             active={number === activePage}
             style={{
-              backgroundColor: "white",
-              padding: "5px",
+              cursor: "pointer",
             }}
             onClick={(e) => {
               setaActivePage(number);
@@ -68,7 +68,7 @@ export default function ShopGrid() {
               setProducts(filterData);
             }}
           >
-            {number}
+            <span className="texthvr">{number}</span>
           </div>
         );
       }
@@ -134,7 +134,7 @@ export default function ShopGrid() {
           </Col>
         </Row>
         <Row>
-          <div style={{ display: "flex", gap: "10px" }}>{items}</div>
+          <div className="d-flex gap-3 justify-content-center">{items}</div>
         </Row>
       </div>
 
