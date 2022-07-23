@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -79,9 +79,9 @@ export default function BlogPage() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum
             at.
           </p>
-          <a href="#" className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
+          <Link to={"/singleBlog"} className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
             Read More
-          </a>
+          </Link>
 
           {/* Third Content  */}
           <img src={blogy} alt="" />
@@ -103,9 +103,9 @@ export default function BlogPage() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum
             at.
           </p>
-          <a href="#" className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
+          <Link to={"/singleBlog"} className="text-decoration-none lato Midnight-Blue fw-bold" style={{ fontSize: "18px" }}>
             Read More
-          </a>
+          </Link>
           <br />
           <br />
           <br />

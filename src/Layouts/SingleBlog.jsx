@@ -4,6 +4,7 @@ import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 // images
 import icon1 from "../img/Vector.png";
@@ -32,6 +33,8 @@ import offer4 from "../img/offer4.png";
 import { FiSearch } from "react-icons/fi";
 
 export default function SingleBlog() {
+  const navigate = useNavigate();
+
   return (
     <Container fluid>
       <GreyContainer titlePage={"Single Blog"} />
@@ -202,7 +205,14 @@ export default function SingleBlog() {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Save my name, email, and website in this browser for the next time I comment." />
             </Form.Group>
-            <Button btnClass={"btn text-light josefin my-5 w-100"} btnTitle={"Continue Shopping"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button
+              btnClass={"btn text-light josefin my-5 w-100"}
+              btnTitle={"Continue Shopping"}
+              btnStyle={{ backgroundColor: "#fb2e86" }}
+              eventClick={() => {
+                navigate("/shop-grid");
+              }}
+            />
           </Form>
         </div>
 
