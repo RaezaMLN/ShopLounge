@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { RiStarFill, RiStarHalfFill, RiStarLine } from "react-icons/ri";
@@ -77,8 +78,12 @@ export default function ShopList() {
               <Form.Group className="d-flex gap-2">
                 <Form.Label>
                   View:
-                  <MdViewModule />
-                  <MdViewList />
+                  <Link to={"/shop-grid"}>
+                    <MdViewModule />
+                  </Link>
+                  <Link to={"/shop-list"}>
+                    <MdViewList />
+                  </Link>
                 </Form.Label>
               </Form.Group>
             </Form>

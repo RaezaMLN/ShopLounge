@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col, Form } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import GreyContainer from "../Components/GreyContainer";
 import { getProduct } from "../Redux/Actions/productAction";
 import CarouselShop from "../Components/CarouselShop";
@@ -10,18 +10,22 @@ import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 
 export default function ShopGrid() {
   const [showPage, setShowPage] = useState([12, 0]);
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  console.log("product", product);
+
   useEffect(() => {
     dispatch(getProduct());
   }, []);
 
   useEffect(() => {
-    const filterProduct = product.list.filter((item, index) => index < 37);
-    setProducts(filterProduct);
+    if (product.list && product.list.length > 0) {
+      const filterProduct = product.list.filter((item, index) => index < 37);
+      setProducts(filterProduct);
+    }
   }, [product]);
 
   function handleChange(e) {
@@ -40,37 +44,38 @@ export default function ShopGrid() {
 
     // console.log("Filter Value", e.target.value);
   }
+  const allproduct = useSelector((state) => state.product.list);
 
-  // const [activePage, setaActivePage] = useState(1);
-  // const [items, setItems] = useState([]);
+  const [activePage, setaActivePage] = useState(1);
+  const [items, setItems] = useState([]);
 
-  // useEffect(() => {
-  //   if (products) {
-  //     let holdItems = [];
-  //     for (let number = 1; number <= Math.ceil(products.length / 12); number++) {
-  //       holdItems.push(
-  //         <div
-  //           key={number}
-  //           active={number === activePage}
-  //           style={{
-  //             backgroundColor: "white",
-  //             padding: "5px",
-  //           }}
-  //           onClick={(e) => {
-  //             setaActivePage(number);
-  //             const recentData = products;
-  //             const filterData = recentData.slice(10 * (number - 1), 10 * number);
-  //             setProductList(filterData);
-  //           }}
-  //         >
-  //           {number}
-  //         </div>
-  //       );
-  //     }
-  //     setItems(holdItems);
-  //   }
-  //   // console.log("product", product.list);
-  // }, [products, items]);
+  useEffect(() => {
+    if (allproduct) {
+      let holdItems = [];
+      for (let number = 1; number <= Math.ceil(allproduct.length / 12); number++) {
+        holdItems.push(
+          <div
+            key={number}
+            active={number === activePage}
+            style={{
+              backgroundColor: "white",
+              padding: "5px",
+            }}
+            onClick={(e) => {
+              setaActivePage(number);
+              const recentData = allproduct;
+              const filterData = recentData.slice(12 * (number - 1), 12 * number);
+              setProducts(filterData);
+            }}
+          >
+            {number}
+          </div>
+        );
+      }
+      setItems(holdItems);
+    }
+    // console.log("product", product.list);
+  }, [allproduct, items]);
 
   return (
     <div>
@@ -106,8 +111,12 @@ export default function ShopGrid() {
               <Form.Group className="d-flex gap-2">
                 <Form.Label>
                   View:
-                  <MdViewModule />
-                  <MdViewList />
+                  <Link to={"/shop-grid"}>
+                    <MdViewModule />
+                  </Link>
+                  <Link to={"/shop-list"}>
+                    <MdViewList />
+                  </Link>
                 </Form.Label>
               </Form.Group>
             </Form>
@@ -124,9 +133,9 @@ export default function ShopGrid() {
                 })}
           </Col>
         </Row>
-        {/* <Row>
+        <Row>
           <div style={{ display: "flex", gap: "10px" }}>{items}</div>
-        </Row> */}
+        </Row>
       </div>
 
       <Row className="justify-content-md-center my-5">
