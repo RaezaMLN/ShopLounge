@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs"
-
+import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
 const Carousel = ({ listImage, title, price, onClickCart }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
@@ -14,15 +13,23 @@ const Carousel = ({ listImage, title, price, onClickCart }) => {
     }
   }, [listImage]);
 
-  
   return (
     <Card style={{ width: "18rem" }} className="m-3 border border-5">
       <div className="container-image">
         <Card.Img variant="top" src={showImage} />
         <div className="overlay overlay-home">
-          <div className="overlay-icon-home position-relative"> <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={onClickCart}/></div>
-          <div className="overlay-icon-home position-relative"> <BsZoomIn class="position-absolute top-50 start-50 translate-middle"/></div>
-          <div className="overlay-icon-home position-relative"> <BsHeart  class="position-absolute top-50 start-50 translate-middle"/></div>
+          <div className="overlay-icon-home position-relative">
+            {" "}
+            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={onClickCart} />
+          </div>
+          <div className="overlay-icon-home position-relative">
+            {" "}
+            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" />
+          </div>
+          <div className="overlay-icon-home position-relative">
+            {" "}
+            <BsHeart class="position-absolute top-50 start-50 translate-middle" />
+          </div>
         </div>
       </div>
       <Card.Body className="d-flex flex-column align-items-center justify-content-evenly cardBody">

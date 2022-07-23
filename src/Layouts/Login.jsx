@@ -62,7 +62,6 @@ export default function Login() {
     setValidated(true);
   };
 
-  console.log("user", user);
   return (
     <Container fluid>
       <GreyContainer titlePage={"My Account"} />
