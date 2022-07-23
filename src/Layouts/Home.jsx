@@ -134,7 +134,7 @@ export default function Home() {
                 return (
                   <Col xs={4} className="mb-5">
                     <Card style={{ width: "23rem" }} className="border border-0">
-                      <Card.Img variant="top" src={item.images[0]} />
+                      <Card.Img variant="top" src={item.images[2]} />
                       <Card.Body className="d-flex">
                         <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
                         <div className="d-flex">
