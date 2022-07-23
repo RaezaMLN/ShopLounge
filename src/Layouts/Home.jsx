@@ -43,10 +43,10 @@ export default function Home() {
     setProducts(filterProduct);
   }, [product]);
 
-  const handleClickCart = (item)=>{
+  const handleClickCart = (item) => {
     // console.log("see item click", item)
-    dispatch(AddCart(item))
-  }
+    dispatch(AddCart(item));
+  };
 
   return (
     <div>
@@ -85,7 +85,7 @@ export default function Home() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart= {()=>handleClickCart(item)}/>;
+                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)} />;
                 })}
           </Col>
 
@@ -134,7 +134,7 @@ export default function Home() {
                 return (
                   <Col xs={4} className="mb-5">
                     <Card style={{ width: "23rem" }} className="border border-0">
-                      <Card.Img variant="top" src={item.images[2]} />
+                      <Card.Img variant="top" src={item.images[0]} />
                       <Card.Body className="d-flex">
                         <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
                         <div className="d-flex">
