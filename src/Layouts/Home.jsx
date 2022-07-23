@@ -44,7 +44,6 @@ export default function Home() {
   }, [product]);
 
   const handleClickCart = (item) => {
-    // console.log("see item click", item)
     dispatch(AddCart(item));
   };
 

@@ -15,7 +15,7 @@ const cartReducer = (state = cartState, { type, payload }) => {
       });
     case types.DELETE_CART:
       return Object.assign({}, state, {
-        list: state.list.filter((item) => item.id !== payload.id),
+        cartProducts: state.cartProducts.filter((item) => item.id !== payload.id),
       });
     // case types.ADJUST_QUANTITY:
     //     return{

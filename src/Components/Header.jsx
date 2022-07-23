@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Button, Offcanvas, Form, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Offcanvas, Form, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+
 // import {AiOutlineSearch} from 'react-icons/ai'
 import { ImSpinner2, ImSearch } from "react-icons/im";
 import { BsCart2 } from "react-icons/bs";
@@ -27,12 +30,10 @@ export default function Header() {
 
   const loginData = localStorage.getItem("token");
 
-  useEffect(() => {
-    const dataLogin = loginData;
-  }, [loginData]);
+  const listCart = useSelector((state) => state.cart.cartProducts);
 
   return (
-    <Navbar key="lg" expand="lg">
+    <Navbar key="lg" expand="lg" className="sticky-top bg-light">
       <Container fluid className="container">
         <Navbar.Brand>
           <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
@@ -99,6 +100,7 @@ export default function Header() {
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>
                 <BsCart2 />
               </Link>
+              <div>{listCart.length}</div>
             </div>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
