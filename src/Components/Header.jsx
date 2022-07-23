@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Offcanvas, Form, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import {AiOutlineSearch} from 'react-icons/ai'
 import { ImSpinner2, ImSearch } from "react-icons/im";
 import { BsCart2 } from "react-icons/bs";
@@ -8,6 +8,8 @@ import { BsCart2 } from "react-icons/bs";
 import CustumButton from "./Button";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   function simulateNetworkRequest() {
     return new Promise((resolve) => setTimeout(resolve, 2000));
   }
@@ -24,6 +26,10 @@ export default function Header() {
   const handleClick = () => setLoading(true);
 
   const loginData = localStorage.getItem("token");
+
+  useEffect(() => {
+    const dataLogin = loginData;
+  }, [loginData]);
 
   return (
     <Navbar key="lg" expand="lg">
@@ -70,15 +76,21 @@ export default function Header() {
               {(() => {
                 if (loginData) {
                   return (
-                    <a href="/">
-                      <CustumButton btnTitle="Logout" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} />
-                    </a>
+                    <CustumButton
+                      btnTitle="Logout"
+                      btnClass="clr2bg color-white border-0 rounded"
+                      btnStyle={{ height: "2.3rem" }}
+                      eventClick={() => {
+                        localStorage.removeItem("token");
+                        navigate("/login");
+                      }}
+                    />
                   );
                 } else {
                   return (
-                    <a href="/login">
+                    <Link to={"/login"}>
                       <CustumButton btnTitle="Sign In" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} />
-                    </a>
+                    </Link>
                   );
                 }
               })()}
