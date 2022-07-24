@@ -28,7 +28,7 @@ function Redirect() {
     const loginData = localStorage.getItem("token");
     // const userData = localStorage.getItem("userData");
 
-    console.log(location.pathname, "cek");
+    
     if (!loginData) {
       if (
         location.pathname !== "/login" &&
@@ -66,7 +66,7 @@ function Redirect() {
       <Route path="order-completed" exact element={<OrderCompleted />} />
       <Route path="login" exact element={<Login />} />
       <Route path="shop-list" exact element={<ShopList />} />
-      <Route path="product-detail" exact element={<ProductDetail />} />
+      <Route path="product-detail/:id" exact element={<ProductDetail />} />
       <Route path="shipping" exact element={<Shipping />} />
       <Route path="about" exact element={<About />} />
       <Route path="*" exact element={<NotFound />} />

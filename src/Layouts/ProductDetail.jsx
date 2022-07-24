@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 
-import { Card, Row, Col, Tabs, Tab } from "react-bootstrap";
+import { Card, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
 import { RiStarFill, RiInstagramFill, RiFacebookFill, RiTwitterFill } from "react-icons/ri"
 import { BsHeart } from "react-icons/bs"
 
@@ -12,9 +14,22 @@ import { Description, Additional, Review, Video } from "../Components/Sonnet"
 
 
 export default function ProductDetail() {
+    const products = useSelector((state) => state.product);
+    const [detailProduct, setDetailProduct]= useState({})
+    const param = useParams();
+    console.log("see products",products.list)
     
+    useEffect(()=>{
+        if(products?.list){
+            console.log("see id",products.list.id === param.id)
+            // const detail = products.list.find(e => e.id=== param.id )
+        //     if(products.list.id === param.id){
+                // setDetailProduct(detail)
+        //     }
+        }
+    },[]);
 
-
+    // console.log(detailProduct)
 
   return (
     <div>
@@ -78,27 +93,14 @@ export default function ProductDetail() {
                 </Card>     
             </div>
         </div>
-        <div style={{ backgroundColor: "#F6F5FF", height:"500px"}}>
-            <Tabs
-                defaultActiveKey="home"
-                transition={false}
-                id="noanim-tab-example"
-                className="mb-3 container pt-5"
-            >
-                <Tab eventKey="description" title="Description">
-                    <Description />
-                </Tab>
-                <Tab eventKey="additionalInfo" title="Additional Info">
-                    <Additional/>
-                </Tab>
-                <Tab eventKey="reviews" title="Reviews" >
-                    <Review/>
-                </Tab>
-                <Tab eventKey="video" title="Video" >
-                    <Video/>
-                </Tab>
-            </Tabs>
-        </div>
+        <div style={{ backgroundColor: "#F6F5FF", height:"500px"}} className="d-flex gap-3">
+            <div onClick={()=>{<Description />}} className="border-bottom">Description</div>
+            <div onClick={()=>{<Additional />}} className="border-bottom">Additional Info</div>
+            <div onClick={()=>{<Review />}} className="border-bottom">Reviews</div>
+            <div onClick={()=>{<Video />}} className="border-bottom">Video</div>
+
+        
+        </div>  
         <Row className="justify-content-md-center my-5">
             <Col md="auto">
             <img src={sponsor} />
