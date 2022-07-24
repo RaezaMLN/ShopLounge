@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
@@ -8,6 +9,7 @@ import check from "../../src/img/check.png";
 import sponsor from "../../src/img/sponsor.png";
 
 export default function OrderCompleted() {
+  const navigate = useNavigate();
   return (
     <Container fluid>
       <GreyContainer titlePage={"Order Completed"} />
@@ -26,7 +28,14 @@ export default function OrderCompleted() {
           <h5 className="lato fs-5 color-wildBlueYonder text-center lh-lg">
             Thank you for your order! Your order is being processed and will be completed within 3-6 hours. <br /> You will receive an email confirmation when your order is completed.
           </h5>
-          <Button btnClass={"btn text-light josefin my-4"} btnTitle={"Continue Shopping"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+          <Button
+            btnClass={"btn text-light josefin my-4"}
+            btnTitle={"Continue Shopping"}
+            btnStyle={{ backgroundColor: "#fb2e86" }}
+            eventClick={() => {
+              navigate("/");
+            }}
+          />
         </div>
         <div className="d-flex align-items-end">
           <img src={note} alt="" />
