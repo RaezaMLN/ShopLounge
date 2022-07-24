@@ -251,7 +251,20 @@ export default function Home() {
                 return (
                   <Col xs={3}>
                     <Card style={{ width: "18rem" }} className="border border-0">
-                      <Card.Img variant="top" src={item.images[1]} />
+                      <div className="container-image">
+                        <Card.Img variant="top" src={item.images[1]} />
+                        <div className="overlay overlay-home">
+                          <div className="overlay-icon-home position-relative">
+                            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsHeart class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                        </div>
+                      </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
                         <Card.Title className="Wild-Strawberry josefin fw-bold">{item.title}</Card.Title>
                         <div className="d-flex">
