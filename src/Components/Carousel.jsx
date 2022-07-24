@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
-const Carousel = ({ listImage, title, price, onClickCart }) => {
+const Carousel = ({ listImage, title, price, onClickCart, onClickTitle }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Carousel = ({ listImage, title, price, onClickCart }) => {
         </div>
       </div>
       <Card.Body className="d-flex flex-column align-items-center justify-content-evenly cardBody">
-        <Card.Title className="lato fw-bold Wild-Strawberry" style={{ fontSize: "18px" }}>
+        <Card.Title className="lato fw-bold Wild-Strawberry" style={{ fontSize: "18px", cursor: "pointer" }} onClick={onClickTitle}>
           {title}
         </Card.Title>
         <div className="w-100 d-flex flex-row justify-content-center gap-2">
