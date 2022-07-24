@@ -24,6 +24,7 @@ import room2 from "../img/room2.png";
 import room3 from "../img/room3.png";
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
+import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -133,7 +134,21 @@ export default function Home() {
                 return (
                   <Col xs={4} className="mb-5">
                     <Card style={{ width: "23rem" }} className="border border-0">
-                      <Card.Img variant="top" src={item.images[2]} />
+                      <div className="container-image">
+                        <Card.Img variant="top" src={item.images[2]} />
+                        <div className="overlay overlay-home">
+                          <div className="overlay-icon-home position-relative">
+                            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsHeart class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                        </div>
+                      </div>
+
                       <Card.Body className="d-flex">
                         <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
                         <div className="d-flex">
@@ -236,7 +251,20 @@ export default function Home() {
                 return (
                   <Col xs={3}>
                     <Card style={{ width: "18rem" }} className="border border-0">
-                      <Card.Img variant="top" src={item.images[1]} />
+                      <div className="container-image">
+                        <Card.Img variant="top" src={item.images[1]} />
+                        <div className="overlay overlay-home">
+                          <div className="overlay-icon-home position-relative">
+                            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsHeart class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                        </div>
+                      </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
                         <Card.Title className="Wild-Strawberry josefin fw-bold">{item.title}</Card.Title>
                         <div className="d-flex">

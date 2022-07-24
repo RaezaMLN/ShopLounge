@@ -150,7 +150,9 @@ export default function ShopList() {
                           </Card.Title>
                           <Card.Text className="d-flex">
                             ${Math.round((62 / 100) * Number(item.price))}
-                            <span className="clr2 mx-3"> ${item.price}</span>
+                            <span className="clr2 mx-3">
+                              <del className="Wild-Strawberry"> ${item.price}</del>
+                            </span>
                             <div>
                               <RiStarFill style={{ color: "#FFC416" }} />
                               <RiStarFill style={{ color: "#FFC416" }} />
@@ -176,7 +178,7 @@ export default function ShopList() {
       <Row>
         <Col>
           <Row>
-            <div className="d-flex gap-3 justify-content-center">{items}</div>
+            <div className="d-flex gap-3 justify-content-center flex-wrap">{items}</div>
           </Row>
         </Col>
       </Row>

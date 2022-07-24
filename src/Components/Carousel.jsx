@@ -20,15 +20,15 @@ const Carousel = ({ listImage, title, price, onClickCart }) => {
         <div className="overlay overlay-home">
           <div className="overlay-icon-home position-relative">
             {" "}
-            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={onClickCart} />
+            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={onClickCart} style={{ cursor: "pointer" }} />
           </div>
           <div className="overlay-icon-home position-relative">
             {" "}
-            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" />
+            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
           </div>
           <div className="overlay-icon-home position-relative">
             {" "}
-            <BsHeart class="position-absolute top-50 start-50 translate-middle" />
+            <BsHeart class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
           </div>
         </div>
       </div>
