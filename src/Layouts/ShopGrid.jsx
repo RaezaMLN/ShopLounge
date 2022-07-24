@@ -4,9 +4,12 @@ import { Card, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import GreyContainer from "../Components/GreyContainer";
 import { getProduct } from "../Redux/Actions/productAction";
+import { AddCart } from "../Redux/Actions/cartAction";
+
 import CarouselShop from "../Components/CarouselShop";
 import sponsor from "../img/sponsor.png";
 import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
+import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
 export default function ShopGrid() {
   const [showPage, setShowPage] = useState([12, 0]);
@@ -77,6 +80,10 @@ export default function ShopGrid() {
     // console.log("product", product.list);
   }, [allproduct, items]);
 
+  const handleClickCart = (item) => {
+    dispatch(AddCart(item));
+  };
+
   return (
     <div>
       <GreyContainer titlePage={"Shope Grid Default"} />
@@ -129,7 +136,7 @@ export default function ShopGrid() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  return <CarouselShop listImage={item.images} title={item.title} price={item.price} />;
+                  return <CarouselShop listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)} />;
                 })}
           </Col>
         </Row>
