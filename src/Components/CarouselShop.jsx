@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
-const CarouselShop = ({ listImage, title, price, changeBackground }) => {
+const CarouselShop = ({ listImage, title, price, onClickCart, onClickTitle }) => {
   const [showImage, setShowImage] = useState(listImage[0]);
   // console.log("image", listImage);
 
@@ -21,7 +21,7 @@ const CarouselShop = ({ listImage, title, price, changeBackground }) => {
         <div className="overlay overlay-shop">
           <div className="overlay-icon-shop position-relative">
             {" "}
-            <BsCart2 class="position-absolute top-50 start-50 translate-middle" />
+            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={onClickCart} style={{ cursor: "pointer" }} />
           </div>
           <div className="overlay-icon-shop position-relative">
             {" "}

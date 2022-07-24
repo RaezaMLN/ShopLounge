@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { AddCart } from "../Redux/Actions/cartAction";
 
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { RiStarFill, RiStarHalfFill, RiStarLine } from "react-icons/ri";
@@ -78,6 +79,10 @@ export default function ShopList() {
     }
     // console.log("product", product.list);
   }, [allproduct, items]);
+
+  const handleClickCart = (item) => {
+    dispatch(AddCart(item));
+  };
 
   return (
     <div>
@@ -163,7 +168,7 @@ export default function ShopList() {
                           </Card.Text>
                           <Card.Text>{item.description}</Card.Text>
                           <Card.Text className="d-flex gap-4">
-                            <BsCart2 />
+                            <BsCart2 onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
                             <BsHeart />
                             <BsZoomIn />
                           </Card.Text>
