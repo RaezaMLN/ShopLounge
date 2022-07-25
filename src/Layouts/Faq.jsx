@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import React, { useState } from "react";
-
+import "animate.css";
 import { Container, Form } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
-import "animate.css";
+
 import sponsor from "../img/sponsor.png";
 
 export default function Faq() {
