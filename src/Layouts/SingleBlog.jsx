@@ -1,11 +1,13 @@
-import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import React, { useState } from "react";
 
+import "animate.css";
 // images
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
@@ -30,7 +32,6 @@ import offer2 from "../img/offer2.png";
 import offer3 from "../img/offer3.png";
 import offer4 from "../img/offer4.png";
 
-import Swal from "sweetalert2";
 import { FiSearch } from "react-icons/fi";
 
 export default function SingleBlog() {
@@ -217,7 +218,7 @@ export default function SingleBlog() {
           <Form className="w-75" onSubmit={handleSubmit} noValidate validated={validated}>
             <Form.Group className="mb-5 d-flex" controlId="formBasicTextt">
               <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato me-3" required />
-              <Form.Control type="text" placeholder="Write your email*" className="color-wildBlueYonder lato" required />
+              <Form.Control type="email" placeholder="Write your email*" className="color-wildBlueYonder lato" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={3} placeholder="Write your comment*" className="py-5" required />
