@@ -26,7 +26,6 @@ export default function Login() {
 
   useEffect(() => {
     if (user.error) {
-      alert(user.error);
       dispatch(cleanState());
       setUserData({
         ...userData,

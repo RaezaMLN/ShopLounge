@@ -39,13 +39,13 @@ export default function Shipping() {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     } else {
       Swal.fire({
-        title: "Your Mail Has Been Send",
+        title: "Your Data's Address Has Been Send",
         showClass: {
           popup: "animate__animated animate__fadeInDown",
         },
