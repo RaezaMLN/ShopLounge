@@ -1,11 +1,13 @@
-import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import React, { useState } from "react";
 
+import "animate.css";
 // images
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
@@ -34,7 +36,26 @@ import { FiSearch } from "react-icons/fi";
 
 export default function SingleBlog() {
   const navigate = useNavigate();
+  const [validated, setValidated] = useState(false);
 
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      Swal.fire({
+        title: "Your Comment Has Been Send",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    }
+    setValidated(true);
+  };
   return (
     <Container fluid>
       <GreyContainer titlePage={"Single Blog"} />
@@ -194,25 +215,18 @@ export default function SingleBlog() {
           <br />
           <br />
 
-          <Form className="w-75">
+          <Form className="w-75" onSubmit={handleSubmit} noValidate validated={validated}>
             <Form.Group className="mb-5 d-flex" controlId="formBasicTextt">
-              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato me-3" />
-              <Form.Control type="text" placeholder="Write your email*" className="color-wildBlueYonder lato" />
+              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato me-3" required />
+              <Form.Control type="email" placeholder="Write your email*" className="color-wildBlueYonder lato" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} placeholder="Write your comment*" className="py-5" />
+              <Form.Control as="textarea" rows={3} placeholder="Write your comment*" className="py-5" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Save my name, email, and website in this browser for the next time I comment." />
+              <Form.Check type="checkbox" label="Save my name, email, and website in this browser for the next time I comment." required />
             </Form.Group>
-            <Button
-              btnClass={"btn text-light josefin my-5 w-100"}
-              btnTitle={"Continue Shopping"}
-              btnStyle={{ backgroundColor: "#fb2e86" }}
-              eventClick={() => {
-                navigate("/shop-grid");
-              }}
-            />
+            <Button btnType={"submit"} btnClass={"btn text-light josefin my-5 w-100"} btnTitle={"Continue Shopping"} btnStyle={{ backgroundColor: "#fb2e86" }} />
           </Form>
         </div>
 

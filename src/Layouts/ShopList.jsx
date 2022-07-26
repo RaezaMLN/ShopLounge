@@ -13,7 +13,7 @@ import { getProduct } from "../Redux/Actions/productAction";
 import Brand from "../Components/Brand";
 
 export default function ShopList() {
-  const [showPage, setShowPage] = useState([7, 0]);
+  const [showPage, setShowPage] = useState(7);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
@@ -31,17 +31,8 @@ export default function ShopList() {
   // console.log("show Page", showPage);
 
   function handleChange(e) {
-    const filterValue = e.target.value;
+    setShowPage(e.target.value);
 
-    if (filterValue == 1) {
-      setShowPage([7, 0]);
-    }
-    if (filterValue == 2) {
-      setShowPage([14, 7]);
-    }
-    if (filterValue == 3) {
-      setShowPage([21, 14]);
-    }
     e.preventDefault();
 
     // console.log("Filter Value", e.target.value);
@@ -104,7 +95,7 @@ export default function ShopList() {
             <Form className="d-flex gap-5 justify-content-end">
               <Form.Group className="d-flex gap-2">
                 <Form.Label>Per Page:</Form.Label>
-                <Form.Control type="number" style={{ width: "100px" }} onChange={handleChange} />
+                <Form.Control type="number" style={{ width: "100px" }} onChange={handleChange} value={showPage} />
               </Form.Group>
 
               <Form.Group className="d-flex gap-2">
@@ -134,7 +125,7 @@ export default function ShopList() {
           {products &&
             products.length > 0 &&
             products
-              .filter((item, index) => index < showPage[0] && index >= showPage[1])
+              .filter((item, index) => index < showPage)
               .map((item, index) => {
                 console.log("products", products);
                 return (

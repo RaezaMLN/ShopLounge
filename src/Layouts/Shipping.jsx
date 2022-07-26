@@ -1,7 +1,8 @@
-import React from "react";
+import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "animate.css";
 
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
@@ -35,6 +36,27 @@ export default function Shipping() {
     setCountTotal(newCount);
   }, [carts]);
 
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      Swal.fire({
+        title: "Your Data's Address Has Been Send",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    }
+    setValidated(true);
+    // navigate("/order-completed");
+  };
   return (
     <Container>
       <Row className="my-5">
@@ -47,7 +69,7 @@ export default function Shipping() {
       </Row>
       <div className="d-flex">
         <div className="w-75 me-5 soft-Blue-Yonder rounded-2">
-          <Form className="p-4">
+          <Form className="p-4" onSubmit={handleSubmit} noValidate validated={validated}>
             <div className="d-flex flex-row justify-content-between mb-5">
               <h4 className="josefin fw-bold Midnight-Blue" style={{ fontSize: "18px" }}>
                 Contact Information
@@ -55,10 +77,10 @@ export default function Shipping() {
             </div>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control style={{ fontSize: "14px" }} type="email" placeholder="Email or mobile phone number" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
+              <Form.Control style={{ fontSize: "14px" }} type="email" placeholder="Email or mobile phone number" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check style={{ fontSize: "14px" }} type="checkbox" label="Keep me up to date on news and excluive offers" className="color-wildBlueYonder lato" />
+              <Form.Check style={{ fontSize: "14px" }} type="checkbox" label="Keep me up to date on news and excluive offers" className="color-wildBlueYonder lato" required />
             </Form.Group>
             <br />
             <br />
@@ -67,32 +89,25 @@ export default function Shipping() {
             </h4>
 
             <Form.Group className="mb-5 d-flex" controlId="formBasicTextt">
-              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="First name (optional)" className="color-wildBlueYonder lato border-0 border-bottom border-3 me-3 bg-transparent" />
-              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Last name" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
+              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="First name (optional)" className="color-wildBlueYonder lato border-0 border-bottom border-3 me-3 bg-transparent" required />
+              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Last name" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" required />
             </Form.Group>
             <Form.Group className="mb-5" controlId="formBasicText">
-              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Address" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
+              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Address" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" required />
             </Form.Group>
             <Form.Group className="mb-5" controlId="formBasicText">
               <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Appaetnentment,suit,e.t.c (optinal)" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
             </Form.Group>
             <Form.Group className="mb-5" controlId="formBasicText">
-              <Form.Control type="text" placeholder="City" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
+              <Form.Control type="text" placeholder="City" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" required />
             </Form.Group>
             <Form.Group className="mb-5 d-flex" controlId="formBasicText">
-              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Bangladesh" className="color-wildBlueYonder lato border-0 border-bottom border-3 me-3 bg-transparent" />
-              <Form.Control style={{ fontSize: "14px" }} type="number" placeholder="Postal Code" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" />
+              <Form.Control style={{ fontSize: "14px" }} type="text" placeholder="Bangladesh" className="color-wildBlueYonder lato border-0 border-bottom border-3 me-3 bg-transparent" required />
+              <Form.Control style={{ fontSize: "14px" }} type="number" placeholder="Postal Code" className="color-wildBlueYonder lato border-0 border-bottom border-3 bg-transparent" required />
             </Form.Group>
             <br />
 
-            <Button
-              btnClass={"btn text-light josefin my-5"}
-              btnTitle={"Continue Shipping"}
-              btnStyle={{ backgroundColor: "#fb2e86" }}
-              eventClick={() => {
-                navigate("/order-completed");
-              }}
-            />
+            <Button btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
           </Form>
         </div>
         <div className="w-50">

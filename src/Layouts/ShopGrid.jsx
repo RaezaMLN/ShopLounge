@@ -12,7 +12,7 @@ import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
 export default function ShopGrid() {
-  const [showPage, setShowPage] = useState([12, 0]);
+  const [showPage, setShowPage] = useState(12);
   // const [productList, setProductList] = useState([]);
 
   const dispatch = useDispatch();
@@ -32,17 +32,8 @@ export default function ShopGrid() {
   }, [product]);
 
   function handleChange(e) {
-    const filterValue = e.target.value;
+    setShowPage(e.target.value);
 
-    if (filterValue == 1) {
-      setShowPage([12, 0]);
-    }
-    if (filterValue == 2) {
-      setShowPage([24, 12]);
-    }
-    if (filterValue == 3) {
-      setShowPage([36, 24]);
-    }
     e.preventDefault();
 
     // console.log("Filter Value", e.target.value);
@@ -103,7 +94,7 @@ export default function ShopGrid() {
             <Form className="d-flex gap-5 justify-content-end">
               <Form.Group className="d-flex gap-2">
                 <Form.Label>Per Page:</Form.Label>
-                <Form.Control type="number" style={{ width: "100px" }} onChange={handleChange} />
+                <Form.Control type="number" style={{ width: "100px" }} onChange={handleChange} value={showPage} />
               </Form.Group>
 
               <Form.Group className="d-flex gap-2">
@@ -134,7 +125,7 @@ export default function ShopGrid() {
             {products &&
               products.length > 0 &&
               products
-                .filter((item, index) => index < showPage[0] && index >= showPage[1])
+                .filter((item, index) => index < showPage)
                 .map((item, index) => {
                   return <CarouselShop listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)} />;
                 })}

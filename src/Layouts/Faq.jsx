@@ -1,4 +1,6 @@
-import React from "react";
+import Swal from "sweetalert2";
+import React, { useState } from "react";
+import "animate.css";
 import { Container, Form } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
@@ -6,6 +8,26 @@ import Button from "../Components/Button";
 import sponsor from "../img/sponsor.png";
 
 export default function Faq() {
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      Swal.fire({
+        title: "Your Mail Has Been Send",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
+    }
+    setValidated(true);
+  };
   return (
     <Container fluid>
       <GreyContainer titlePage={"FAQ"} />
@@ -52,16 +74,15 @@ export default function Faq() {
           <h3 className="Midnight-Blue josefin my-5" style={{ fontSize: "24px" }}>
             Ask a Question
           </h3>
-          <Form>
+          <Form onSubmit={handleSubmit} noValidate validated={validated}>
             <Form.Group controlId="formBasicTextt">
-              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato" />
-              <Form.Control type="text" placeholder="Subject*" className="color-wildBlueYonder lato my-5" />
+              <Form.Control type="text" placeholder="Your name*" className="color-wildBlueYonder lato" required />
+              <Form.Control type="text" placeholder="Subject*" className="color-wildBlueYonder lato my-5" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} placeholder="Type Your Message*" className="py-5" />
+              <Form.Control as="textarea" rows={3} placeholder="Type Your Message*" className="py-5" required />
             </Form.Group>
-
-            <Button btnClass={"btn text-light josefin my-5 w-25"} btnTitle={"Send Mail"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin my-5 w-25"} btnTitle={"Send Mail"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
           </Form>
         </div>
       </Container>

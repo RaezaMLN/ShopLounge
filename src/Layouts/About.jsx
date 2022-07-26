@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
+import { Link } from "react-router-dom";
 
 // Images
 import about from "../img/about.png";
@@ -32,7 +33,9 @@ export default function About() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices mattis aliquam, malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus vitae lobortis quis bibendum
               quam.
             </h5>
-            <Button btnClass={"btn text-light lato my-5"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Link to={"/contact-us"}>
+              <Button btnClass={"btn text-light lato my-5"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            </Link>
           </Col>
         </Row>
       </Container>
