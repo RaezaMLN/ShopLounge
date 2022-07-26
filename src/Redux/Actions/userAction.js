@@ -16,7 +16,7 @@ export const login = (data) => {
           success: Swal.fire({
             title: "Login Success",
             type: "success",
-            text: "Enjoy The Shopping!",
+            text: "Enjoy Shopping!",
           }),
         });
       })
