@@ -153,11 +153,11 @@ export default function Home() {
                       </div>
 
                       <Card.Body className="d-flex">
-                        <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
+                        <Card.Title className="Midnight-Blue josefin fw-bold me-5" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
                         <div className="d-flex">
-                          <Card.Text className="Midnight-Blue lato fw-semibold me-2">${item.price}</Card.Text>
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold Wild-Strawberry">
-                            <del>$62.00</del>
+                            <del>${item.price}</del>
                           </Card.Text>
                         </div>
                       </Card.Body>
@@ -269,11 +269,11 @@ export default function Home() {
                         </div>
                       </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
-                        <Card.Title className="Wild-Strawberry josefin fw-bold">{item.title}</Card.Title>
+                        <Card.Title className="Wild-Strawberry josefin fw-bold" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
                         <div className="d-flex">
-                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${item.price}</Card.Text>
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold color-wildBlueYonder">
-                            <del>$62.00</del>
+                            <del>${item.price}</del>
                           </Card.Text>
                         </div>
                       </Card.Body>
