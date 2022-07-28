@@ -37,7 +37,7 @@ export default function ProductDetail() {
 
         <div className="container my-5" >
             <div >
-                <Card className="my-5 p-4">
+                <Card className="my-1 p-4">
                     <Row>
                         <Col>
                             <Row>
@@ -94,12 +94,11 @@ export default function ProductDetail() {
             </div>
         </div>
         <div style={{ backgroundColor: "#F6F5FF", height:"500px"}} className="d-flex gap-3">
-            <div onClick={()=>{<Description />}} className="border-bottom">Description</div>
-            <div onClick={()=>{<Additional />}} className="border-bottom">Additional Info</div>
-            <div onClick={()=>{<Review />}} className="border-bottom">Reviews</div>
-            <div onClick={()=>{<Video />}} className="border-bottom">Video</div>
 
-        
+            <div onClick={()=>{ return (<Description />)}} className="border-bottom">Description</div>
+            <div onClick={()=>{return (<Additional />)}} className="border-bottom">Additional Info</div>
+            <div onClick={()=>{return (<Review />)}} className="border-bottom">Reviews</div>
+            <div onClick={()=>{return (<Video />)}} className="border-bottom">Video</div>
         </div>  
         <Row className="justify-content-md-center my-5">
             <Col md="auto">
