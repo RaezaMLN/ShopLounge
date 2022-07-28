@@ -15,3 +15,17 @@ export const getProduct = () => {
       });
   };
 };
+
+export const getDetailProduct = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: type.PRODUCT_REQUEST });
+    api
+      .get(`/products/${id}`)
+      .then((response) => {
+        dispatch({ type: type.GET_PRODUCT_SUCCESS, listProduct: response.data });
+      })
+      .catch((err) => {
+        dispatch({ type: type.GET_PRODUCT_FAILED, error: err.response });
+      });
+  };
+};

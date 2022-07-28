@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import Carousel from "../Components/Carousel";
 import Button from "../Components/Button";
@@ -34,7 +34,7 @@ import { getProduct } from "../Redux/Actions/productAction";
 import { AddCart } from "../Redux/Actions/cartAction";
 
 export default function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState([4, 0]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
@@ -42,6 +42,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getProduct());
   }, []);
+
   useEffect(() => {
     const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
@@ -88,7 +89,17 @@ export default function Home() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)}  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} />;
+                  return (
+                    <Carousel
+                      listImage={item.images}
+                      title={item.title}
+                      price={item.price}
+                      onClickCart={() => handleClickCart(item)}
+                      onClickTitle={() => {
+                        navigate(`/product-detail/${item.id}`);
+                      }}
+                    />
+                  );
                 })}
           </Col>
 
