@@ -18,7 +18,6 @@ export default function Header() {
   }
 
   const [isLoading, setLoading] = useState(false);
-
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
@@ -29,7 +28,11 @@ export default function Header() {
   const handleClick = () => setLoading(true);
 
   const loginData = localStorage.getItem("token");
-
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+  
   const listCart = useSelector((state) => state.cart.cartProducts);
 
   return (
@@ -70,27 +73,14 @@ export default function Header() {
             </Form>
             <h1></h1>
             <div className="d-flex gap-3">
-              {(() => {
-                if (loginData) {
-                  return (
-                    <CustumButton
-                      btnTitle="Logout"
-                      btnClass="clr2bg color-white border-0 rounded"
-                      btnStyle={{ height: "2.3rem" }}
-                      eventClick={() => {
-                        localStorage.removeItem("token");
-                        navigate("/login");
-                      }}
-                    />
-                  );
-                } else {
-                  return (
-                    <Link to={"/login"}>
-                      <CustumButton btnTitle="Sign In" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} />
-                    </Link>
-                  );
-                }
-              })()}
+            {
+              loginData? (
+                <CustumButton btnTitle="Log Out" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} eventClick={logout} />
+                  
+              ):(
+                <CustumButton btnTitle="Sign In" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} eventClick={() => {navigate("/login")}} />
+              )
+            }
             </div>
             <div className="d-flex mx-4 justify-content-center  align-items-center gap-1">
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>
