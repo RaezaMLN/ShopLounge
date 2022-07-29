@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -12,6 +13,7 @@ import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
 
 export default function ShopGrid() {
+  const navigate = useNavigate()
   const [showPage, setShowPage] = useState(12);
   // const [productList, setProductList] = useState([]);
 
@@ -127,7 +129,14 @@ export default function ShopGrid() {
               products
                 .filter((item, index) => index < showPage)
                 .map((item, index) => {
-                  return <CarouselShop listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)} />;
+                  return 
+                  <CarouselShop 
+                  listImage={item.images} 
+                  title={item.title} 
+                  price={item.price} 
+                  onClickCart={() => handleClickCart(item)} 
+                  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
+                  />;
                 })}
           </Col>
         </Row>
