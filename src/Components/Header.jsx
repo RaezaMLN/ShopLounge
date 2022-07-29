@@ -18,7 +18,6 @@ export default function Header() {
   }
 
   const [isLoading, setLoading] = useState(false);
-
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
@@ -29,7 +28,11 @@ export default function Header() {
   const handleClick = () => setLoading(true);
 
   const loginData = localStorage.getItem("token");
-
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+  
   const listCart = useSelector((state) => state.cart.cartProducts);
 
   return (
@@ -38,30 +41,26 @@ export default function Header() {
         <Navbar.Brand>
           <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
             Hekto
-          </Link>{" "}
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
         <Navbar.Offcanvas id={`offcanvasNavbar-expand-lg`} aria-labelledby={`offcanvasNavbarLabel-expand-lg`} placement="end">
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>Hekto</Offcanvas.Title>
+            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+              <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+                Hekto
+              </Link>
+            </Offcanvas.Title>
           </Offcanvas.Header>
 
           <Offcanvas.Body>
-            <Nav className="justify-content-center flex-grow-1 pe-3">
-              <NavDropdown title="Home" id={`offcanvasNavbarDropdown-expand-lg`}>
-                <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#">Action</NavDropdown.Item>
-              </NavDropdown>
-
-              {/* <Nav.Link href="#action1">Pages</Nav.Link>
-                    <Nav.Link href="#">Products</Nav.Link> */}
-              <Nav.Link href="/blogPage">Blog</Nav.Link>
-              <Nav.Link href="/shop-grid">Shop</Nav.Link>
-              <Nav.Link href="/contact-us">Contact</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/faq">FAQ</Nav.Link>
+            <Nav className="justify-content-center flex-grow-1 pe-3 gap-4 align-item-center">
+              <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>Home</Link>
+              <Link to={"/blogPage"} style={{ textDecoration: "none", color: "black" }}>Blog</Link>
+              <Link to={"/shop-grid"} style={{ textDecoration: "none", color: "black" }}>Shop</Link>
+              <Link to={"/contact-us"} style={{ textDecoration: "none", color: "black" }}>Contact</Link>
+              <Link to={"/about"} style={{ textDecoration: "none", color: "black" }}>About</Link>
+              <Link to={"/faq"} style={{ textDecoration: "none", color: "black" }}>FAQ</Link>
             </Nav>
 
             <Form className="d-flex me-5">
@@ -74,27 +73,14 @@ export default function Header() {
             </Form>
             <h1></h1>
             <div className="d-flex gap-3">
-              {(() => {
-                if (loginData) {
-                  return (
-                    <CustumButton
-                      btnTitle="Logout"
-                      btnClass="clr2bg color-white border-0 rounded"
-                      btnStyle={{ height: "2.3rem" }}
-                      eventClick={() => {
-                        localStorage.removeItem("token");
-                        navigate("/login");
-                      }}
-                    />
-                  );
-                } else {
-                  return (
-                    <Link to={"/login"}>
-                      <CustumButton btnTitle="Sign In" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} />
-                    </Link>
-                  );
-                }
-              })()}
+            {
+              loginData? (
+                <CustumButton btnTitle="Log Out" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} eventClick={logout} />
+                  
+              ):(
+                <CustumButton btnTitle="Sign In" btnClass="clr2bg color-white border-0 rounded" btnStyle={{ height: "2.3rem" }} eventClick={() => {navigate("/login")}} />
+              )
+            }
             </div>
             <div className="d-flex mx-4 justify-content-center  align-items-center gap-1">
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>

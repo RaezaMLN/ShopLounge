@@ -59,7 +59,7 @@ export default function ShoppingCart() {
                           <td className="d-flex gap-2">
                             <div className="position-relative">
                               <img src={item.images} style={{ width: "100px", height: "80px" }} />
-                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer" }}>
+                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px"  }}>
                                 x
                               </div>
                             </div>

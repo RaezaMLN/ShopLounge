@@ -39,6 +39,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
+  const [paggination, setPaggination] = useState();
   useEffect(() => {
     dispatch(getProduct());
   }, []);
@@ -51,6 +52,21 @@ export default function Home() {
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
   };
+  useEffect(() => {
+    if (products) {
+      let holdItems = [];
+      for (let i = 0; i <= products.length; i = i + 4) {
+        holdPaggination.push(<div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([i + 4, i])}></div>);
+      }
+      setPaggination(holdPaggination);
+    }
+  }, [products, paggination]);
+  // const handleClickPaggination = ()=>{
+
+  //   for(let i=0; i<=products.length; i=i+4){
+  //     setShowPage([(i+4), i])
+  //   }
+  // }
 
   return (
     <div>
@@ -104,10 +120,11 @@ export default function Home() {
           </Col>
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            {paggination}
+            {/* <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div> */}
           </div>
         </Row>
 
@@ -164,11 +181,19 @@ export default function Home() {
                       </div>
 
                       <Card.Body className="d-flex">
-                        <Card.Title className="Midnight-Blue josefin fw-bold me-5">{item.title}</Card.Title>
+                        <Card.Title
+                          className="Midnight-Blue josefin fw-bold me-5"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
-                          <Card.Text className="Midnight-Blue lato fw-semibold me-2">${item.price}</Card.Text>
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold Wild-Strawberry">
-                            <del>$62.00</del>
+                            <del>${item.price}</del>
                           </Card.Text>
                         </div>
                       </Card.Body>
@@ -280,11 +305,19 @@ export default function Home() {
                         </div>
                       </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
-                        <Card.Title className="Wild-Strawberry josefin fw-bold">{item.title}</Card.Title>
+                        <Card.Title
+                          className="Wild-Strawberry josefin fw-bold"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
-                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${item.price}</Card.Text>
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold color-wildBlueYonder">
-                            <del>$62.00</del>
+                            <del>${item.price}</del>
                           </Card.Text>
                         </div>
                       </Card.Body>
