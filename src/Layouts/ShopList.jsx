@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { AddCart } from "../Redux/Actions/cartAction";
-
+import { useNavigate } from "react-router-dom";
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { RiStarFill, RiStarHalfFill, RiStarLine } from "react-icons/ri";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
@@ -14,6 +14,7 @@ import Brand from "../Components/Brand";
 import CarouselShopList from "../Components/CarouselShopList";
 
 export default function ShopList() {
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState(7);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
@@ -128,15 +129,17 @@ export default function ShopList() {
             products
               .filter((item, index) => index < showPage)
               .map((item, index) => {
-                return 
-                  <CarouselShopList 
-                    listImage={item.images} 
-                    title={item.title} 
-                    price={item.price} 
-                    description={item.description}
-                    onClickCart={() => handleClickCart(item)} 
-                    onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
-                  />;
+                return;
+                <CarouselShopList
+                  listImage={item.images}
+                  title={item.title}
+                  price={item.price}
+                  description={item.description}
+                  onClickCart={() => handleClickCart(item)}
+                  onClickTitle={() => {
+                    navigate(`/product-detail/${item.id}`);
+                  }}
+                />;
               })}
         </div>
       </div>
