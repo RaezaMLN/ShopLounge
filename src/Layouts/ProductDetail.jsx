@@ -12,41 +12,55 @@ import { Description, Additional, Review, Video } from "../Components/Sonnet";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 // action
+import * as type from "../Redux/Types/productType";
+import { mainApi as api } from "../Lib/Api";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetailProduct } from "../Redux/Actions/productAction";
+// import { getdetail } from "../Redux/Actions/productAction";
 
 export default function ProductDetail() {
-  const dispatch = useDispatch();
-  const product = useSelector((state) => state.product);
-  const [price, setPrice] = useState();
-  const [detailProduct, setDetailProduct] = useState({});
+  const [detail, setDetail] = useState({});
+  const [image, setImage] = useState({});
+
   const param = useParams();
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDetailProduct(param.id));
+    dispatch({ type: type.PRODUCT_REQUEST });
+    api
+      .get(`/products/${param.id}`)
+      .then((response) => {
+        setDetail(response.data);
+        setImage(response.data.category.image);
+
+        // console.log("respon", response);
+      })
+      .catch((err) => {
+        dispatch({ type: type.GET_PRODUCT_FAILED, error: err.response });
+      });
   }, []);
 
-  console.log("product", product);
+  // console.log("product detail", detail);
 
-  useEffect(() => {
-    if (product?.list?.category) {
-      const detail = product.list;
-      if (detail) {
-        setDetailProduct(detail);
-        setPrice(detail.price);
-      }
-    }
-    // if (product?.list.find((e) => e.category.id === param.id)) {
-    //   const detail = product.list;
-    //   if (detail) {
-    //     setDetailProduct(detail);
-    //     setPrice(detail.price);
-    //   }
-    // }
-  }, []);
+  // const product = useSelector((state) => state.product);
+  // const [price, setPrice] = useState();
+  // const [detail, setdetail] = useState({});
 
-  console.log("detail product", detailProduct);
+  // useEffect(() => {
+  //   dispatch(getdetail(param.id));
+  // }, []);
 
+  // console.log("detail product", getdetail());
+  // useEffect(() => {
+  //   if (product?.list?.category) {
+  //     const detail = product.list;
+  //     if (detail) {
+  //       setdetail(detail);
+  //       setPrice(detail.price);
+  //     }
+  //   }
+  // }, []);
+
+  console.log("detail product", detail);
+  const price = detail.price;
   return (
     <div>
       <GreyContainer titlePage={"Product Details"} />
@@ -58,19 +72,21 @@ export default function ProductDetail() {
               <Col>
                 <Row>
                   <Col className="d-flex flex-column gap-4">
-                    <Card.Img variant="top" src={detailProduct.images[0]} className="rounded" />
-                    <Card.Img variant="top" src={detailProduct.images[1]} className="rounded" />
-                    <Card.Img variant="top" src={detailProduct.images[2]} className="rounded" />
+                    {detail.images &&
+                      detail.images.length > 0 &&
+                      detail.images.map((item, index) => {
+                        return <Card.Img variant="top" src={item} className="rounded" />;
+                      })}
                   </Col>
                   <Col>
-                    <Card.Img variant="top" src={detailProduct.category.image} className="rounded" style={{ width: "375px", height: "100%" }} />
+                    <Card.Img variant="top" src={image} className="rounded" style={{ width: "375px", height: "100%" }} />;
                   </Col>
                 </Row>
               </Col>
               <Col>
                 <Card.Body>
                   <Card.Title>
-                    {detailProduct.title}
+                    {detail.title}
                     <div className="d-flex align-item-center gap-1 py-2">
                       <RiStarFill style={{ color: "#FFC416" }} />
                       <RiStarFill style={{ color: "#FFC416" }} />
@@ -81,19 +97,19 @@ export default function ProductDetail() {
                     </div>
                   </Card.Title>
                   <Card.Text className="d-flex">
-                    ${Math.round((62 / 100) * Number({ price }))}
-                    <span className="clr2 mx-3"> ${{ price }}</span>
+                    ${Math.round((62 / 100) * Number(price))}
+                    <span className="clr2 mx-3"> ${price}</span>
                   </Card.Text>
                   <Card.Text>
                     <h4>Color</h4>
-                    {detailProduct.description}
+                    {/* {detail.description} */}
                   </Card.Text>
                   <Card.Text className="d-flex gap-4">
                     <h6>Add to cart</h6>
                     <BsHeart />
                   </Card.Text>
                   <div>
-                    <h5>Category:</h5>
+                    <h5>Category: {detail && detail.category && detail.category.name}</h5>
                   </div>
                   <div>
                     <h5>Tags</h5>

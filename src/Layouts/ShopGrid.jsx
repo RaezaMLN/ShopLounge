@@ -132,7 +132,7 @@ export default function ShopGrid() {
           </Col>
         </Row>
         <Row>
-          <div className="d-flex gap-3 justify-content-center">{items}</div>
+          <div className="d-flex flex-wrap gap-3 justify-content-center">{items}</div>
         </Row>
       </div>
 
