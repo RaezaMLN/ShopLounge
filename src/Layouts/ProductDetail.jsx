@@ -10,6 +10,7 @@ import sponsor from "../img/sponsor.png";
 import room3 from "../img/room3.png";
 import { Description, Additional, Review, Video } from "../Components/Sonnet";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { AddCart } from "../Redux/Actions/cartAction";
 
 // action
 import * as type from "../Redux/Types/productType";
@@ -59,6 +60,10 @@ export default function ProductDetail() {
   //   }
   // }, []);
 
+  const handleClickCart = (item) => {
+    dispatch(AddCart(item));
+  };
+
   console.log("detail product", detail);
   const price = detail.price;
   return (
@@ -67,7 +72,7 @@ export default function ProductDetail() {
 
       <div className="container my-5">
         <div>
-          <Card className="my-5 p-4">
+          <Card className="my-5 p-4 josefin">
             <Row>
               <Col>
                 <Row>
@@ -79,39 +84,49 @@ export default function ProductDetail() {
                       })}
                   </Col>
                   <Col>
-                    <Card.Img variant="top" src={image} className="rounded" style={{ width: "375px", height: "100%" }} />;
+                    <Card.Img variant="top" src={image} className="rounded" style={{ width: "400px", height: "100%" }} />;
                   </Col>
                 </Row>
               </Col>
               <Col>
                 <Card.Body>
                   <Card.Title>
-                    {detail.title}
+                    <span className="Midnight-Blue fw-bold" style={{ fontSize: "36px" }}>
+                      {detail.title}
+                    </span>
                     <div className="d-flex align-item-center gap-1 py-2">
                       <RiStarFill style={{ color: "#FFC416" }} />
                       <RiStarFill style={{ color: "#FFC416" }} />
                       <RiStarFill style={{ color: "#FFC416" }} />
                       <RiStarFill style={{ color: "#FFC416" }} />
                       <RiStarFill style={{ color: "#FFC416" }} />
-                      (22)
+                      <span className="Midnight-Blue" style={{ fontSize: "14px" }}>
+                        (22)
+                      </span>
                     </div>
                   </Card.Title>
-                  <Card.Text className="d-flex">
-                    ${Math.round((62 / 100) * Number(price))}
-                    <span className="clr2 mx-3"> ${price}</span>
+                  <Card.Text className="d-flex" style={{ fontSize: "16px" }}>
+                    <span className="Midnight-Blue"> ${Math.round((62 / 100) * Number(price))}</span>
+                    <span className="clr2 mx-3 Wild-Strawberry">
+                      <del> ${price}</del>
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <h4>Color</h4>
-                    {/* {detail.description} */}
+                    <h4 className="Midnight-Blue" style={{ fontSize: "16px" }}>
+                      Color
+                    </h4>
+                    <span className="color-wildBlueYonder">{detail && detail.description}</span>
                   </Card.Text>
-                  <Card.Text className="d-flex gap-4">
-                    <h6>Add to cart</h6>
+                  <Card.Text className="d-flex gap-4 ms-5 Midnight-Blue">
+                    <h6 onClick={() => handleClickCart(detail && detail)} style={{ cursor: "pointer" }}>
+                      Add to cart
+                    </h6>
                     <BsHeart />
                   </Card.Text>
-                  <div>
+                  <div className="Midnight-Blue" style={{ fontSize: "16px" }}>
                     <h5>Category: {detail && detail.category && detail.category.name}</h5>
                   </div>
-                  <div>
+                  <div className="Midnight-Blue" style={{ fontSize: "16px" }}>
                     <h5>Tags</h5>
                   </div>
                   <div className="d-flex gap-4">
