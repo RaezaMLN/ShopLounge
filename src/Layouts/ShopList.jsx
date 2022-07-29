@@ -11,6 +11,7 @@ import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 import GreyContainer from "../Components/GreyContainer";
 import { getProduct } from "../Redux/Actions/productAction";
 import Brand from "../Components/Brand";
+import CarouselShopList from "../Components/CarouselShopList";
 
 export default function ShopList() {
   const [showPage, setShowPage] = useState(7);
@@ -127,47 +128,15 @@ export default function ShopList() {
             products
               .filter((item, index) => index < showPage)
               .map((item, index) => {
-                console.log("products", products);
-                return (
-                  <Card className="my-5 p-4">
-                    <Row>
-                      <Col sm={4}>
-                        <Card.Img variant="top" src={item.category.image} />
-                      </Col>
-                      <Col sm={8}>
-                        <Card.Body>
-                          <Card.Title className="d-flex gap-3">
-                            {item.title}
-                            <div className="d-flex align-item-center gap-1 py-2">
-                              <div id="shape1" className="bg-butterCup"></div>
-                              <div id="shape2" className="bg-wildStrawberry"></div>
-                              <div id="shape3" className="bg-lightSlateBlue"></div>
-                            </div>
-                          </Card.Title>
-                          <Card.Text className="d-flex">
-                            ${Math.round((62 / 100) * Number(item.price))}
-                            <span className="clr2 mx-3">
-                              <del className="Wild-Strawberry"> ${item.price}</del>
-                            </span>
-                            <div>
-                              <RiStarFill style={{ color: "#FFC416" }} />
-                              <RiStarFill style={{ color: "#FFC416" }} />
-                              <RiStarFill style={{ color: "#FFC416" }} />
-                              <RiStarHalfFill style={{ color: "#FFC416" }} />
-                              <RiStarLine style={{ color: "#FFC416" }} />
-                            </div>
-                          </Card.Text>
-                          <Card.Text>{item.description}</Card.Text>
-                          <Card.Text className="d-flex gap-4">
-                            <BsCart2 onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
-                            <BsHeart />
-                            <BsZoomIn />
-                          </Card.Text>
-                        </Card.Body>
-                      </Col>
-                    </Row>
-                  </Card>
-                );
+                return 
+                  <CarouselShopList 
+                    listImage={item.images} 
+                    title={item.title} 
+                    price={item.price} 
+                    description={item.description}
+                    onClickCart={() => handleClickCart(item)} 
+                    onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
+                  />;
               })}
         </div>
       </div>
