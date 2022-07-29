@@ -15,3 +15,19 @@ export const getProduct = () => {
       });
   };
 };
+
+export const getDetailProduct = (id, detail) => {
+  return async (dispatch) => {
+    dispatch({ type: type.PRODUCT_REQUEST });
+    api
+      .get(`/products/${id}`)
+      .then((response) => {
+        const detail = response.data;
+        console.log("response data", detail);
+        return detail;
+      })
+      .catch((err) => {
+        dispatch({ type: type.GET_PRODUCT_FAILED, error: err.response });
+      });
+  };
+};

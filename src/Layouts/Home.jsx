@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import Carousel from "../Components/Carousel";
 import Button from "../Components/Button";
@@ -34,15 +34,16 @@ import { getProduct } from "../Redux/Actions/productAction";
 import { AddCart } from "../Redux/Actions/cartAction";
 
 export default function Home() {
-  const navigate = useNavigate()
-  const [showPage, setShowPage] = useState([4, 0]); 
+  const navigate = useNavigate();
+  const [showPage, setShowPage] = useState([4, 0]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
-  const [paggination, setPaggination] = useState();
+  // const [paggination, setPaggination] = useState();
   useEffect(() => {
     dispatch(getProduct());
   }, []);
+
   useEffect(() => {
     const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
@@ -56,12 +57,12 @@ export default function Home() {
   //     let holdItems = [];
   //     for(let i=0; i<=products.length; i=i+4) {
   //       holdPaggination.push(
-  //         <div 
-  //           className="rounded-3 my-2 pink-page pageHover" 
-  //           style={{ cursor: "pointer" }} 
+  //         <div
+  //           className="rounded-3 my-2 pink-page pageHover"
+  //           style={{ cursor: "pointer" }}
   //           onClick={() => setShowPage([(i+4), i])}
   //         ></div>
-          
+
   //       );
   //     }
   //     setPaggination(holdPaggination);
@@ -111,12 +112,19 @@ export default function Home() {
               products
                 .filter((item, index) => index < showPage[0] && index >= showPage[1])
                 .map((item, index) => {
-                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)}  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} />;
+                  return (
+                    <Carousel
+                      listImage={item.images}
+                      title={item.title}
+                      price={item.price}
+                      onClickCart={() => handleClickCart(item)}
+                      onClickTitle={() => {
+                        navigate(`/product-detail/${item.id}`);
+                      }}
+                    />
+                  );
                 })}
           </Col>
-          
-          
-          
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
             {/* {paggination} */}
@@ -180,7 +188,15 @@ export default function Home() {
                       </div>
 
                       <Card.Body className="d-flex">
-                        <Card.Title className="Midnight-Blue josefin fw-bold me-5" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
+                        <Card.Title
+                          className="Midnight-Blue josefin fw-bold me-5"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
                           <Card.Text className="Midnight-Blue lato fw-semibold me-2">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold Wild-Strawberry">
@@ -296,7 +312,15 @@ export default function Home() {
                         </div>
                       </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
-                        <Card.Title className="Wild-Strawberry josefin fw-bold" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
+                        <Card.Title
+                          className="Wild-Strawberry josefin fw-bold"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
                           <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold color-wildBlueYonder">
