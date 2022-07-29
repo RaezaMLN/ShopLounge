@@ -51,22 +51,22 @@ export default function Home() {
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
   };
-  useEffect(() => {
-    if (products) {
-      let holdItems = [];
-      for(let i=0; i<=products.length; i=i+4) {
-        holdPaggination.push(
-          <div 
-            className="rounded-3 my-2 pink-page pageHover" 
-            style={{ cursor: "pointer" }} 
-            onClick={() => setShowPage([(i+4), i])}
-          ></div>
+  // useEffect(() => {
+  //   if (products) {
+  //     let holdItems = [];
+  //     for(let i=0; i<=products.length; i=i+4) {
+  //       holdPaggination.push(
+  //         <div 
+  //           className="rounded-3 my-2 pink-page pageHover" 
+  //           style={{ cursor: "pointer" }} 
+  //           onClick={() => setShowPage([(i+4), i])}
+  //         ></div>
           
-        );
-      }
-      setPaggination(holdPaggination);
-    }
-  }, [products, paggination]);
+  //       );
+  //     }
+  //     setPaggination(holdPaggination);
+  //   }
+  // }, [products, paggination]);
   // const handleClickPaggination = ()=>{
 
   //   for(let i=0; i<=products.length; i=i+4){
@@ -119,11 +119,11 @@ export default function Home() {
           
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
-            {paggination}
-            {/* <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            {/* {paggination} */}
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div> */}
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
           </div>
         </Row>
 
