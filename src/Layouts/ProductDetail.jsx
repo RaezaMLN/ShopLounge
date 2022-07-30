@@ -147,7 +147,7 @@ export default function ProductDetail() {
           </Card>
         </div>
       </div>
-      <div style={{ backgroundColor: "#F6F5FF", height: "500px" }} className="d-flex gap-3">
+      <div style={{ backgroundColor: "#F6F5FF", height: "500px" }} className="d-flex gap-5 container">
         <div
           onClick={() => {
             <Description />;

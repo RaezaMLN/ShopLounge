@@ -31,7 +31,9 @@ const CarouselShop = ({ listImage, title, price, onClickCart, onClickTitle }) =>
         </div>
       </div>
       <Card.Body>
-        <Card.Title className="text-center lato" onClick={onClickTitle} style={{cursor:"pointer"}}>{title}</Card.Title>
+        <Card.Title className="text-center lato" onClick={onClickTitle} style={{ cursor: "pointer" }}>
+          {title}
+        </Card.Title>
         <div className="d-flex justify-content-center gap-1 ">
           <div id="shape1" className="bg-butterCup" onClick={() => setShowImage(listImage[0])}></div>
           <div id="shape2" className="bg-wildStrawberry" onClick={() => setShowImage(listImage[1])}></div>
