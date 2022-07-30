@@ -21,7 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 export default function ProductDetail() {
   const [detail, setDetail] = useState({});
   const [image, setImage] = useState({});
-
+  const [showPage, setShowPage] = useState(Description());
   const param = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -147,39 +147,30 @@ export default function ProductDetail() {
           </Card>
         </div>
       </div>
-      <div style={{ backgroundColor: "#F6F5FF", height: "500px" }} className="d-flex gap-5 container">
-        <div
-          onClick={() => {
-            <Description />;
-          }}
-          className="border-bottom"
-        >
-          Description
+      <div style={{ backgroundColor: "#F6F5FF", height: "500px" }} className="d-flex flex-column  container">
+        <div className="d-flex gap-5 fw-bold josefin " style={{ fontSize: "24px" }}>
+          <div>
+            <span className="Midnight-Blue" style={{ cursor: "pointer" }} onClick={() => setShowPage(Description())}>
+              Description
+            </span>
+          </div>
+          <div>
+            <span className="Midnight-Blue" style={{ cursor: "pointer" }} onClick={() => setShowPage(Additional())}>
+              Additional Info
+            </span>
+          </div>
+          <div>
+            <span className="Midnight-Blue" style={{ cursor: "pointer" }} onClick={() => setShowPage(Review())}>
+              Reviews
+            </span>
+          </div>
+          <div>
+            <span className="Midnight-Blue" style={{ cursor: "pointer" }} onClick={() => setShowPage(Video())}>
+              Video
+            </span>
+          </div>
         </div>
-        <div
-          onClick={() => {
-            <Additional />;
-          }}
-          className="border-bottom"
-        >
-          Additional Info
-        </div>
-        <div
-          onClick={() => {
-            <Review />;
-          }}
-          className="border-bottom"
-        >
-          Reviews
-        </div>
-        <div
-          onClick={() => {
-            <Video />;
-          }}
-          className="border-bottom"
-        >
-          Video
-        </div>
+        <div>{showPage}</div>
       </div>
       <Row className="justify-content-md-center my-5">
         <Col md="auto">
