@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { Card, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { RiStarFill, RiInstagramFill, RiFacebookFill, RiTwitterFill } from "react-icons/ri";
 import { BsHeart } from "react-icons/bs";
+import rate from "../img/rate.png";
 
 import GreyContainer from "../Components/GreyContainer";
 import sponsor from "../img/sponsor.png";
@@ -16,6 +16,8 @@ import { AddCart } from "../Redux/Actions/cartAction";
 import * as type from "../Redux/Types/productType";
 import { mainApi as api } from "../Lib/Api";
 import { useSelector, useDispatch } from "react-redux";
+import { getProduct } from "../Redux/Actions/productAction";
+
 // import { getdetail } from "../Redux/Actions/productAction";
 
 export default function ProductDetail() {
@@ -24,6 +26,19 @@ export default function ProductDetail() {
   const [showPage, setShowPage] = useState(Description());
   const param = useParams();
   const dispatch = useDispatch();
+  const product = useSelector((state) => state.product);
+  const [products, setProducts] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+
+  useEffect(() => {
+    const filterProduct = product.list.filter((item, index) => index < 5 && index > 0);
+    setProducts(filterProduct);
+  }, [product]);
+
   useEffect(() => {
     dispatch({ type: type.PRODUCT_REQUEST });
     api
@@ -172,6 +187,44 @@ export default function ProductDetail() {
         </div>
         <div>{showPage}</div>
       </div>
+      <Row className="my-5 container ms-1">
+        <Col>
+          <h1 className="fs-2 fw-bold Midnight-Blue text-start josefin">Related Products</h1>
+        </Col>
+      </Row>
+      <Row className="my-5">
+        {products &&
+          products.length > 0 &&
+          products.map((item, index) => {
+            return (
+              <Col xs={3} className="d-flex justify-content-center">
+                <Card style={{ width: "18rem" }} className="border border-0 text-start">
+                  <div className="container-image">
+                    <Card.Img variant="top" src={item.images[1]} />
+                  </div>
+                  <Card.Body className="d-flex flex-column align-items-start">
+                    <Card.Title
+                      className="Midnight-Blue josefin fw-bold"
+                      style={{ cursor: "pointer", fontSize: "16px" }}
+                      onClick={() => {
+                        navigate(`/product-detail/${item.id}`);
+                      }}
+                    >
+                      <div className="d-flex align-items-start ">
+                        {item.title}
+                        <img src={rate} alt="" className="w-25 ms-5" />
+                      </div>
+                    </Card.Title>
+                    <div className="d-flex">
+                      <Card.Text className="lato fw-semibold Midnight-Blue">${item.price}</Card.Text>
+                    </div>
+                  </Card.Body>
+                  <Card.Body></Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+      </Row>
       <Row className="justify-content-md-center my-5">
         <Col md="auto">
           <img src={sponsor} />
