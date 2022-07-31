@@ -129,17 +129,18 @@ export default function ShopList() {
             products
               .filter((item, index) => index < showPage)
               .map((item, index) => {
-                return;
-                <CarouselShopList
-                  listImage={item.images}
-                  title={item.title}
-                  price={item.price}
-                  description={item.description}
-                  onClickCart={() => handleClickCart(item)}
-                  onClickTitle={() => {
-                    navigate(`/product-detail/${item.id}`);
-                  }}
-                />;
+                return (
+                  <CarouselShopList
+                    listImage={item.images}
+                    title={item.title}
+                    price={item.price}
+                    description={item.description}
+                    onClickCart={() => handleClickCart(item)}
+                    onClickTitle={() => {
+                      navigate(`/product-detail/${item.id}`);
+                    }}
+                  />
+                );
               })}
         </div>
       </div>

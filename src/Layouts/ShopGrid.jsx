@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,12 +8,14 @@ import { getProduct } from "../Redux/Actions/productAction";
 import { AddCart } from "../Redux/Actions/cartAction";
 
 import CarouselShop from "../Components/CarouselShop";
+
 import sponsor from "../img/sponsor.png";
 import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
+import { combineReducers } from "redux";
 
 export default function ShopGrid() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState(12);
   // const [productList, setProductList] = useState([]);
 
@@ -28,7 +30,7 @@ export default function ShopGrid() {
 
   useEffect(() => {
     if (product.list && product.list.length > 0) {
-      const filterProduct = product.list.filter((item, index) => index < 37);
+      const filterProduct = product.list.filter((item, index) => index < 12);
       setProducts(filterProduct);
     }
   }, [product]);
@@ -77,6 +79,7 @@ export default function ShopGrid() {
     dispatch(AddCart(item));
   };
 
+  // console.log("products", showPage);
   return (
     <div>
       <GreyContainer titlePage={"Shope Grid Default"} />
@@ -129,14 +132,17 @@ export default function ShopGrid() {
               products
                 .filter((item, index) => index < showPage)
                 .map((item, index) => {
-                  return 
-                  <CarouselShop 
-                  listImage={item.images} 
-                  title={item.title} 
-                  price={item.price} 
-                  onClickCart={() => handleClickCart(item)} 
-                  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
-                  />;
+                  return (
+                    <CarouselShop
+                      listImage={item.images}
+                      title={item.title}
+                      price={item.price}
+                      onClickCart={() => handleClickCart(item)}
+                      onClickTitle={() => {
+                        navigate(`/product-detail/${item.id}`);
+                      }}
+                    />
+                  );
                 })}
           </Col>
         </Row>
