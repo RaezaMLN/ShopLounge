@@ -81,6 +81,12 @@ export default function ProductDetail() {
 
   console.log("detail product", detail);
   const price = detail.price;
+
+  const handleClickCard = (item) => {
+    setDetail(item);
+    setImage(item.category.image);
+  };
+
   return (
     <div>
       <GreyContainer titlePage={"Product Details"} />
@@ -208,6 +214,7 @@ export default function ProductDetail() {
                       style={{ cursor: "pointer", fontSize: "16px" }}
                       onClick={() => {
                         navigate(`/product-detail/${item.id}`);
+                        handleClickCard(item);
                       }}
                     >
                       <div className="d-flex align-items-start ">

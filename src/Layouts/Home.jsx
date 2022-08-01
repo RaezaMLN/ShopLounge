@@ -35,10 +35,12 @@ import { AddCart } from "../Redux/Actions/cartAction";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [showPage, setShowPage] = useState([4, 0]);
+  const [showPage, setShowPage] = useState([4]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
+  const [filterFP, setFilterFP] = useState({});
+  const [items, setItems] = useState();
   // const [paggination, setPaggination] = useState();
   useEffect(() => {
     dispatch(getProduct());
@@ -52,22 +54,45 @@ export default function Home() {
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
   };
-  // useEffect(() => {
-  //   if (products) {
-  //     let holdItems = [];
-  //     for(let i=0; i<=products.length; i=i+4) {
-  //       holdPaggination.push(
-  //         <div
-  //           className="rounded-3 my-2 pink-page pageHover"
-  //           style={{ cursor: "pointer" }}
-  //           onClick={() => setShowPage([(i+4), i])}
-  //         ></div>
 
-  //       );
-  //     }
-  //     setPaggination(holdPaggination);
+  // useEffect(() => {
+  //   if (product.listProduct && product.listProduct.length > 0) {
+  //     const filterData = product.listProduct.filter((e, i) => i < 10);
+  //     setProductList(filterData);
   //   }
-  // }, [products, paggination]);
+  // }, [product]);
+
+  useEffect(() => {
+    if (product.list && product.list.length > 0) {
+      const filterProduct = product.list.filter((item, index) => index < 4);
+      setFilterFP(filterProduct);
+    }
+  }, [product]);
+
+  const allproduct = useSelector((state) => state.product.list);
+  const [activePage, setaActivePage] = useState(1);
+
+  useEffect(() => {
+    if (allproduct) {
+      let holdItems = [];
+      for (let number = 1; number <= 4; number++) {
+        holdItems.push(
+          <div
+            className="rounded-3 my-2 pink-page pageHover"
+            style={{ cursor: "pointer" }}
+            onClick={(e) => {
+              setaActivePage(number);
+              const recentData = allproduct;
+              const filterData = recentData.slice(4 * (number - 1), 4 * number);
+              setFilterFP(filterData);
+            }}
+          ></div>
+        );
+      }
+      setItems(holdItems);
+    }
+  }, [allproduct, items]);
+
   // const handleClickPaggination = ()=>{
 
   //   for(let i=0; i<=products.length; i=i+4){
@@ -107,31 +132,31 @@ export default function Home() {
         </Row>
         <Row>
           <Col className="d-flex flex-wrap">
-            {products &&
-              products.length > 0 &&
-              products
-                .filter((item, index) => index < showPage[0] && index >= showPage[1])
-                .map((item, index) => {
-                  return (
-                    <Carousel
-                      listImage={item.images}
-                      title={item.title}
-                      price={item.price}
-                      onClickCart={() => handleClickCart(item)}
-                      onClickTitle={() => {
-                        navigate(`/product-detail/${item.id}`);
-                      }}
-                    />
-                  );
-                })}
+            {filterFP &&
+              filterFP.length > 0 &&
+              filterFP.map((item, index) => {
+                console.log("featured", filterFP);
+                return (
+                  <Carousel
+                    listImage={item.images}
+                    title={item.title}
+                    price={item.price}
+                    onClickCart={() => handleClickCart(item)}
+                    onClickTitle={() => {
+                      navigate(`/product-detail/${item.id}`);
+                    }}
+                  />
+                );
+              })}
           </Col>
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
             {/* {paggination} */}
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            {items}
+            {/* <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div> */}
           </div>
         </Row>
 

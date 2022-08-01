@@ -9,6 +9,7 @@ import { AddCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
 
 export default function ShoppingCart() {
+  const [qty, setQty] = useState(3);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
@@ -33,6 +34,21 @@ export default function ShoppingCart() {
     dispatch({ type: types.DELETE_CART, payload: carts.find((e) => e.id === i) });
   };
 
+  // let count = 0;
+  // carts &&
+  //   carts.length &&
+  //   carts.forEach((item, index) => {
+  //     carts.find((e) => e.id === item.id);
+  //   });
+
+  // console.log("cart state", carts);
+  useEffect(() => {
+    const count = carts.reduce((accumulator, value) => {
+      return { ...accumulator, [value]: (accumulator[value] || 0) + 1 };
+    }, {});
+    console.log("count", count);
+  }, []);
+
   return (
     <div>
       <GreyContainer titlePage={"Shopping Cart"} />
@@ -53,13 +69,12 @@ export default function ShoppingCart() {
                   {carts &&
                     carts.length > 0 &&
                     carts.map((item, key) => {
-                      console.log("see item", item);
                       return (
                         <tr key={key}>
                           <td className="d-flex gap-2">
                             <div className="position-relative">
                               <img src={item.images} style={{ width: "100px", height: "80px" }} />
-                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px"  }}>
+                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px" }}>
                                 x
                               </div>
                             </div>
@@ -71,7 +86,7 @@ export default function ShoppingCart() {
 
                           <td>${item.price} </td>
                           <td>
-                            <Input inpType="number" pattern="[0-9]+" />
+                            <Input inpType="number" inpValue={""} />
                           </td>
                           <td>{formatter.format(item.price)} </td>
                         </tr>
