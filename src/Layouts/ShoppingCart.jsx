@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { AddCart } from "../Redux/Actions/cartAction";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
-import { AddCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
 
 export default function ShoppingCart() {
-  const [qty, setQty] = useState(3);
+  const [filterData, setFilterData] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
+  console.log("carts", carts);
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -38,16 +38,49 @@ export default function ShoppingCart() {
   // carts &&
   //   carts.length &&
   //   carts.forEach((item, index) => {
-  //     carts.find((e) => e.id === item.id);
+  //     console.log(
+  //       "find",
+  //       carts.filter((e) => e.id === item.id)
+  //     );
   //   });
 
-  // console.log("cart state", carts);
   useEffect(() => {
-    const count = carts.reduce((accumulator, value) => {
-      return { ...accumulator, [value]: (accumulator[value] || 0) + 1 };
-    }, {});
-    console.log("count", count);
-  }, []);
+    let holdArr = [];
+    carts.forEach((item, index) => {
+      const checkData = holdArr.find((e) => e.id === item.id);
+      if (checkData === undefined) {
+        holdArr.push({ ...item, quantity: 1, totalPrice: item.price });
+      }
+      if (checkData) {
+        const calculate = {
+          ...checkData,
+          totalPrice: checkData.totalPrice + item.price,
+          quantity: checkData.quantity + 1,
+        };
+        const newData = holdArr.map((el, i) => {
+          if (el.id === calculate.id) {
+            return calculate;
+          } else {
+            return el;
+          }
+        });
+
+        holdArr = newData;
+        // console.log("HoldData", holdArr);
+        setFilterData(holdArr);
+      }
+    });
+  }, [carts]);
+
+  console.log("filterData", filterData);
+
+  // handleMinClick(e) {
+
+  // }
+
+  const handlePlusClick = (e) => {
+    dispatch(AddCart(e));
+  };
 
   return (
     <div>
@@ -66,15 +99,19 @@ export default function ShoppingCart() {
                   </tr>
                 </thead>
                 <tbody>
-                  {carts &&
-                    carts.length > 0 &&
-                    carts.map((item, key) => {
+                  {filterData &&
+                    filterData.length > 0 &&
+                    filterData.map((item, key) => {
                       return (
                         <tr key={key}>
                           <td className="d-flex gap-2">
                             <div className="position-relative">
                               <img src={item.images} style={{ width: "100px", height: "80px" }} />
-                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px" }}>
+                              <div
+                                className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle"
+                                onClick={() => handleDelete(carts && carts.length > 0 && carts)}
+                                style={{ cursor: "pointer", width: "20px", height: "20px" }}
+                              >
                                 x
                               </div>
                             </div>
@@ -86,9 +123,20 @@ export default function ShoppingCart() {
 
                           <td>${item.price} </td>
                           <td>
-                            <Input inpType="number" inpValue={""} />
+                            <div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "F0EFF2" }}>
+                              <button
+                                className="btn border border-1"
+                                // onClick={() => handleMinClick(e)}
+                              >
+                                -
+                              </button>
+                              <span>{item.quantity}</span>
+                              <button className="btn border border-1" onClick={() => handlePlusClick(item)}>
+                                +
+                              </button>
+                            </div>
                           </td>
-                          <td>{formatter.format(item.price)} </td>
+                          <td>{formatter.format(item.totalPrice)} </td>
                         </tr>
                       );
                     })}

@@ -135,7 +135,7 @@ export default function Home() {
             {filterFP &&
               filterFP.length > 0 &&
               filterFP.map((item, index) => {
-                console.log("featured", filterFP);
+                // console.log("featured", filterFP);
                 return (
                   <Carousel
                     listImage={item.images}
