@@ -12,7 +12,7 @@ export default function ShoppingCart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
-  console.log("carts", carts);
+  const [cartId, setCartId] = useState();
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -72,11 +72,16 @@ export default function ShoppingCart() {
     });
   }, [carts]);
 
+  useEffect(() => {
+    carts.map((item, index) => {
+      return setCartId(item.id);
+    });
+  }, [carts]);
+  console.log("cart", carts);
+
   console.log("filterData", filterData);
 
-  // handleMinClick(e) {
-
-  // }
+  const handleMinClick = (e) => {};
 
   const handlePlusClick = (e) => {
     dispatch(AddCart(e));
@@ -107,11 +112,7 @@ export default function ShoppingCart() {
                           <td className="d-flex gap-2">
                             <div className="position-relative">
                               <img src={item.images} style={{ width: "100px", height: "80px" }} />
-                              <div
-                                className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle"
-                                onClick={() => handleDelete(carts && carts.length > 0 && carts)}
-                                style={{ cursor: "pointer", width: "20px", height: "20px" }}
-                              >
+                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px" }}>
                                 x
                               </div>
                             </div>
