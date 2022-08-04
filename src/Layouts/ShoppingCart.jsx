@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AddCart } from "../Redux/Actions/cartAction";
+import { AddCart, DeleteCart } from "../Redux/Actions/cartAction";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
 import Input from "../Components/Input";
@@ -29,10 +29,6 @@ export default function ShoppingCart() {
     });
     setCountTotal(newCount);
   }, [carts]);
-
-  const handleDelete = (i) => {
-    dispatch({ type: types.DELETE_CART, payload: carts.find((e) => e.id === i) });
-  };
 
   // let count = 0;
   // carts &&
@@ -76,12 +72,18 @@ export default function ShoppingCart() {
     carts.map((item, index) => {
       return setCartId(item.id);
     });
-  }, [carts]);
+  }, [carts, filterData]);
   console.log("cart", carts);
 
   console.log("filterData", filterData);
 
-  const handleMinClick = (e) => {};
+  const handleDelete = (e) => {
+    dispatch(DeleteCart(e));
+  };
+
+  const handleMinClick = (e) => {
+    dispatch(DeleteCart(e));
+  };
 
   const handlePlusClick = (e) => {
     dispatch(AddCart(e));
@@ -125,10 +127,7 @@ export default function ShoppingCart() {
                           <td>${item.price} </td>
                           <td>
                             <div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "F0EFF2" }}>
-                              <button
-                                className="btn border border-1"
-                                // onClick={() => handleMinClick(e)}
-                              >
+                              <button className="btn border border-1" onClick={() => handleMinClick(item.id)}>
                                 -
                               </button>
                               <span>{item.quantity}</span>
