@@ -14,14 +14,14 @@ export const AddCart = (item) => {
   };
 };
 
-// export function DeleteCart(itemId) {
-//   return {
-//     type: types.DELETE_CART,
-//     payload: {
-//       id: itemId,
-//     },
-//   };
-// }
+export function DeleteCart(itemId) {
+  return {
+    type: types.DELETE_CART,
+    payload: {
+      id: itemId,
+    },
+  };
+}
 
 // export function AdjustQuantity(itemId, value){
 //     return{
