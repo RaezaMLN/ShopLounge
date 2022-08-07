@@ -47,33 +47,37 @@ export default function ShopGrid() {
   const [activePage, setaActivePage] = useState(1);
   const [items, setItems] = useState([]);
 
+  const PaginationData = ({number}) =>{
+    return (
+      <div
+        className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
+        key={number}
+        style={{
+          cursor: "pointer",
+          backgroundColor:number === activePage? "#FB2E86":null,
+          color:number === activePage? "#FFFFFF":null,
+        }}
+        onClick={(e) => {
+          setaActivePage(number);
+          const recentData = allproduct;
+          const filterData = recentData.slice(12 * (number - 1), 12 * number);
+          setProducts(filterData);
+        }}
+      >
+        <span className="texthvr">{number}</span>
+      </div>
+    )
+  }
+
   useEffect(() => {
     if (allproduct) {
       let holdItems = [];
       for (let number = 1; number <= Math.ceil(allproduct.length / 12); number++) {
-        holdItems.push(
-          <div
-            className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
-            key={number}
-            active={number === activePage}
-            style={{
-              cursor: "pointer",
-            }}
-            onClick={(e) => {
-              setaActivePage(number);
-              const recentData = allproduct;
-              const filterData = recentData.slice(12 * (number - 1), 12 * number);
-              setProducts(filterData);
-            }}
-          >
-            <span className="texthvr">{number}</span>
-          </div>
-        );
+        holdItems.push(<PaginationData number={number} />);
       }
       setItems(holdItems);
     }
-    // console.log("product", product.list);
-  }, [allproduct, items]);
+  }, [allproduct, activePage]);
 
   const handleClickCart = (item) => {
     dispatch(AddCart(item));

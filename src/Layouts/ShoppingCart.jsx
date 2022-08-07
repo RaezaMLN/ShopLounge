@@ -42,7 +42,6 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     let holdArr = [];
-    console.log("HoldArr", holdArr);
     carts.forEach((item, index) => {
       const checkData = holdArr.find((e) => e.id === item.id);
       if (checkData === undefined) {
@@ -63,16 +62,10 @@ export default function ShoppingCart() {
         });
 
         holdArr = newData;
-       
-        setFilterData(holdArr);
       }
-    }
+    });
+    setFilterData(holdArr);
     
-    );
-
-    if(carts.length === 0) {
-      filterData.length = 0
-    }
   }, [carts]);
 
 // useEffect(() => {
