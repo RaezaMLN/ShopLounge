@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AddCart, DeleteCart } from "../Redux/Actions/cartAction";
+import { AddCart, DeleteCart, DeleteSingleCart } from "../Redux/Actions/cartAction";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
 import Input from "../Components/Input";
@@ -42,6 +42,7 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     let holdArr = [];
+    console.log("HoldArr", holdArr);
     carts.forEach((item, index) => {
       const checkData = holdArr.find((e) => e.id === item.id);
       if (checkData === undefined) {
@@ -62,33 +63,46 @@ export default function ShoppingCart() {
         });
 
         holdArr = newData;
-        // console.log("HoldData", holdArr);
+       
         setFilterData(holdArr);
       }
-    });
+    }
+    
+    );
+
+    if(carts.length === 0) {
+      filterData.length = 0
+    }
   }, [carts]);
 
-  useEffect(() => {
-    carts.map((item, index) => {
-      return setCartId(item.id);
-    });
-  }, [carts, filterData]);
-  console.log("cart", carts);
+// useEffect(() => {
+//   if(carts.length === 0) {
+//     filterData.length = 0
+//   }
+  
+// })
+  
 
-  console.log("filterData", filterData);
+ 
+  // console.log("cart", carts);
+
+  // console.log("filterData", filterData);
 
   const handleDelete = (e) => {
     dispatch(DeleteCart(e));
   };
 
   const handleMinClick = (e) => {
-    dispatch(DeleteCart(e));
-  };
+  dispatch(DeleteSingleCart(e))
+  
+          
+  }
 
   const handlePlusClick = (e) => {
     dispatch(AddCart(e));
   };
 
+ 
   return (
     <div>
       <GreyContainer titlePage={"Shopping Cart"} />

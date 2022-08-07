@@ -6,7 +6,7 @@ import "animate.css";
 
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
-import { AddCart } from "../Redux/Actions/cartAction";
+// import { DeleteAllCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
 
 import { Container, Row, Col, Form } from "react-bootstrap";
@@ -55,9 +55,10 @@ export default function Shipping() {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
+      navigate("/order-completed");
     }
     setValidated(true);
-    // navigate("/order-completed");
+   
   };
 
   useEffect(() => {
@@ -87,6 +88,11 @@ export default function Shipping() {
       }
     });
   }, [carts]);
+
+
+  const handleClick = () => {
+    carts.length=0;
+  };
 
   return (
     <Container>
@@ -138,7 +144,7 @@ export default function Shipping() {
             </Form.Group>
             <br />
 
-            <Button btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
+            <Button eventClick={handleClick()} btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
           </Form>
         </div>
         <div className="w-50">

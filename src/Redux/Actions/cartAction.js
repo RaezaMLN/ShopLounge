@@ -23,6 +23,16 @@ export function DeleteCart(itemId) {
   };
 }
 
+export function DeleteSingleCart(itemId) {
+  return {
+    type: types.DELETE_SINGLE_CART,
+    payload: {
+        id: itemId,
+    },
+   
+  };
+}
+
 // export function AdjustQuantity(itemId, value){
 //     return{
 //         type: types.ADJUST_QUANTITY,
