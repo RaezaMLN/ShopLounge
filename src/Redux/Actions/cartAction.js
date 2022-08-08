@@ -32,6 +32,12 @@ export function DeleteSingleCart(itemId) {
    
   };
 }
+export function DeleteAllCart() {
+  return {
+    type: types.DELETE_ALL_CART,
+   
+  };
+}
 
 // export function AdjustQuantity(itemId, value){
 //     return{

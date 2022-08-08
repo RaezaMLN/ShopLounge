@@ -72,14 +72,14 @@ export default function Home() {
   const allproduct = useSelector((state) => state.product.list);
   const [activePage, setaActivePage] = useState(1);
 
-  useEffect(() => {
-    if (allproduct) {
-      let holdItems = [];
-      for (let number = 1; number <= 4; number++) {
-        holdItems.push(
-          <div
+  
+  const PaginationData = ({number}) =>{
+    return (
+      <div
             className="rounded-3 my-2 pink-page pageHover"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", backgroundColor:number === activePage? "#FB2E86":null,
+            color:number === activePage? "#FFFFFF":null, }}
+            
             onClick={(e) => {
               setaActivePage(number);
               const recentData = allproduct;
@@ -87,18 +87,20 @@ export default function Home() {
               setFilterFP(filterData);
             }}
           ></div>
-        );
+    )
+  }
+
+  useEffect(() => {
+    if (allproduct) {
+      let holdItems = [];
+      for (let number = 1; number <= 4; number++) {
+        holdItems.push(<PaginationData number={number} />);
       }
       setItems(holdItems);
     }
-  }, [allproduct, items]);
+  }, [allproduct, activePage]);
 
-  // const handleClickPaggination = ()=>{
-
-  //   for(let i=0; i<=products.length; i=i+4){
-  //     setShowPage([(i+4), i])
-  //   }
-  // }
+  
 
   return (
     <div>
