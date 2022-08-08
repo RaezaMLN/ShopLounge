@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AddCart, DeleteCart, DeleteSingleCart } from "../Redux/Actions/cartAction";
+import { AddCart, DeleteCart, DeleteSingleCart, DeleteAllCart } from "../Redux/Actions/cartAction";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
 import Input from "../Components/Input";
@@ -12,7 +12,7 @@ export default function ShoppingCart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
-  const [cartId, setCartId] = useState();
+
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -30,15 +30,6 @@ export default function ShoppingCart() {
     setCountTotal(newCount);
   }, [carts]);
 
-  // let count = 0;
-  // carts &&
-  //   carts.length &&
-  //   carts.forEach((item, index) => {
-  //     console.log(
-  //       "find",
-  //       carts.filter((e) => e.id === item.id)
-  //     );
-  //   });
 
   useEffect(() => {
     let holdArr = [];
@@ -62,33 +53,21 @@ export default function ShoppingCart() {
         });
 
         holdArr = newData;
+        
       }
     });
     setFilterData(holdArr);
     
   }, [carts]);
 
-// useEffect(() => {
-//   if(carts.length === 0) {
-//     filterData.length = 0
-//   }
-  
-// })
-  
 
- 
-  // console.log("cart", carts);
-
-  // console.log("filterData", filterData);
 
   const handleDelete = (e) => {
     dispatch(DeleteCart(e));
   };
 
   const handleMinClick = (e) => {
-  dispatch(DeleteSingleCart(e))
-  
-          
+  dispatch(DeleteSingleCart(e))     
   }
 
   const handlePlusClick = (e) => {
@@ -133,22 +112,28 @@ export default function ShoppingCart() {
 
                           <td>${item.price} </td>
                           <td>
+                            <td style={{fontSize:"12px", backgroundColor:"#F0EFF2"}}>
                             <div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "F0EFF2" }}>
                               <button className="btn border border-1" onClick={() => handleMinClick(item.id)}>
                                 -
                               </button>
-                              <span>{item.quantity}</span>
+                              <span className="mx-3">{item.quantity}</span>
                               <button className="btn border border-1" onClick={() => handlePlusClick(item)}>
                                 +
                               </button>
                             </div>
-                          </td>
+                          </td></td>
+                          
                           <td>{formatter.format(item.totalPrice)} </td>
                         </tr>
                       );
                     })}
                 </tbody>
               </table>
+              <div className="d-flex flex-row josefin text-white justify-content-between my-5">
+                      <div><Button className="border-0" style={{backgroundColor:"#ec42a2"}}  onClick={() => {navigate("/shop-grid")}}>Update Curt</Button></div>
+                      <div><Button className="border-0" style={{backgroundColor:"#ec42a2"}}  onClick={() =>{dispatch(DeleteAllCart())}}>Clear Curt</Button></div>
+                    </div>
             </div>
           </div>
         </Col>
@@ -170,9 +155,10 @@ export default function ShoppingCart() {
                 {/* <Form.Control plaintext readOnly defaultValue="Totals:" className="border-bottom" /> */}
                 <Form.Check type="checkbox" id="default-checkbox" label="Shipping & taxes calculated at checkout" className="my-4" />
                 <Button
-                  variant="primary"
+                  className="w-100 lato border-0"
+                  style={{backgroundColor:"#19D16F"}}
                   type="submit"
-                  style={{ width: "100%" }}
+                
                   onClick={() => {
                     navigate("/shipping");
                   }}

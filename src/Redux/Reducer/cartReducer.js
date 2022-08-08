@@ -29,6 +29,12 @@ const cartReducer = (state = cartState, { type, payload }) => {
           cartProducts: state.cartProducts.filter((item, index) => index !== arr[arr.length -1] )
         });
 
+        case types.DELETE_ALL_CART:
+          return Object.assign({}, state, {
+            cartProducts: []
+          });
+          
+          
     default:
       return state;
   }

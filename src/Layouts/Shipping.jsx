@@ -2,25 +2,27 @@ import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "animate.css";
+import {DeleteAllCart } from "../Redux/Actions/cartAction";
 
+
+
+import "animate.css";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
-// import { DeleteAllCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
-
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Button from "../Components/Button";
-
 import chair1 from "../../src/img/chair1.png";
 import shirt from "../../src/img/shirt.png";
 
 export default function Shipping() {
-  const [filterData, setFilterData] = useState();
 
+
+  const [filterData, setFilterData] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
+  console.log("cartData",carts)
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -46,16 +48,8 @@ export default function Shipping() {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      Swal.fire({
-        title: "Your Data's Address Has Been Send",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
       navigate("/order-completed");
+      dispatch(DeleteAllCart())
     }
     setValidated(true);
    
@@ -83,16 +77,18 @@ export default function Shipping() {
         });
 
         holdArr = newData;
-        // console.log("HoldData", holdArr);
-        setFilterData(holdArr);
       }
     });
+    setFilterData(holdArr);
+    
   }, [carts]);
 
 
   const handleClick = () => {
-    carts.length=0;
+    
   };
+
+console.log("carts", carts)
 
   return (
     <Container>
@@ -144,14 +140,14 @@ export default function Shipping() {
             </Form.Group>
             <br />
 
-            <Button eventClick={handleClick()} btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
+            <Button eventClick={() => handleClick()} btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
           </Form>
         </div>
         <div className="w-50">
           {filterData &&
             filterData.length > 0 &&
             filterData.map((item, key) => {
-              console.log("see item", item);
+              // console.log("see item", item);
               return (
                 <div className="d-flex josefin w-100 border-3 border-bottom align-items-center">
                   <img src={item.images} alt="" className="me-3 my-3" style={{ width: "100px", height: "100px" }} />

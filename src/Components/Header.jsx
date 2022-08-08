@@ -86,7 +86,7 @@ export default function Header() {
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>
                 <BsCart2 />
               </Link>
-              <div>{listCart.length}</div>
+              <div>{listCart && listCart.length}</div>
             </div>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
