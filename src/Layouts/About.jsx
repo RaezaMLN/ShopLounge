@@ -6,6 +6,8 @@ import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { Link } from "react-router-dom";
 import { Selena, Henry, John } from "../Components/CarouselAbout";
+import { useNavigate } from "react-router-dom";
+
 
 // Images
 import about from "../img/about.png";
@@ -19,6 +21,7 @@ import client3 from "../img/client3.png";
 
 export default function About() {
   const [showPage, setShowPage] = useState(Selena());
+  const navigate = useNavigate()
   return (
     <Container fluid>
       <GreyContainer titlePage={"About Us"} />
@@ -38,7 +41,7 @@ export default function About() {
               quam.
             </h5>
             <Link to={"/contact-us"}>
-              <Button btnClass={"btn text-light lato my-5"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+              <Button btnClass={"btn text-light lato my-5 border-0"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/contact-us")}}/>
             </Link>
           </Col>
         </Row>
