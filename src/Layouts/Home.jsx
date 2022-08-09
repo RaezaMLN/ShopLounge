@@ -26,7 +26,8 @@ import room2 from "../img/room2.png";
 import room3 from "../img/room3.png";
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
-import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
+import { BsCart2, BsHeart, BsZoomIn, BsCalendar4Week } from "react-icons/bs";
+import {FaPenNib} from "react-icons/fa"
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -114,7 +115,7 @@ export default function Home() {
             <p className="fs-5 Wild-Strawberry lato fw-bold">Best Furniture For Your Castle....</p>
             <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
             <p className="fs-5 lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Col>
           <Col xs={5}>
             <img src={sofa} alt="" className="w-75 py-3" />
@@ -440,7 +441,7 @@ export default function Home() {
                 <li>Material expose like metals</li>
               </div>
             </div>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}} />
           </div>
           <div>
             <img src={chair} alt="" />
@@ -455,25 +456,7 @@ export default function Home() {
         </Row>
         <Row>
           <Col xs={3}>
-            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
-            {/* Carousel  */}
-            {/* <Carousel>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw1} alt="First slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw2} alt="Second slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw3} alt="Third slide" />
-                </Carousel.Item>
-            //   </Carousel> */}
-            {/* //   <Card.Body className="text-center">
-            //     <Card.Title className="Wild-Strawberry josefin fw-bold">Mini LCW chair</Card.Title>
-            //     <Card.Text className="Midnight-Blue lato fw-semibold">$56.00</Card.Text>
-            //   </Card.Body>
-            //   <Card.Body></Card.Body>
-            // </Card> */}
+           
           </Col>
         </Row>
       </Container>
@@ -485,7 +468,7 @@ export default function Home() {
             <Card.Title className="fs-2 fw-bold Midnight-Blue">
               Get Leatest Update By Subscribe <br /> 0ur Newslater
             </Card.Title>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Card.ImgOverlay>
         </Card>
       </Container>
@@ -510,11 +493,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+                <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+                <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>
@@ -536,11 +519,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room2} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+              <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+              <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>
@@ -562,11 +545,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room3} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+              <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+              <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>
