@@ -114,7 +114,7 @@ export default function Home() {
             <p className="fs-5 Wild-Strawberry lato fw-bold">Best Furniture For Your Castle....</p>
             <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
             <p className="fs-5 lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Col>
           <Col xs={5}>
             <img src={sofa} alt="" className="w-75 py-3" />
@@ -440,7 +440,7 @@ export default function Home() {
                 <li>Material expose like metals</li>
               </div>
             </div>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}} />
           </div>
           <div>
             <img src={chair} alt="" />
