@@ -38,8 +38,8 @@ export default function Header() {
   return (
     <Navbar key="lg" expand="lg" className="sticky-top bg-light">
       <Container fluid className="container">
-        <Navbar.Brand>
-          <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <Navbar.Brand className="josefin fw-bold" style={{fontSize:"34px"}}>
+          <Link to={"/"} style={{ textDecoration: "none", color: "#0D0E43" }}>
             Hekto
           </Link>
         </Navbar.Brand>
@@ -47,20 +47,20 @@ export default function Header() {
         <Navbar.Offcanvas id={`offcanvasNavbar-expand-lg`} aria-labelledby={`offcanvasNavbarLabel-expand-lg`} placement="end">
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
-              <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+              <Link to={"/"} style={{ textDecoration: "none", fontSize:"34px" }} className="josefin fw-bold Midnight-Blue">
                 Hekto
               </Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
 
           <Offcanvas.Body>
-            <Nav className="justify-content-center flex-grow-1 pe-3 gap-4 align-item-center">
-              <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>Home</Link>
-              <Link to={"/blogPage"} style={{ textDecoration: "none", color: "black" }}>Blog</Link>
-              <Link to={"/shop-grid"} style={{ textDecoration: "none", color: "black" }}>Shop</Link>
-              <Link to={"/contact-us"} style={{ textDecoration: "none", color: "black" }}>Contact</Link>
-              <Link to={"/about"} style={{ textDecoration: "none", color: "black" }}>About</Link>
-              <Link to={"/faq"} style={{ textDecoration: "none", color: "black" }}>FAQ</Link>
+            <Nav className="justify-content-center flex-grow-1 pe-3 gap-4 align-item-center lato ">
+              <Link to={"/"} style={{ textDecoration: "none", color: "#0D0E43" }}>Home</Link>
+              <Link to={"/blogPage"} style={{ textDecoration: "none", color: "#0D0E43" }}>Blog</Link>
+              <Link to={"/shop-grid"} style={{ textDecoration: "none", color: "#0D0E43" }}>Shop</Link>
+              <Link to={"/contact-us"} style={{ textDecoration: "none", color: "#0D0E43" }}>Contact</Link>
+              <Link to={"/about"} style={{ textDecoration: "none", color: "#0D0E43" }}>About</Link>
+              <Link to={"/faq"} style={{ textDecoration: "none", color: "#0D0E43" }}>FAQ</Link>
             </Nav>
 
             {/* <Form className="d-flex me-5">

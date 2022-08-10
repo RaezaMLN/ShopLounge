@@ -6,6 +6,7 @@ import { AddCart, DeleteCart, DeleteSingleCart, DeleteAllCart } from "../Redux/A
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
 import Input from "../Components/Input";
+import {BsCheckSquareFill} from "react-icons/bs"
 
 export default function ShoppingCart() {
   const [filterData, setFilterData] = useState();
@@ -84,7 +85,7 @@ export default function ShoppingCart() {
             <div className="col-md-12">
               <table className="table ">
                 <thead>
-                  <tr>
+                  <tr className="josefin Midnight-Blue fw-bold fs-5">
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -105,15 +106,18 @@ export default function ShoppingCart() {
                               </div>
                             </div>
                             <div>
-                              <b>{item.title}</b>
-                              <div style={{ color: "grey" }}>{item.category.name}</div>
+                              <b className="josefin fw-bold" style={{fontSize:"14px"}}>{item.title}</b>
+                              <div className="josefin Wild-Blue-Yonder" style={{fontSize:"14px"}}>{item.category.name}</div>
+                              <div className="josefin Wild-Blue-Yonder" style={{fontSize:"14px"}}>Color:Brown</div>
+                              <div className="josefin Wild-Blue-Yonder" style={{fontSize:"14px"}}>Size:XL</div>
+
                             </div>
                           </td>
 
-                          <td>${item.price} </td>
+                          <td style={{fontSize:"14px"}} className="josefin Midnight-Blue">${item.price} </td>
                           <td>
                             <td style={{fontSize:"12px", backgroundColor:"#F0EFF2"}}>
-                            <div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "F0EFF2" }}>
+                            <div className="d-flex justify-content-between align-items-center opacity-50" style={{ backgroundColor: "F0EFF2" }}>
                               <button className="btn border border-1" onClick={() => handleMinClick(item.id)}>
                                 -
                               </button>
@@ -124,7 +128,7 @@ export default function ShoppingCart() {
                             </div>
                           </td></td>
                           
-                          <td>{formatter.format(item.totalPrice)} </td>
+                          <td style={{fontSize:"14px"}} className="josefin Midnight-Blue">{formatter.format(item.totalPrice)} </td>
                         </tr>
                       );
                     })}
@@ -141,19 +145,19 @@ export default function ShoppingCart() {
         <Col lg="4">
           <div>
             <div className="mb-5">
-              <h5 className="text-center">Cart Totals</h5>
-              <Form className="p-4 bg-ghost-white rounded" style={{ width: "371px" }}>
-                <div className="border-bottom my-3 px-1 d-flex justify-content-between">
+              <h5 className="text-center josefin Midnight-Blue fw-bold fs-5">Cart Totals</h5>
+              <Form className="p-4 bg-ghost-white rounded " style={{ width: "371px" }}>
+                <div className="border-bottom my-3 px-1 d-flex justify-content-between lato Midnight-Blue fw-bold">
                   <div>Subtotals:</div>
                   <div>{formatter.format(countTotal)}</div>
                 </div>
-                <div className="border-bottom my-3 px-1 d-flex justify-content-between ">
+                <div className="border-bottom my-3 px-1 d-flex justify-content-between lato Midnight-Blue fw-bold">
                   <div>Totals:</div>
                   <div>{formatter.format(countTotal + countTotal * (15 / 100))}</div>
                 </div>
                 {/* <Form.Control plaintext readOnly defaultValue={"Subtotals:" + countTotal}  className="border-bottom my-3" /> */}
                 {/* <Form.Control plaintext readOnly defaultValue="Totals:" className="border-bottom" /> */}
-                <Form.Check type="checkbox" id="default-checkbox" label="Shipping & taxes calculated at checkout" className="my-4" />
+                <div className="my-3"><BsCheckSquareFill style={{color:"#19D16F", margin:"5px"}}/><span className="lato Wild-Blue-Yonder"> Shipping & taxes calculated at checkout</span></div>
                 <Button
                   className="w-100 lato border-0"
                   style={{backgroundColor:"#19D16F"}}

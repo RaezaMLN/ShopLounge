@@ -28,6 +28,7 @@ import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
 import { BsCart2, BsHeart, BsZoomIn, BsCalendar4Week } from "react-icons/bs";
 import {FaPenNib} from "react-icons/fa"
+import {AiOutlineCheck} from "react-icons/ai"
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -112,9 +113,9 @@ export default function Home() {
             <img src={lamp} alt="" className="w-75" />
           </Col>
           <Col xs={4} className="d-flex flex-column align-items-start justify-content-center">
-            <p className="fs-5 Wild-Strawberry lato fw-bold">Best Furniture For Your Castle....</p>
+            <p className="Wild-Strawberry lato fw-bold" style={{fontSize:"16px"}}>Best Furniture For Your Castle....</p>
             <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
-            <p className="fs-5 lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
+            <p className="lato " style={{fontSize:"16px", color:"#8A8FB9"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
             <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Col>
           <Col xs={5}>
@@ -250,7 +251,7 @@ export default function Home() {
               <Card.Img variant="top" className="w-25" src={delivery} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Text className="text-center lato Wild-Blue-Yonder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -259,7 +260,7 @@ export default function Home() {
               <Card.Img variant="top" className="w-25" src={cashback} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Text className="text-center lato Wild-Blue-Yonder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -268,7 +269,7 @@ export default function Home() {
               <Card.Img variant="top" className="w-25" src={quality} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Text className="text-center lato Wild-Blue-Yonder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -277,7 +278,7 @@ export default function Home() {
               <Card.Img variant="top" className="w-25" src={support} />
               <Card.Body className="d-flex flex-column align-items-center">
                 <Card.Title className="josefin Midnight-Blue ">24/7 Support</Card.Title>
-                <Card.Text className="text-center lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
+                <Card.Text className="text-center lato Wild-Blue-Yonder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -293,13 +294,13 @@ export default function Home() {
           <p className="fs-1 fw-bold Midnight-Blue text-wrap">
             Unique Features Of leatest & <br /> Trending Poducts
           </p>
-          <ul className="fs-5 Midnight-Blue-1 my-4">
+          <ul className="fs-5 Wild-Blue-Yonder my-4">
             <li>All frames constructed with hardwood solids and laminates</li>
             <li>Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails</li>
             <li>Arms, backs and seats are structurally reinforced</li>
           </ul>
           <div className="d-flex">
-            <Button btnClass={"btn text-light josefin me-5 fs-4"} btnTitle={"Add To Cart"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin me-5 fs-4 border-0"} btnTitle={"Add To Cart"} btnStyle={{ backgroundColor: "#fb2e86" }} />
             <div className="d-flex flex-column josefin Midnight-Blue">
               <h5>B&B Italian Sofa</h5>
               <h5>$32.00</h5>
@@ -428,17 +429,17 @@ export default function Home() {
           <div>
             <h1 className="fs-2 josefin fw-bold Midnight-Blue">20% Discount Of All Products</h1>
             <h4 className="fs-4 Wild-Strawberry josefin">Eams Sofa Compact</h4>
-            <h5 className="lato Midnight-Blue-1 lato lh-lg">
+            <h5 className="lato Wild-Blue-Yonder lato lh-lg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget <br /> feugiat habitasse nec, bibendum condimentum.
             </h5>
-            <div className="d-flex lato Midnight-Blue-1 lh-lg mb-4">
-              <div>
-                <li>Material expose like metals</li>
-                <li>Simple neutral colours.</li>
+            <div className="d-flex lato Wild-Blue-Yonder lh-lg mb-4">
+              <div className="mx-3">
+                <div><AiOutlineCheck/> Material expose like metals</div>
+                <div><AiOutlineCheck/> Simple neutral colours.</div>
               </div>
               <div>
-                <li>Clear lines and geomatric figures</li>
-                <li>Material expose like metals</li>
+                <div><AiOutlineCheck/> Clear lines and geomatric figures</div>
+                <div><AiOutlineCheck/> Material expose like metals</div>
               </div>
             </div>
             <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}} />
@@ -454,10 +455,52 @@ export default function Home() {
             <h1 className="fs-2 fw-bold Midnight-Blue text-center josefin">Top Categories</h1>
           </Col>
         </Row>
-        <Row>
-          <Col xs={3}>
-           
-          </Col>
+      
+        <Row className="my-5">
+          {products &&
+            products.length > 0 &&
+            products
+              .filter((item, index) => index < 12 && index >= 8)
+              .map((item, index) => {
+                return (
+                  <Col xs={3}>
+                    <Card style={{ width: "18rem" }} className="border border-0">
+                      <div className="container-image">
+                        <Card.Img variant="top" src={item.images[1]} />
+                        <div className="overlay overlay-home">
+                          <div className="overlay-icon-home position-relative">
+                            <BsCart2 class="position-absolute top-50 start-50 translate-middle" onClick={() => handleClickCart(item)} style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsZoomIn class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                          <div className="overlay-icon-home position-relative">
+                            <BsHeart class="position-absolute top-50 start-50 translate-middle" style={{ cursor: "pointer" }} />
+                          </div>
+                        </div>
+                      </div>
+                      <Card.Body className="text-center d-flex flex-column align-items-center">
+                        <Card.Title
+                          className="Wild-Strawberry josefin fw-bold"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
+                        <div className="d-flex">
+                          <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
+                          <Card.Text className="lato fw-semibold color-wildBlueYonder">
+                            <del>${item.price}</del>
+                          </Card.Text>
+                        </div>
+                      </Card.Body>
+                      <Card.Body></Card.Body>
+                    </Card>
+                  </Col>
+                );
+              })}
         </Row>
       </Container>
       <Container fluid>
@@ -505,9 +548,9 @@ export default function Home() {
               <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className=" lato Wild-Blue-Yonder">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
               <Card.Text className="Midnight-Blue">
-                <a href="#" className="lato">
+                <a href="#" className="lato Midnight-Blue">
                   Read More
                 </a>
               </Card.Text>
@@ -531,9 +574,9 @@ export default function Home() {
               <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className=" lato Wild-Blue-Yonder">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
               <Card.Text className="Midnight-Blue">
-                <a href="#" className="lato">
+                <a href="#" className="lato Midnight-Blue">
                   Read More
                 </a>
               </Card.Text>
@@ -557,9 +600,9 @@ export default function Home() {
               <Card.Title className="josefin Midnight-Blue" style={{ fontSize: "18px" }}>
                 Top esssential Trends in 2021
               </Card.Title>
-              <Card.Text className=" lato Midnight-Blue-1">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
+              <Card.Text className=" lato Wild-Blue-Yonder">More off this less hello samlande lied much over tightly circa horse taped mightly</Card.Text>
               <Card.Text className="Midnight-Blue">
-                <a href="#" className="lato">
+                <a href="#" className="lato Midnight-Blue">
                   Read More
                 </a>
               </Card.Text>
