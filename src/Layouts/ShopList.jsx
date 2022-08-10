@@ -120,37 +120,28 @@ export default function ShopList() {
           <Col sm="4">
             <Card style={{ border: "none" }}>
               <Card.Body className="p-0">
-                <Card.Title>Ecommerce Acceories & Fashion item </Card.Title>
+                <Card.Title className="josefin" style={{color:"#151875", fontSize:"22px"}}>Ecommerce Acceories & Fashion item </Card.Title>
                 <Card.Subtitle>
-                  <small className="text-muted">About 9,620 results (0.62 seconds)</small>
+                  <small className="text-muted lato">About 9,620 results (0.62 seconds)</small>
                 </Card.Subtitle>
               </Card.Body>
             </Card>
           </Col>
           <Col sm="8">
             <Form className="d-flex gap-5 justify-content-end">
-              <Form.Group className="d-flex gap-2">
-                <Form.Label>Per Page:</Form.Label>
+              <Form.Group className="d-flex gap-2 lato">
+                <Form.Label style={{color:"#3F509E"}}>Per Page:</Form.Label>
                 <Form.Control type="number" style={{ width: "100px" }} onChange={handleChange} value={showPage} />
               </Form.Group>
 
-              <Form.Group className="d-flex gap-2">
-                <Form.Label style={{ width: "85px" }}>Sort By:</Form.Label>
-                <Form.Select aria-label="Default select example">
-                  <option>Best Match</option>
-                  <option value="1">By ...</option>
-                  <option value="2">By ...</option>
-                </Form.Select>
-              </Form.Group>
-
-              <Form.Group className="d-flex gap-2">
-                <Form.Label>
+              <Form.Group className="d-flex gap-2 lato">
+                <Form.Label style={{color:"#3F509E"}}>
                   View:
                   <Link to={"/shop-grid"}>
-                    <MdViewModule />
+                    <MdViewModule style={{color:"#3F509E"}}/>
                   </Link>
                   <Link to={"/shop-list"}>
-                    <MdViewList />
+                    <MdViewList style={{color:"#3F509E"}}/>
                   </Link>
                 </Form.Label>
               </Form.Group>

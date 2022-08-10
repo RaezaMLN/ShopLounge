@@ -24,8 +24,8 @@ const CarouselShop = ({ listImage, title, price, description, onClickCart, onCli
         </Col>
         <Col sm={8}>
           <Card.Body>
-            <Card.Title className="d-flex gap-3" onClick={onClickTitle} style={{ cursor: "pointer" }}>
-              {title}
+            <Card.Title className="d-flex gap-3 josefin" onClick={onClickTitle} style={{ cursor: "pointer" }}>
+              <span style={{color:"#151875"}}>{title}</span>
               <div className="d-flex align-item-center gap-1 py-2">
                 <div id="shape1" className="bg-butterCup" onClick={() => setShowImage(listImage[0])}></div>
                 <div id="shape2" className="bg-wildStrawberry" onClick={() => setShowImage(listImage[1])}></div>
@@ -33,7 +33,7 @@ const CarouselShop = ({ listImage, title, price, description, onClickCart, onCli
               </div>
             </Card.Title>
             <Card.Text className="d-flex">
-              ${Math.round((62 / 100) * Number(price))}
+              <span className="lato" style={{color:"#151875"}}>${Math.round((62 / 100) * Number(price))}</span>
               <span className="clr2 mx-3">
                 <del className="Wild-Strawberry"> ${price}</del>
               </span>
@@ -46,10 +46,10 @@ const CarouselShop = ({ listImage, title, price, description, onClickCart, onCli
               </div>
             </Card.Text>
             <Card.Text>{description}</Card.Text>
-            <Card.Text className="d-flex gap-4">
-              <BsCart2 onClick={onClickCart} style={{ cursor: "pointer" }} />
-              <BsHeart />
-              <BsZoomIn />
+            <Card.Text className="d-flex gap-3">
+              <div className="shadow-sm rounded-circle d-flex justify-content-center align-items-center" style={{width:"35px", height:"35px"}}><BsCart2 onClick={onClickCart} style={{ cursor: "pointer" }}  /></div>
+              <div className="shadow-sm rounded-circle d-flex justify-content-center align-items-center" style={{width:"35px", height:"35px"}}><BsHeart /></div>
+              <div className="shadow-sm rounded-circle d-flex justify-content-center align-items-center" style={{width:"35px", height:"35px"}}><BsZoomIn /></div>
             </Card.Text>
           </Card.Body>
         </Col>
