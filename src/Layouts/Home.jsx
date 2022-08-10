@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import Carousel from "../Components/Carousel";
 import Button from "../Components/Button";
@@ -26,7 +26,8 @@ import room2 from "../img/room2.png";
 import room3 from "../img/room3.png";
 import icon1 from "../img/Vector.png";
 import icon2 from "../img/calend.png";
-import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
+import { BsCart2, BsHeart, BsZoomIn, BsCalendar4Week } from "react-icons/bs";
+import {FaPenNib} from "react-icons/fa"
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,15 +35,18 @@ import { getProduct } from "../Redux/Actions/productAction";
 import { AddCart } from "../Redux/Actions/cartAction";
 
 export default function Home() {
-  const navigate = useNavigate()
-  const [showPage, setShowPage] = useState([4, 0]); 
+  const navigate = useNavigate();
+  const [showPage, setShowPage] = useState([4]);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const [products, setProducts] = useState();
-  const [paggination, setPaggination] = useState();
+  const [filterFP, setFilterFP] = useState({});
+  const [items, setItems] = useState();
+  // const [paggination, setPaggination] = useState();
   useEffect(() => {
     dispatch(getProduct());
   }, []);
+
   useEffect(() => {
     const filterProduct = product.list.filter((item, index) => index < 17 && index > 0);
     setProducts(filterProduct);
@@ -51,28 +55,53 @@ export default function Home() {
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
   };
-  // useEffect(() => {
-  //   if (products) {
-  //     let holdItems = [];
-  //     for(let i=0; i<=products.length; i=i+4) {
-  //       holdPaggination.push(
-  //         <div 
-  //           className="rounded-3 my-2 pink-page pageHover" 
-  //           style={{ cursor: "pointer" }} 
-  //           onClick={() => setShowPage([(i+4), i])}
-  //         ></div>
-          
-  //       );
-  //     }
-  //     setPaggination(holdPaggination);
-  //   }
-  // }, [products, paggination]);
-  // const handleClickPaggination = ()=>{
 
-  //   for(let i=0; i<=products.length; i=i+4){
-  //     setShowPage([(i+4), i])
+  // useEffect(() => {
+  //   if (product.listProduct && product.listProduct.length > 0) {
+  //     const filterData = product.listProduct.filter((e, i) => i < 10);
+  //     setProductList(filterData);
   //   }
-  // }
+  // }, [product]);
+
+  useEffect(() => {
+    if (product.list && product.list.length > 0) {
+      const filterProduct = product.list.filter((item, index) => index < 4);
+      setFilterFP(filterProduct);
+    }
+  }, [product]);
+
+  const allproduct = useSelector((state) => state.product.list);
+  const [activePage, setaActivePage] = useState(1);
+
+  
+  const PaginationData = ({number}) =>{
+    return (
+      <div
+            className="rounded-3 my-2 pink-page pageHover"
+            style={{ cursor: "pointer", backgroundColor:number === activePage? "#FB2E86":null,
+            color:number === activePage? "#FFFFFF":null, }}
+            
+            onClick={(e) => {
+              setaActivePage(number);
+              const recentData = allproduct;
+              const filterData = recentData.slice(4 * (number - 1), 4 * number);
+              setFilterFP(filterData);
+            }}
+          ></div>
+    )
+  }
+
+  useEffect(() => {
+    if (allproduct) {
+      let holdItems = [];
+      for (let number = 1; number <= 4; number++) {
+        holdItems.push(<PaginationData number={number} />);
+      }
+      setItems(holdItems);
+    }
+  }, [allproduct, activePage]);
+
+  
 
   return (
     <div>
@@ -86,7 +115,7 @@ export default function Home() {
             <p className="fs-5 Wild-Strawberry lato fw-bold">Best Furniture For Your Castle....</p>
             <p className="fs-1 josefin fw-bold">New Furniture Collection Trends in 2020</p>
             <p className="fs-5 lato Midnight-Blue-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.</p>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Col>
           <Col xs={5}>
             <img src={sofa} alt="" className="w-75 py-3" />
@@ -106,24 +135,31 @@ export default function Home() {
         </Row>
         <Row>
           <Col className="d-flex flex-wrap">
-            {products &&
-              products.length > 0 &&
-              products
-                .filter((item, index) => index < showPage[0] && index >= showPage[1])
-                .map((item, index) => {
-                  return <Carousel listImage={item.images} title={item.title} price={item.price} onClickCart={() => handleClickCart(item)}  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} />;
-                })}
+            {filterFP &&
+              filterFP.length > 0 &&
+              filterFP.map((item, index) => {
+                // console.log("featured", filterFP);
+                return (
+                  <Carousel
+                    listImage={item.images}
+                    title={item.title}
+                    price={item.price}
+                    onClickCart={() => handleClickCart(item)}
+                    onClickTitle={() => {
+                      navigate(`/product-detail/${item.id}`);
+                    }}
+                  />
+                );
+              })}
           </Col>
-          
-          
-          
 
           <div className="w-100 d-flex flex-row justify-content-center gap-2 mt-5">
             {/* {paggination} */}
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
+            {items}
+            {/* <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([4, 0])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([8, 4])}></div>
             <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([12, 8])}></div>
-            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div>
+            <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage([16, 12])}></div> */}
           </div>
         </Row>
 
@@ -180,7 +216,15 @@ export default function Home() {
                       </div>
 
                       <Card.Body className="d-flex">
-                        <Card.Title className="Midnight-Blue josefin fw-bold me-5" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
+                        <Card.Title
+                          className="Midnight-Blue josefin fw-bold me-5"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
                           <Card.Text className="Midnight-Blue lato fw-semibold me-2">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold Wild-Strawberry">
@@ -296,7 +340,15 @@ export default function Home() {
                         </div>
                       </div>
                       <Card.Body className="text-center d-flex flex-column align-items-center">
-                        <Card.Title className="Wild-Strawberry josefin fw-bold" style={{ cursor: "pointer" }} onClick={()=>{navigate(`/product-detail/${item.id}`)}} >{item.title}</Card.Title>
+                        <Card.Title
+                          className="Wild-Strawberry josefin fw-bold"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            navigate(`/product-detail/${item.id}`);
+                          }}
+                        >
+                          {item.title}
+                        </Card.Title>
                         <div className="d-flex">
                           <Card.Text className="Midnight-Blue lato fw-semibold me-2 fw-bold">${Math.round((62 / 100) * Number(item.price))}</Card.Text>
                           <Card.Text className="lato fw-semibold color-wildBlueYonder">
@@ -389,7 +441,7 @@ export default function Home() {
                 <li>Material expose like metals</li>
               </div>
             </div>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}} />
           </div>
           <div>
             <img src={chair} alt="" />
@@ -404,25 +456,7 @@ export default function Home() {
         </Row>
         <Row>
           <Col xs={3}>
-            {/* <Card style={{ width: "18rem" }} className="border border-0"> */}
-            {/* Carousel  */}
-            {/* <Carousel>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw1} alt="First slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw2} alt="Second slide" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img className="d-block w-100 Ghost-White" src={lcw3} alt="Third slide" />
-                </Carousel.Item>
-            //   </Carousel> */}
-            {/* //   <Card.Body className="text-center">
-            //     <Card.Title className="Wild-Strawberry josefin fw-bold">Mini LCW chair</Card.Title>
-            //     <Card.Text className="Midnight-Blue lato fw-semibold">$56.00</Card.Text>
-            //   </Card.Body>
-            //   <Card.Body></Card.Body>
-            // </Card> */}
+           
           </Col>
         </Row>
       </Container>
@@ -434,7 +468,7 @@ export default function Home() {
             <Card.Title className="fs-2 fw-bold Midnight-Blue">
               Get Leatest Update By Subscribe <br /> 0ur Newslater
             </Card.Title>
-            <Button btnClass={"btn text-light josefin"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+            <Button btnClass={"btn text-light josefin border-0"} btnTitle={"Shop Now"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/shop-grid")}}/>
           </Card.ImgOverlay>
         </Card>
       </Container>
@@ -459,11 +493,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+                <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+                <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>
@@ -485,11 +519,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room2} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+              <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+              <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>
@@ -511,11 +545,11 @@ export default function Home() {
             <Card.Img variant="top" className="w-100 rounded-3" src={room3} />
             <div className="d-flex my-3">
               <div className="d-flex me-3">
-                <img src={icon1} />
+              <FaPenNib className="Wild-Strawberry me-1"/>
                 <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
               </div>
               <div className="d-flex">
-                <img src={icon2} />
+              <BsCalendar4Week className="bg-warning opacity-50 me-1" />
                 <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
               </div>
             </div>

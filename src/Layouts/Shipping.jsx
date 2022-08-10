@@ -2,23 +2,27 @@ import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "animate.css";
+import {DeleteAllCart } from "../Redux/Actions/cartAction";
 
+
+
+import "animate.css";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
-import { AddCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
-
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Button from "../Components/Button";
-
 import chair1 from "../../src/img/chair1.png";
 import shirt from "../../src/img/shirt.png";
 
 export default function Shipping() {
+
+
+  const [filterData, setFilterData] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
+  console.log("cartData",carts)
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -44,19 +48,48 @@ export default function Shipping() {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      Swal.fire({
-        title: "Your Data's Address Has Been Send",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
-      });
+      navigate("/order-completed");
+      dispatch(DeleteAllCart())
     }
     setValidated(true);
-    // navigate("/order-completed");
+   
   };
+
+  useEffect(() => {
+    let holdArr = [];
+    carts.forEach((item, index) => {
+      const checkData = holdArr.find((e) => e.id === item.id);
+      if (checkData === undefined) {
+        holdArr.push({ ...item, quantity: 1, totalPrice: item.price });
+      }
+      if (checkData) {
+        const calculate = {
+          ...checkData,
+          totalPrice: checkData.totalPrice + item.price,
+          quantity: checkData.quantity + 1,
+        };
+        const newData = holdArr.map((el, i) => {
+          if (el.id === calculate.id) {
+            return calculate;
+          } else {
+            return el;
+          }
+        });
+
+        holdArr = newData;
+      }
+    });
+    setFilterData(holdArr);
+    
+  }, [carts]);
+
+
+  const handleClick = () => {
+    
+  };
+
+console.log("carts", carts)
+
   return (
     <Container>
       <Row className="my-5">
@@ -107,14 +140,14 @@ export default function Shipping() {
             </Form.Group>
             <br />
 
-            <Button btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
+            <Button eventClick={() => handleClick()} btnClass={"btn text-light josefin my-5"} btnTitle={"Continue Shipping"} btnStyle={{ backgroundColor: "#fb2e86" }} btnType={"submit"} />
           </Form>
         </div>
         <div className="w-50">
-          {carts &&
-            carts.length > 0 &&
-            carts.map((item, key) => {
-              console.log("see item", item);
+          {filterData &&
+            filterData.length > 0 &&
+            filterData.map((item, key) => {
+              // console.log("see item", item);
               return (
                 <div className="d-flex josefin w-100 border-3 border-bottom align-items-center">
                   <img src={item.images} alt="" className="me-3 my-3" style={{ width: "100px", height: "100px" }} />
@@ -132,7 +165,7 @@ export default function Shipping() {
                     </h5>
                   </div>
                   <h5 className="ms-5 Midnight-Blue" style={{ fontSize: "14px" }}>
-                    ${item.price}
+                    ${item.totalPrice}
                   </h5>
                 </div>
               );

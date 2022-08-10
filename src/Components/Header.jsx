@@ -63,14 +63,14 @@ export default function Header() {
               <Link to={"/faq"} style={{ textDecoration: "none", color: "black" }}>FAQ</Link>
             </Nav>
 
-            <Form className="d-flex me-5">
+            {/* <Form className="d-flex me-5">
               <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
               {
                 <Button variant="danger" disabled={isLoading} onClick={!isLoading ? handleClick : null} style={{ width: "55px" }}>
                   {isLoading ? <ImSpinner2 className="loaderIcon" /> : <ImSearch />}
                 </Button>
               }
-            </Form>
+            </Form> */}
             <h1></h1>
             <div className="d-flex gap-3">
             {
@@ -86,7 +86,7 @@ export default function Header() {
               <Link to={"/shopping-cart"} style={{ textDecoration: "none", color: "black" }}>
                 <BsCart2 />
               </Link>
-              <div>{listCart.length}</div>
+              <div>{listCart && listCart.length}</div>
             </div>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

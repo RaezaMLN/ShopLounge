@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { AddCart } from "../Redux/Actions/cartAction";
-
+import { useNavigate } from "react-router-dom";
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { RiStarFill, RiStarHalfFill, RiStarLine } from "react-icons/ri";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
@@ -14,6 +14,7 @@ import Brand from "../Components/Brand";
 import CarouselShopList from "../Components/CarouselShopList";
 
 export default function ShopList() {
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState(7);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
@@ -44,33 +45,67 @@ export default function ShopList() {
   const [activePage, setaActivePage] = useState(1);
   const [items, setItems] = useState([]);
 
+
+  const PaginationData = ({number}) =>{
+    return (
+      <div
+        className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
+        key={number}
+        style={{
+          cursor: "pointer",
+          backgroundColor:number === activePage? "#FB2E86":null,
+          color:number === activePage? "#FFFFFF":null,
+        }}
+        onClick={(e) => {
+          setaActivePage(number);
+          const recentData = allproduct;
+          const filterData = recentData.slice(7 * (number - 1), 7 * number);
+          setProducts(filterData);
+        }}
+      >
+        <span className="texthvr">{number}</span>
+      </div>
+    )
+  }
+
   useEffect(() => {
     if (allproduct) {
       let holdItems = [];
       for (let number = 1; number <= Math.ceil(allproduct.length / 7); number++) {
-        holdItems.push(
-          <div
-            className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
-            key={number}
-            active={number === activePage}
-            style={{
-              cursor: "pointer",
-            }}
-            onClick={(e) => {
-              setaActivePage(number);
-              const recentData = allproduct;
-              const filterData = recentData.slice(7 * (number - 1), 7 * number);
-              setProducts(filterData);
-            }}
-          >
-            <span className="texthvr">{number}</span>
-          </div>
-        );
+        holdItems.push(<PaginationData number={number} />);
       }
       setItems(holdItems);
     }
-    // console.log("product", product.list);
-  }, [allproduct, items]);
+  }, [allproduct, activePage]);
+
+
+  // useEffect(() => {
+  //   if (allproduct) {
+  //     let holdItems = [];
+  //     for (let number = 1; number <= Math.ceil(allproduct.length / 7); number++) {
+  //       holdItems.push(
+  //         <div
+  //           className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
+  //           key={number}
+  //           active={number === activePage}
+  //           style={{
+  //             cursor: "pointer",
+  //           }}
+  //           onClick={(e) => {
+  //             setaActivePage(number);
+  //             const recentData = allproduct;
+  //             const filterData = recentData.slice(7 * (number - 1), 7 * number);
+  //             setProducts(filterData);
+  //           }}
+  //         >
+  //           <span className="texthvr">{number}</span>
+  //         </div>
+  //       );
+  //     }
+  //     setItems(holdItems);
+  //   }
+  //   // console.log("product", product.list);
+  // }, [allproduct, items]);
 
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
@@ -128,15 +163,18 @@ export default function ShopList() {
             products
               .filter((item, index) => index < showPage)
               .map((item, index) => {
-                return 
-                  <CarouselShopList 
-                    listImage={item.images} 
-                    title={item.title} 
-                    price={item.price} 
+                return (
+                  <CarouselShopList
+                    listImage={item.images}
+                    title={item.title}
+                    price={item.price}
                     description={item.description}
-                    onClickCart={() => handleClickCart(item)} 
-                    onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
-                  />;
+                    onClickCart={() => handleClickCart(item)}
+                    onClickTitle={() => {
+                      navigate(`/product-detail/${item.id}`);
+                    }}
+                  />
+                );
               })}
         </div>
       </div>

@@ -1,9 +1,13 @@
 // Modules
 import React from "react";
+import { useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import GreyContainer from "../Components/GreyContainer";
 import Button from "../Components/Button";
 import { Link } from "react-router-dom";
+import { Selena, Henry, John } from "../Components/CarouselAbout";
+import { useNavigate } from "react-router-dom";
+
 
 // Images
 import about from "../img/about.png";
@@ -11,10 +15,13 @@ import delivery from "../img/free-delivery.png";
 import cashback from "../img/cashback.png";
 import quality from "../img/premium-quality.png";
 import support from "../img/24-hours-support.png";
-import client from "../img/client.png";
-import pinkBar from "../img/pinkBar.png";
+import client1 from "../img/client1.png";
+import client2 from "../img/client2.png";
+import client3 from "../img/client3.png";
 
 export default function About() {
+  const [showPage, setShowPage] = useState(Selena());
+  const navigate = useNavigate()
   return (
     <Container fluid>
       <GreyContainer titlePage={"About Us"} />
@@ -34,7 +41,7 @@ export default function About() {
               quam.
             </h5>
             <Link to={"/contact-us"}>
-              <Button btnClass={"btn text-light lato my-5"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} />
+              <Button btnClass={"btn text-light lato my-5 border-0"} btnTitle={"Contact us"} btnStyle={{ backgroundColor: "#fb2e86" }} eventClick={()=>{navigate("/contact-us")}}/>
             </Link>
           </Col>
         </Row>
@@ -87,15 +94,18 @@ export default function About() {
 
       {/* Client Says */}
       <Container className=" d-flex flex-column align-items-center">
-        <h1 className="josefin fs-1 fw-bold text-dark">Our Client Say!</h1>
-        <img src={client} alt="" className="w-25 my-5" />
-        <h3 className="lato fs-3 fw-bold">Selina Gomez</h3>
-        <h5 className="lato fs-5 Wild-Blue-Yonder mb-5">Ceo At Webecy Digital</h5>
-        <h4 className="text-wrap text-center lato fs-4 Wild-Blue-Yonder mb-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non duis ultrices quam vel dui sollicitudin <br /> aliquet id arcu. Nam vitae a enim nunc, sed sapien egestas ac nam. Tristique ultrices dolor <br /> aliquam lacus volutpat
-          praesent.
-        </h4>
-        <img src={pinkBar} />
+        <h1 className="josefin fs-1 fw-bold text-dark mb-5">Our Client Say!</h1>
+        <div>
+          <img src={client1} alt="" />
+          <img src={client2} alt="" className="mx-3 mb-3" />
+          <img src={client3} alt="" />
+        </div>
+        <div>{showPage}</div>
+        <div className="w-100 d-flex flex-row justify-content-center gap-2">
+          <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(Selena())}></div>
+          <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(Henry())}></div>
+          <div className="rounded-3 my-2 pink-page pageHover" style={{ cursor: "pointer" }} onClick={() => setShowPage(John())}></div>
+        </div>
         <br />
         <br />
         <br />

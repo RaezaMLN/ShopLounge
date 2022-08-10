@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Card, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -8,12 +8,14 @@ import { getProduct } from "../Redux/Actions/productAction";
 import { AddCart } from "../Redux/Actions/cartAction";
 
 import CarouselShop from "../Components/CarouselShop";
+
 import sponsor from "../img/sponsor.png";
 import { MdDeleteForever, MdViewModule, MdViewList } from "react-icons/md";
 import { BsCart2, BsHeart, BsZoomIn } from "react-icons/bs";
+import { combineReducers } from "redux";
 
 export default function ShopGrid() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showPage, setShowPage] = useState(12);
   // const [productList, setProductList] = useState([]);
 
@@ -28,7 +30,7 @@ export default function ShopGrid() {
 
   useEffect(() => {
     if (product.list && product.list.length > 0) {
-      const filterProduct = product.list.filter((item, index) => index < 37);
+      const filterProduct = product.list.filter((item, index) => index < 12);
       setProducts(filterProduct);
     }
   }, [product]);
@@ -45,38 +47,43 @@ export default function ShopGrid() {
   const [activePage, setaActivePage] = useState(1);
   const [items, setItems] = useState([]);
 
+  const PaginationData = ({number}) =>{
+    return (
+      <div
+        className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
+        key={number}
+        style={{
+          cursor: "pointer",
+          backgroundColor:number === activePage? "#FB2E86":null,
+          color:number === activePage? "#FFFFFF":null,
+        }}
+        onClick={(e) => {
+          setaActivePage(number);
+          const recentData = allproduct;
+          const filterData = recentData.slice(12 * (number - 1), 12 * number);
+          setProducts(filterData);
+        }}
+      >
+        <span className="texthvr">{number}</span>
+      </div>
+    )
+  }
+
   useEffect(() => {
     if (allproduct) {
       let holdItems = [];
       for (let number = 1; number <= Math.ceil(allproduct.length / 12); number++) {
-        holdItems.push(
-          <div
-            className="border border-1 px-3 py-1 texthover lightSlateBlue rounded-3"
-            key={number}
-            active={number === activePage}
-            style={{
-              cursor: "pointer",
-            }}
-            onClick={(e) => {
-              setaActivePage(number);
-              const recentData = allproduct;
-              const filterData = recentData.slice(12 * (number - 1), 12 * number);
-              setProducts(filterData);
-            }}
-          >
-            <span className="texthvr">{number}</span>
-          </div>
-        );
+        holdItems.push(<PaginationData number={number} />);
       }
       setItems(holdItems);
     }
-    // console.log("product", product.list);
-  }, [allproduct, items]);
+  }, [allproduct, activePage]);
 
   const handleClickCart = (item) => {
     dispatch(AddCart(item));
   };
 
+  // console.log("products", showPage);
   return (
     <div>
       <GreyContainer titlePage={"Shope Grid Default"} />
@@ -129,19 +136,22 @@ export default function ShopGrid() {
               products
                 .filter((item, index) => index < showPage)
                 .map((item, index) => {
-                  return 
-                  <CarouselShop 
-                  listImage={item.images} 
-                  title={item.title} 
-                  price={item.price} 
-                  onClickCart={() => handleClickCart(item)} 
-                  onClickTitle={()=>{navigate(`/product-detail/${item.id}`)}} 
-                  />;
+                  return (
+                    <CarouselShop
+                      listImage={item.images}
+                      title={item.title}
+                      price={item.price}
+                      onClickCart={() => handleClickCart(item)}
+                      onClickTitle={() => {
+                        navigate(`/product-detail/${item.id}`);
+                      }}
+                    />
+                  );
                 })}
           </Col>
         </Row>
         <Row>
-          <div className="d-flex gap-3 justify-content-center">{items}</div>
+          <div className="d-flex flex-wrap gap-3 justify-content-center">{items}</div>
         </Row>
       </div>
 

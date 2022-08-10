@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { AddCart, DeleteCart, DeleteSingleCart, DeleteAllCart } from "../Redux/Actions/cartAction";
 import * as types from "../Redux/Types/cartType";
 import GreyContainer from "../Components/GreyContainer";
-import { AddCart } from "../Redux/Actions/cartAction";
 import Input from "../Components/Input";
 
 export default function ShoppingCart() {
+  const [filterData, setFilterData] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartProducts);
+
 
   const formatter = new Intl.NumberFormat("en-UK", {
     style: "currency",
@@ -29,10 +30,51 @@ export default function ShoppingCart() {
     setCountTotal(newCount);
   }, [carts]);
 
-  const handleDelete = (i) => {
-    dispatch({ type: types.DELETE_CART, payload: carts.find((e) => e.id === i) });
+
+  useEffect(() => {
+    let holdArr = [];
+    carts.forEach((item, index) => {
+      const checkData = holdArr.find((e) => e.id === item.id);
+      if (checkData === undefined) {
+        holdArr.push({ ...item, quantity: 1, totalPrice: item.price });
+      }
+      if (checkData) {
+        const calculate = {
+          ...checkData,
+          totalPrice: checkData.totalPrice + item.price,
+          quantity: checkData.quantity + 1,
+        };
+        const newData = holdArr.map((el, i) => {
+          if (el.id === calculate.id) {
+            return calculate;
+          } else {
+            return el;
+          }
+        });
+
+        holdArr = newData;
+        
+      }
+    });
+    setFilterData(holdArr);
+    
+  }, [carts]);
+
+
+
+  const handleDelete = (e) => {
+    dispatch(DeleteCart(e));
   };
 
+  const handleMinClick = (e) => {
+  dispatch(DeleteSingleCart(e))     
+  }
+
+  const handlePlusClick = (e) => {
+    dispatch(AddCart(e));
+  };
+
+ 
   return (
     <div>
       <GreyContainer titlePage={"Shopping Cart"} />
@@ -50,16 +92,15 @@ export default function ShoppingCart() {
                   </tr>
                 </thead>
                 <tbody>
-                  {carts &&
-                    carts.length > 0 &&
-                    carts.map((item, key) => {
-                      console.log("see item", item);
+                  {filterData &&
+                    filterData.length > 0 &&
+                    filterData.map((item, key) => {
                       return (
                         <tr key={key}>
                           <td className="d-flex gap-2">
                             <div className="position-relative">
                               <img src={item.images} style={{ width: "100px", height: "80px" }} />
-                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px"  }}>
+                              <div className="position-absolute top-0 start-100 translate-middle p-1 badge  bg-dark rounded-circle" onClick={() => handleDelete(item.id)} style={{ cursor: "pointer", width: "20px", height: "20px" }}>
                                 x
                               </div>
                             </div>
@@ -71,14 +112,28 @@ export default function ShoppingCart() {
 
                           <td>${item.price} </td>
                           <td>
-                            <Input inpType="number" pattern="[0-9]+" />
-                          </td>
-                          <td>{formatter.format(item.price)} </td>
+                            <td style={{fontSize:"12px", backgroundColor:"#F0EFF2"}}>
+                            <div className="d-flex justify-content-between align-items-center" style={{ backgroundColor: "F0EFF2" }}>
+                              <button className="btn border border-1" onClick={() => handleMinClick(item.id)}>
+                                -
+                              </button>
+                              <span className="mx-3">{item.quantity}</span>
+                              <button className="btn border border-1" onClick={() => handlePlusClick(item)}>
+                                +
+                              </button>
+                            </div>
+                          </td></td>
+                          
+                          <td>{formatter.format(item.totalPrice)} </td>
                         </tr>
                       );
                     })}
                 </tbody>
               </table>
+              <div className="d-flex flex-row josefin text-white justify-content-between my-5">
+                      <div><Button className="border-0" style={{backgroundColor:"#ec42a2"}}  onClick={() => {navigate("/shop-grid")}}>Update Curt</Button></div>
+                      <div><Button className="border-0" style={{backgroundColor:"#ec42a2"}}  onClick={() =>{dispatch(DeleteAllCart())}}>Clear Curt</Button></div>
+                    </div>
             </div>
           </div>
         </Col>
@@ -100,9 +155,10 @@ export default function ShoppingCart() {
                 {/* <Form.Control plaintext readOnly defaultValue="Totals:" className="border-bottom" /> */}
                 <Form.Check type="checkbox" id="default-checkbox" label="Shipping & taxes calculated at checkout" className="my-4" />
                 <Button
-                  variant="primary"
+                  className="w-100 lato border-0"
+                  style={{backgroundColor:"#19D16F"}}
                   type="submit"
-                  style={{ width: "100%" }}
+                
                   onClick={() => {
                     navigate("/shipping");
                   }}
