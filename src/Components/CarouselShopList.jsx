@@ -32,8 +32,8 @@ const CarouselShop = ({ listImage, title, price, description, onClickCart, onCli
                 <div id="shape3" className="bg-lightSlateBlue" onClick={() => setShowImage(listImage[2])}></div>
               </div>
             </Card.Title>
-            <Card.Text className="d-flex">
-              <span className="lato" style={{color:"#151875"}}>${Math.round((62 / 100) * Number(price))}</span>
+            <Card.Text className="d-flex josefin">
+              <span className="" style={{color:"#151875"}}>${Math.round((62 / 100) * Number(price))}</span>
               <span className="clr2 mx-3">
                 <del className="Wild-Strawberry"> ${price}</del>
               </span>
@@ -45,7 +45,7 @@ const CarouselShop = ({ listImage, title, price, description, onClickCart, onCli
                 <RiStarLine style={{ color: "#FFC416" }} />
               </div>
             </Card.Text>
-            <Card.Text>{description}</Card.Text>
+            <Card.Text className="lato Wild-Blue-Yonder">{description}</Card.Text>
             <Card.Text className="d-flex gap-3">
               <div className="shadow-sm rounded-circle d-flex justify-content-center align-items-center" style={{width:"35px", height:"35px"}}><BsCart2 onClick={onClickCart} style={{ cursor: "pointer" }}  /></div>
               <div className="shadow-sm rounded-circle d-flex justify-content-center align-items-center" style={{width:"35px", height:"35px"}}><BsHeart /></div>
