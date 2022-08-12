@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import React, { useState } from "react";
 
+
+// icon 
+import { BsCalendar4Week } from "react-icons/bs";
+import {FaPenNib} from "react-icons/fa"
+
 import "animate.css";
 // images
 import icon1 from "../img/Vector.png";
@@ -63,14 +68,17 @@ export default function SingleBlog() {
         {/* Main Content  */}
         <div className="w-75 me-5">
           <img src={blog1} alt="" />
-          <div className="d-flex me-3">
-            <img src={icon1} />
-            <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
-          </div>
-          <div className="d-flex">
-            <img src={icon2} />
-            <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
-          </div>
+          <div className="d-flex my-3">
+            <div className="d-flex me-3">
+                <FaPenNib className="Wild-Strawberry me-2"/>
+                <h5 style={{ fontSize: "12px" }}>Saber Ali</h5>
+              </div>
+              <div className="d-flex">
+                <BsCalendar4Week className="bg-warning opacity-50 me-2" />
+                <h5 style={{ fontSize: "12px" }}>7 july 2022</h5>
+              </div>
+            </div>
+              
 
           <h3>Mauris at orci non vulputate diam tincidunt nec.</h3>
           <p>
