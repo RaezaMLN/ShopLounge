@@ -1,86 +1,43 @@
-// import * as types from "../Types/cartType";
+import * as types from "../Types/cartType";
 
-// const cartState = {
-//   numberCart: 0,
-//   listCart: [],
-//   products:[]
-// };
+const cartState = {
+  //   numberCart: 0,
+  // cart: [],
+  cartProducts: [],
+};
 
-// const cartReducer = (state = cartState, action) => {
-//   switch(action.type){
-//     case types.GET_ALL_PRODUCT: 
-//         return{
-//             ...state,
-//             products:action.payload
-//         }
-//     case types.GET_NUMBER_CART:
-//             return{
-//                 ...state
-//             }
-//     case types.ADD_CART:
-//         if(state.numberCart==0){
-//             let cart = {
-//                 id:action.payload.id,
-//                 quantity:1,
-//                 name:action.payload.name,
-//                 image:action.payload.image,
-//                 price:action.payload.price
-//             } 
-//             state.Carts.push(cart); 
-//         }
-//         else{
-//             let check = false;
-//             state.Carts.map((item,key)=>{
-//                 if(item.id==action.payload.id){
-//                     state.Carts[key].quantity++;
-//                     check=true;
-//                 }
-//             });
-//             if(!check){
-//                 let _cart = {
-//                     id:action.payload.id,
-//                     quantity:1,
-//                     name:action.payload.name,
-//                     image:action.payload.image,
-//                     price:action.payload.price
-//                 }
-//                 state.Carts.push(_cart);
-//             }
-//         }
-//         return{
-//             ...state,
-//             numberCart:state.numberCart+1
-//         }
-//     case types.INCREASE_QUANTITY:
-//         state.numberCart++
-//         state.Carts[action.payload].quantity++;
-        
-//         return{
-//             ...state
-//         }
-//     case types.DECREASE_QUANTITY:
-//         let quantity = state.Carts[action.payload].quantity;
-//         if(quantity>1){
-//             state.numberCart--;
-//             state.Carts[action.payload].quantity--;
-//         }
-        
-//         return{
-//             ...state
-//         }
-//     case types.DELETE_CART:
-//         let quantity_ = state.Carts[action.payload].quantity;
-//         return{
-//             ...state,
-//             numberCart:state.numberCart - quantity_,
-//             Carts:state.Carts.filter(item=>{
-//                 return item.id!=state.Carts[action.payload].id
-//             })
-            
-//         }
-//     default:
-//         return state;
-// }
-// };
+const cartReducer = (state = cartState, { type, payload }) => {
+  // console.log("see payload", payload)
+  switch (type) {
+    case types.ADD_CART:
+      return Object.assign({}, state, {
+        cartProducts: [...state.cartProducts, payload],
+      });
+    case types.DELETE_CART:
+      return Object.assign({}, state, {
+        cartProducts: state.cartProducts.filter((item) => item.id !== payload.id),
+      });
 
-// export default cartReducer;
+    case types.DELETE_SINGLE_CART:
+      const arr = []
+        state.cartProducts.forEach((e,i)=>{
+          if (e.id === payload.id){
+            arr.push(i)
+          }
+        })
+        return Object.assign({}, state, {
+          cartProducts: state.cartProducts.filter((item, index) => index !== arr[arr.length -1] )
+        });
+
+        case types.DELETE_ALL_CART:
+          return Object.assign({}, state, {
+            cartProducts: []
+          });
+          
+          
+    default:
+      return state;
+  }
+};
+
+export default cartReducer;

@@ -1,14 +1,15 @@
 import React from "react";
 import "../../src/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-function Button({ btnVariant, btnStyle, btnClass, btnTitle }) {
+import { Button } from "react-bootstrap";
+function CButton({ btnVariant, btnStyle, btnClass, btnTitle, eventClick, btnType }) {
   return (
     <div>
-      <button variant={btnVariant} style={btnStyle} className={btnClass}>
+      <Button variant={btnVariant} style={btnStyle} className={btnClass} onClick={eventClick} type={btnType}>
         {btnTitle}
-      </button>
+      </Button>
     </div>
   );
 }
 
-export default Button;
+export default CButton;
