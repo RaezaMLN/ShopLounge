@@ -14,8 +14,7 @@ import {FaPenNib} from "react-icons/fa"
 
 import "animate.css";
 // images
-import icon1 from "../img/Vector.png";
-import icon2 from "../img/calend.png";
+
 import blog1 from "../img/blog1.png";
 import blog2 from "../img/blog2.png";
 import blog3 from "../img/blog3.png";
