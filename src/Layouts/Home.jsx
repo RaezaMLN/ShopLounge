@@ -12,20 +12,20 @@ import quality from "../img/premium-quality.png";
 import support from "../img/24-hours-support.png";
 import clock from "../img/clock.png";
 import sit from "../img/sit.png";
-import chair1 from "../img/chair1.png";
-import chair2 from "../img/chair2.png";
-import chair3 from "../img/chair3.png";
+// import chair1 from "../img/chair1.png";
+// import chair2 from "../img/chair2.png";
+// import chair3 from "../img/chair3.png";
 import chair from "../img/chair.png";
-import lcw1 from "../img/lcw1.png";
-import lcw2 from "../img/lcw2.png";
-import lcw3 from "../img/lcw3.png";
+// import lcw1 from "../img/lcw1.png";
+// import lcw2 from "../img/lcw2.png";
+// import lcw3 from "../img/lcw3.png";
 import banner from "../img/banner.png";
 import sponsor from "../img/sponsor.png";
 import room from "../img/room.png";
 import room2 from "../img/room2.png";
 import room3 from "../img/room3.png";
-import icon1 from "../img/Vector.png";
-import icon2 from "../img/calend.png";
+// import icon1 from "../img/Vector.png";
+// import icon2 from "../img/calend.png";
 import { BsCart2, BsHeart, BsZoomIn, BsCalendar4Week } from "react-icons/bs";
 import {FaPenNib} from "react-icons/fa"
 import {AiOutlineCheck} from "react-icons/ai"
