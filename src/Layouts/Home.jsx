@@ -291,19 +291,22 @@ export default function Home() {
           <img src={sqrsofa} alt="" />
         </div>
         <div>
-          <p className="fs-1 fw-bold Midnight-Blue text-wrap">
+          <p className="fw-bold Midnight-Blue josefin text-wrap" style={{fontSize:"35px"}}>
             Unique Features Of leatest & <br /> Trending Poducts
           </p>
-          <ul className="fs-5 Wild-Blue-Yonder my-4">
-            <li>All frames constructed with hardwood solids and laminates</li>
-            <li>Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails</li>
-            <li>Arms, backs and seats are structurally reinforced</li>
-          </ul>
-          <div className="d-flex">
+          <div className> 
+            <div className="d-flex align-items-center"><div className="rounded-circle bg-wildStrawberry me-2" style={{ width: "0.8rem", height:"0.8rem"}}></div>All frames constructed with hardwood solids and laminates</div>
+            <div className="d-flex align-items-center"><div className="rounded-circle me-2 my-3" style={{ width: "0.8rem", height:"0.8rem", backgroundColor:"#2B2BF5"}}></div>Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails</div>
+            <div className="d-flex align-items-center"><div className="rounded-circle me-2" style={{ width: "0.8rem", height:"0.8rem", backgroundColor:"#2BF5CC"}}></div>Arms, backs and seats are structurally reinforced</div>
+          </div>
+           
+
+         
+          <div className="d-flex my-5">
             <Button btnClass={"btn text-light josefin me-5 fs-4 border-0"} btnTitle={"Add To Cart"} btnStyle={{ backgroundColor: "#fb2e86" }} />
-            <div className="d-flex flex-column josefin Midnight-Blue">
-              <h5>B&B Italian Sofa</h5>
-              <h5>$32.00</h5>
+            <div className="d-flex flex-column josefin Midnight-Blue fw-bold">
+              <h5  style={{fontSize:"14px"}}>B&B Italian Sofa</h5>
+              <h5  style={{fontSize:"14px"}}>$32.00</h5>
             </div>
           </div>
         </div>
