@@ -34,8 +34,8 @@ export default function ContactUs() {
       <div className="container my-5 py-5">
         <Row>
           <Col lg="6">
-            <h3>Information About us</h3>
-            <p>
+            <h3 className="josefin Midnight-Blue fw-bold" style={{ fontSize: "36px" }}>Information About us</h3>
+            <p className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices mattis aliquam, malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus vitae lobortis quis bibendum
               quam.
             </p>
@@ -50,8 +50,8 @@ export default function ContactUs() {
               <br />
             </div>
 
-            <h3>Get In Touch</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices tristique amet erat vitae eget dolor los vitae lobortis quis bibendum quam.</p>
+            <h3 className="josefin Midnight-Blue fw-bold" style={{ fontSize: "36px" }}>Get In Touch</h3>
+            <p className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices tristique amet erat vitae eget dolor los vitae lobortis quis bibendum quam.</p>
 
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Row className="mb-3">
@@ -86,22 +86,21 @@ export default function ContactUs() {
 
           <Col lg="6">
             <div className="ps-5">
-              <h3>Contact Way</h3>
-              <Row>
+              <h3 className="josefin Midnight-Blue fw-bold" style={{ fontSize: "36px" }}>Contact Way</h3>
+              <Row className="my-3">
                 <Col>
-                  <div className="d-flex gap-2 align-item-center">
+                  <div className="d-flex gap-2 align-items-center">
                     <div style={{ width: "25px", height: "25px", backgroundColor: "#5625DF", borderRadius: "50%" }}></div>
-                    <span>
+                    <span className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>
                       Tel: 877-67-88-99 <br />
                       E-Mail: shop@store.com
                     </span>
                   </div>
                 </Col>
                 <Col>
-                  <div className="d-flex gap-2 align-item-center">
+                  <div className="d-flex gap-2 align-items-center">
                     <div style={{ width: "25px", height: "25px", backgroundColor: "#FF27B7", borderRadius: "50%" }}></div>
-                    <span>
-                      Support Forum <br />
+                    <span className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>                      Support Forum <br />
                       For over 24hr
                     </span>
                   </div>
@@ -109,19 +108,17 @@ export default function ContactUs() {
               </Row>
               <Row>
                 <Col>
-                  <div className="d-flex gap-2 align-item-center">
+                  <div className="d-flex gap-2 align-items-center">
                     <div style={{ width: "25px", height: "25px", backgroundColor: "#FFB265", borderRadius: "50%" }}></div>
-                    <span>
-                      20 Margaret st, London <br />
+                    <span className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>                      20 Margaret st, London <br />
                       Great britain, 3NM98-LK
                     </span>
                   </div>
                 </Col>
                 <Col>
-                  <div className="d-flex gap-2 align-item-center">
+                  <div className="d-flex gap-2 align-items-center">
                     <div style={{ width: "25px", height: "25px", backgroundColor: "#1BE982", borderRadius: "50%" }}></div>
-                    <span>
-                      Free standard shipping <br />
+                    <span className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}>                      Free standard shipping <br />
                       on all orders.
                     </span>
                   </div>
