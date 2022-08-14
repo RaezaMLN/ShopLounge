@@ -294,7 +294,7 @@ export default function Home() {
           <p className="fw-bold Midnight-Blue josefin text-wrap" style={{fontSize:"35px"}}>
             Unique Features Of leatest & <br /> Trending Poducts
           </p>
-          <div className> 
+          <div className="lato Wild-Blue-Yonder" style={{ fontSize: "16px" }}> 
             <div className="d-flex align-items-center"><div className="rounded-circle bg-wildStrawberry me-2" style={{ width: "0.8rem", height:"0.8rem"}}></div>All frames constructed with hardwood solids and laminates</div>
             <div className="d-flex align-items-center"><div className="rounded-circle me-2 my-3" style={{ width: "0.8rem", height:"0.8rem", backgroundColor:"#2B2BF5"}}></div>Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails</div>
             <div className="d-flex align-items-center"><div className="rounded-circle me-2" style={{ width: "0.8rem", height:"0.8rem", backgroundColor:"#2BF5CC"}}></div>Arms, backs and seats are structurally reinforced</div>
